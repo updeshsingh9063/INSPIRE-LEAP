@@ -42,7 +42,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden py-16 md:py-20">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900 to-black" />
       <HeroScene />
@@ -78,7 +78,7 @@ export default function HeroSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="text-5xl md:text-7xl font-bold tracking-tight mb-6"
+                className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight mb-4 md:mb-6"
               >
                 <span className="block text-white">Transform Your</span>
                 <span className="gradient-text">Career with</span>
@@ -148,7 +148,7 @@ export default function HeroSection() {
               className="space-y-6"
             >
               {/* Stats Grid */}
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-2 gap-4 md:gap-6">
                 {stats.map((stat, index) => {
                   const Icon = stat.icon
                   return (
@@ -159,7 +159,7 @@ export default function HeroSection() {
                       transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
                       whileHover={{ scale: 1.05, y: -5 }}
                       className={cn(
-                        "glass p-6 rounded-2xl border border-white/10",
+                        "glass p-4 md:p-6 rounded-2xl border border-white/10",
                         "hover:border-primary/30 transition-all duration-300"
                       )}
                     >
@@ -182,7 +182,7 @@ export default function HeroSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.8 }}
-                className="glass p-6 rounded-2xl border border-white/10"
+                className="glass p-4 md:p-6 rounded-2xl border border-white/10"
               >
                 <h3 className="text-lg font-semibold text-white mb-4">
                   Trusted by Industry Leaders

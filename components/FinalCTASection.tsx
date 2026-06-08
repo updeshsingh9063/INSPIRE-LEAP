@@ -90,7 +90,7 @@ export default function FinalCTASection() {
   };
 
   return (
-    <section className="relative py-24 overflow-hidden bg-gradient-to-b from-black via-gray-900 to-black">
+    <section className="relative py-12 md:py-24 overflow-hidden bg-gradient-to-b from-black via-gray-900 to-black">
       {/* Animated background with particles */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent animate-pulse" />
@@ -144,7 +144,7 @@ export default function FinalCTASection() {
             </div>
           </motion.div>
 
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6">
             <span className="bg-gradient-to-r from-primary via-white to-secondary bg-clip-text text-transparent">
               Launch Your Tech Career Today
             </span>
@@ -170,7 +170,7 @@ export default function FinalCTASection() {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-4xl mx-auto">
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2">
                 50K+
@@ -206,7 +206,7 @@ export default function FinalCTASection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-12 md:mb-16"
         >
           {benefits.map((benefit, index) => (
             <motion.div
@@ -220,7 +220,7 @@ export default function FinalCTASection() {
               <div className="absolute -inset-0.5 bg-gradient-to-br rounded-2xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"
                 style={{ background: `linear-gradient(to bottom right, var(--color-primary), var(--color-secondary))` }}
               />
-              <div className="relative bg-gradient-to-br from-gray-900/30 to-black/30 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center group-hover:border-primary/30 transition-all duration-300">
+              <div className="relative bg-gradient-to-br from-gray-900/30 to-black/30 backdrop-blur-sm border border-white/10 rounded-2xl p-5 md:p-6 text-center group-hover:border-primary/30 transition-all duration-300">
                 <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${benefit.color} mb-4 group-hover:scale-110 transition-transform duration-300`}>
                   <benefit.icon className="w-6 h-6 text-white" />
                 </div>
@@ -238,7 +238,7 @@ export default function FinalCTASection() {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <div className="bg-gradient-to-br from-gray-900/30 to-black/30 backdrop-blur-sm border border-white/10 rounded-3xl p-8">
+          <div className="bg-gradient-to-br from-gray-900/30 to-black/30 backdrop-blur-sm border border-white/10 rounded-3xl p-5 md:p-8">
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold mb-4">
                 <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
@@ -250,7 +250,7 @@ export default function FinalCTASection() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
               {enrollmentSteps.map((step, index) => (
                 <motion.div
                   key={index}
@@ -265,7 +265,7 @@ export default function FinalCTASection() {
                     <div className="hidden lg:block absolute top-1/2 right-0 w-full h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent transform translate-x-1/2" />
                   )}
                   
-                  <div className="relative bg-gradient-to-br from-gray-900/50 to-black/50 border border-white/10 rounded-2xl p-6 text-center group hover:border-primary/30 transition-all duration-300">
+                  <div className="relative bg-gradient-to-br from-gray-900/50 to-black/50 border border-white/10 rounded-2xl p-5 md:p-6 text-center group hover:border-primary/30 transition-all duration-300">
                     <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${step.color} mb-4`}>
                       <step.icon className="w-6 h-6 text-white" />
                     </div>
@@ -286,7 +286,7 @@ export default function FinalCTASection() {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <div className="bg-gradient-to-br from-primary/10 via-primary/5 to-secondary/10 backdrop-blur-sm border border-primary/30 rounded-3xl p-8 md:p-12">
+          <div className="bg-gradient-to-br from-primary/10 via-primary/5 to-secondary/10 backdrop-blur-sm border border-primary/30 rounded-3xl p-6 md:p-12">
             <div className="grid lg:grid-cols-2 gap-8 items-center">
               <div>
                 <h2 className="text-3xl font-bold mb-4">
@@ -366,7 +366,7 @@ export default function FinalCTASection() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <div className="inline-flex flex-col items-center gap-6 p-8 rounded-3xl bg-gradient-to-br from-accent/10 via-accent/5 to-primary/10 border border-accent/30 max-w-2xl mx-auto">
+          <div className="inline-flex flex-col items-center gap-5 md:gap-6 p-6 md:p-8 rounded-3xl bg-gradient-to-br from-accent/10 via-accent/5 to-primary/10 border border-accent/30 max-w-2xl mx-auto">
             <div className="flex items-center gap-3">
               <Clock className="w-6 h-6 text-accent animate-pulse" />
               <span className="text-lg font-bold text-white">Limited Time Offer</span>

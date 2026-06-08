@@ -99,7 +99,7 @@ const processSteps = [
 
 export default function WhyInspireLeapSection() {
   return (
-    <section className="py-20">
+    <section className="py-12 md:py-20">
       <div className="container mx-auto px-4 md:px-6">
         {/* Section Header */}
         <motion.div
@@ -119,7 +119,7 @@ export default function WhyInspireLeapSection() {
         </motion.div>
 
         {/* Features Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-16 md:mb-20">
           {features.map((feature, index) => {
             const Icon = feature.icon
             return (
@@ -131,7 +131,7 @@ export default function WhyInspireLeapSection() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ scale: 1.05, y: -10 }}
                 className={cn(
-                  "glass p-6 rounded-2xl border border-white/10",
+                  "glass p-5 md:p-6 rounded-2xl border border-white/10",
                   "hover:border-transparent transition-all duration-300",
                   "relative overflow-hidden group"
                 )}
@@ -193,7 +193,7 @@ export default function WhyInspireLeapSection() {
             {/* Connecting Line */}
             <div className="absolute left-0 right-0 top-1/2 h-0.5 bg-gradient-to-r from-primary via-secondary to-accent opacity-30 hidden md:block" />
             
-            <div className="grid md:grid-cols-6 gap-6 relative">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 md:gap-6 relative">
               {processSteps.map((step, index) => (
                 <motion.div
                   key={index}
@@ -234,7 +234,7 @@ export default function WhyInspireLeapSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="glass rounded-2xl border border-white/10 p-8"
+          className="glass rounded-2xl border border-white/10 p-4 md:p-8"
         >
           <div className="text-center mb-8">
             <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">

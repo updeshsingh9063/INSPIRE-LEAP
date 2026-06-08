@@ -22,7 +22,7 @@ const marqueeItems = [...companies, ...companies]
 
 export default function TrustedBySection() {
   return (
-    <section className="py-20 overflow-hidden">
+    <section className="py-12 md:py-20 overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
         {/* Section Header */}
         <motion.div
@@ -98,7 +98,7 @@ export default function TrustedBySection() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mt-20"
         >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {[
               { value: "50K+", label: "Students Placed", color: "from-primary to-secondary" },
               { value: "95%", label: "Placement Rate", color: "from-secondary to-accent" },
@@ -113,7 +113,7 @@ export default function TrustedBySection() {
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
                 whileHover={{ scale: 1.05 }}
                 className={cn(
-                  "glass p-8 rounded-2xl border border-white/10",
+                  "glass p-5 md:p-8 rounded-2xl border border-white/10",
                   "hover:border-transparent transition-all duration-300"
                 )}
               >
@@ -137,7 +137,7 @@ export default function TrustedBySection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-20 glass p-8 rounded-2xl border border-white/10"
+          className="mt-12 md:mt-20 glass p-5 md:p-8 rounded-2xl border border-white/10"
         >
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
@@ -156,7 +156,7 @@ export default function TrustedBySection() {
                 View All Success Stories
               </motion.button>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {[
                 { name: "Rahul Sharma", role: "SDE @ Amazon", package: "₹18 LPA" },
                 { name: "Priya Patel", role: "Data Scientist @ Google", package: "₹22 LPA" },

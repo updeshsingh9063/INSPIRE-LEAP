@@ -107,7 +107,7 @@ export default function StatisticsSection() {
   }, [isInView, hasAnimated]);
 
   return (
-    <section className="relative py-24 overflow-hidden bg-gradient-to-b from-black via-gray-900 to-black">
+    <section className="relative py-12 md:py-24 overflow-hidden bg-gradient-to-b from-black via-gray-900 to-black">
       {/* Animated background */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent animate-pulse" />
@@ -148,7 +148,7 @@ export default function StatisticsSection() {
         </motion.div>
 
         {/* Main statistics grid */}
-        <div ref={ref} className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+        <div ref={ref} className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-12 md:mb-16">
           {statistics.map((stat, index) => (
             <motion.div
               key={stat.id}
@@ -164,7 +164,7 @@ export default function StatisticsSection() {
               />
               
               {/* Card */}
-              <div className="relative bg-gradient-to-br from-gray-900/50 to-black/50 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center group-hover:border-primary/30 transition-all duration-300">
+              <div className="relative bg-gradient-to-br from-gray-900/50 to-black/50 backdrop-blur-sm border border-white/10 rounded-2xl p-4 md:p-6 text-center group-hover:border-primary/30 transition-all duration-300">
                 {/* Icon */}
                 <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${stat.color} mb-4 group-hover:scale-110 transition-transform duration-300`}>
                   <stat.icon className="w-6 h-6 text-white" />
@@ -222,7 +222,7 @@ export default function StatisticsSection() {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <div className="bg-gradient-to-br from-gray-900/30 to-black/30 backdrop-blur-sm border border-white/10 rounded-3xl p-8">
+          <div className="bg-gradient-to-br from-gray-900/30 to-black/30 backdrop-blur-sm border border-white/10 rounded-3xl p-5 md:p-8">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
               <div>
                 <h3 className="text-2xl font-bold mb-2">Exponential Growth Journey</h3>
@@ -241,7 +241,7 @@ export default function StatisticsSection() {
             </div>
 
             {/* Growth bars */}
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
               {growthData.map((data, index) => (
                 <motion.div
                   key={data.year}
@@ -295,7 +295,7 @@ export default function StatisticsSection() {
         </motion.div>
 
         {/* Additional metrics */}
-        <div className="grid md:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-12 md:mb-16">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -364,7 +364,7 @@ export default function StatisticsSection() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <div className="inline-flex flex-col sm:flex-row items-center gap-8 p-8 rounded-3xl bg-gradient-to-br from-primary/10 via-primary/5 to-secondary/10 border border-primary/30">
+          <div className="inline-flex flex-col sm:flex-row items-center gap-6 md:gap-8 p-5 md:p-8 rounded-3xl bg-gradient-to-br from-primary/10 via-primary/5 to-secondary/10 border border-primary/30">
             <div className="text-left">
               <h3 className="text-2xl font-bold mb-2">Live Impact Counter</h3>
               <p className="text-gray-300">
