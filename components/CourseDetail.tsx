@@ -39,6 +39,8 @@ interface CourseDetailProps {
     slug: string
     prerequisites: string[]
     learningOutcomes: string[]
+    trending?: boolean
+    popular?: boolean
   }
 }
 

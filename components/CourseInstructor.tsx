@@ -1,17 +1,15 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { 
-  Star, 
-  Users, 
-  Award, 
+import {
+  Star,
+  Users,
+  Award,
   Briefcase,
   MessageSquare,
   Calendar,
   Globe,
-  Linkedin,
-  Twitter,
-  Github
+  Share2
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -70,13 +68,10 @@ export default function CourseInstructor({
               {/* Social Links */}
               <div className="flex justify-center lg:justify-start space-x-3 mt-4">
                 <button className="h-10 w-10 glass rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-colors">
-                  <Linkedin className="h-5 w-5" />
+                  <Share2 className="h-5 w-5" />
                 </button>
                 <button className="h-10 w-10 glass rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-colors">
-                  <Twitter className="h-5 w-5" />
-                </button>
-                <button className="h-10 w-10 glass rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-colors">
-                  <Github className="h-5 w-5" />
+                  <MessageSquare className="h-5 w-5" />
                 </button>
                 <button className="h-10 w-10 glass rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-colors">
                   <Globe className="h-5 w-5" />
