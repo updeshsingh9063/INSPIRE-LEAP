@@ -168,11 +168,11 @@ export default function CourseCard({ course, viewMode }: CourseCardProps) {
   // Grid View (default)
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.3 }}
-      whileHover={{ y: -8, scale: 1.02 }}
-      className="glass rounded-2xl p-6 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300"
+      initial={{ opacity: 0, scale: 0.95, y: 20 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+      whileHover={{ y: -10, scale: 1.02 }}
+      className="glass rounded-2xl p-6 hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 hover-glow gradient-border flex flex-col h-full"
     >
       {/* Course Header */}
       <div className="relative mb-6">
@@ -257,9 +257,9 @@ export default function CourseCard({ course, viewMode }: CourseCardProps) {
       </div>
 
       {/* Price & CTA */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap items-center justify-between gap-4 mt-auto">
         <div>
-          <div className="flex items-center space-x-2">
+          <div className="flex flex-wrap items-center gap-2">
             <span className="text-2xl font-bold text-white">
               {formatCurrency(course.discountedPrice)}
             </span>
@@ -268,7 +268,7 @@ export default function CourseCard({ course, viewMode }: CourseCardProps) {
                 <span className="text-lg text-gray-400 line-through">
                   {formatCurrency(course.price)}
                 </span>
-                <span className="px-2 py-1 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-xs font-medium rounded">
+                <span className="px-2 py-1 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-xs font-medium rounded whitespace-nowrap">
                   {discountPercentage}% OFF
                 </span>
               </>
@@ -281,10 +281,10 @@ export default function CourseCard({ course, viewMode }: CourseCardProps) {
 
         <Link
           href={`/course/${course.slug}`}
-          className="px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-medium hover:opacity-90 transition-opacity flex items-center"
+          className="px-5 py-2.5 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-medium hover:opacity-90 transition-opacity flex items-center whitespace-nowrap shrink-0 ml-auto"
         >
           Enroll Now
-          <ChevronRight className="h-4 w-4 ml-2" />
+          <ChevronRight className="h-4 w-4 ml-1" />
         </Link>
       </div>
     </motion.div>

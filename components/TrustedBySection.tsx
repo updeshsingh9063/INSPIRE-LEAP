@@ -2,20 +2,21 @@
 
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
+import Image from "next/image"
 
 const companies = [
-  { name: "Wipro", logo: "W" },
-  { name: "TCS", logo: "T" },
-  { name: "Infosys", logo: "I" },
-  { name: "Accenture", logo: "A" },
-  { name: "Amazon", logo: "A" },
-  { name: "Microsoft", logo: "M" },
-  { name: "Google", logo: "G" },
-  { name: "IBM", logo: "I" },
-  { name: "Deloitte", logo: "D" },
-  { name: "Cognizant", logo: "C" },
-  { name: "Capgemini", logo: "C" },
-  { name: "HCL", logo: "H" },
+  { name: "Wipro",      logo: "/logos/wipro.webp" },
+  { name: "TCS",        logo: "/logos/tcs.png" },
+  { name: "Infosys",    logo: "/logos/infosys.webp" },
+  { name: "Accenture",  logo: "/logos/accenture.webp" },
+  { name: "Amazon",     logo: "/logos/amazon.webp" },
+  { name: "Microsoft",  logo: "/logos/microsoft.webp" },
+  { name: "Google",     logo: "/logos/google.webp" },
+  { name: "IBM",        logo: "/logos/ibm.webp" },
+  { name: "Deloitte",   logo: "/logos/deloitte.webp" },
+  { name: "Cognizant",  logo: "/logos/coznizant.webp" },
+  { name: "Capgemini",  logo: "/logos/capegmini.webp" },
+  { name: "HCL",        logo: "/logos/hcl.webp" },
 ]
 
 const marqueeItems = [...companies, ...companies]
@@ -33,7 +34,7 @@ export default function TrustedBySection() {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Trusted by Industry Leaders
+            Trusted by <span className="gradient-text-animated">Industry Leaders</span>
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto">
             Our students have been placed at top companies worldwide
@@ -50,9 +51,7 @@ export default function TrustedBySection() {
           <div className="overflow-hidden">
             <motion.div
               className="flex"
-              animate={{
-                x: [0, -1920],
-              }}
+              animate={{ x: [0, -1920] }}
               transition={{
                 x: {
                   repeat: Infinity,
@@ -65,23 +64,24 @@ export default function TrustedBySection() {
               {marqueeItems.map((company, index) => (
                 <motion.div
                   key={`${company.name}-${index}`}
-                  whileHover={{ scale: 1.05, y: -5 }}
+                  whileHover={{ scale: 1.08, y: -6 }}
                   className={cn(
                     "flex-shrink-0 w-48 h-32 mx-4 glass rounded-2xl",
-                    "border border-white/10 hover:border-primary/30",
-                    "flex flex-col items-center justify-center",
-                    "transition-all duration-300"
+                    "border border-white/10 hover:border-primary/40",
+                    "flex flex-col items-center justify-center gap-3",
+                    "transition-all duration-300 group cursor-pointer"
                   )}
                 >
-                  <div className="relative mb-4">
-                    <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-full blur opacity-30" />
-                    <div className="relative w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
-                      <span className="text-xl font-bold text-white">
-                        {company.logo}
-                      </span>
-                    </div>
+                  <div className="relative w-20 h-12 flex items-center justify-center">
+                    <Image
+                      src={company.logo}
+                      alt={company.name}
+                      fill
+                      className="object-contain filter brightness-75 group-hover:brightness-110 transition-all duration-300"
+                      sizes="80px"
+                    />
                   </div>
-                  <span className="text-lg font-semibold text-white">
+                  <span className="text-sm font-semibold text-gray-400 group-hover:text-white transition-colors duration-300">
                     {company.name}
                   </span>
                 </motion.div>

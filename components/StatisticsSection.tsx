@@ -127,21 +127,27 @@ export default function StatisticsSection() {
       <div className="container relative mx-auto px-4">
         {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 border border-white/10 mb-6">
-            <TrendingUp className="w-4 h-4 text-primary" />
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 border border-primary/20 mb-6"
+          >
+            <motion.div animate={{ rotate: 360 }} transition={{ duration: 3, repeat: Infinity, ease: "linear" }}>
+              <TrendingUp className="w-4 h-4 text-primary" />
+            </motion.div>
             <span className="text-sm font-medium text-white/80">By The Numbers</span>
-          </div>
+          </motion.div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-primary via-white to-secondary bg-clip-text text-transparent">
+            <span className="gradient-text-animated">
               Impact That Speaks Volumes
             </span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Our track record of transforming careers and creating industry-ready professionals.
             Every number represents a life changed through quality education.
           </p>

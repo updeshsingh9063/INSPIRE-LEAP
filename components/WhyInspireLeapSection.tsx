@@ -103,18 +103,29 @@ export default function WhyInspireLeapSection() {
       <div className="container mx-auto px-4 md:px-6">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Why Choose <span className="gradient-text">Inspire Leap</span>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass border border-primary/20 mb-6"
+          >
+            <TrendingUp className="h-4 w-4 text-primary" />
+            <span className="text-sm font-medium text-primary">Why We're Different</span>
+          </motion.div>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+            Why Choose{" "}
+            <span className="gradient-text-animated">Inspire Leap</span>
           </h2>
-          <p className="text-lg text-gray-400 max-w-3xl mx-auto">
-            We combine industry expertise with innovative learning methods to 
-            provide you with the skills needed for today's competitive job market.
+          <p className="text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            We combine industry expertise with innovative learning methods to
+            provide you with the skills needed for today&apos;s competitive job market.
           </p>
         </motion.div>
 
@@ -125,28 +136,36 @@ export default function WhyInspireLeapSection() {
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ scale: 1.05, y: -10 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
+                whileHover={{ scale: 1.04, y: -8 }}
                 className={cn(
-                  "glass p-5 md:p-6 rounded-2xl border border-white/10",
+                  "glass p-5 md:p-6 rounded-2xl border border-white/10 gradient-border",
                   "hover:border-transparent transition-all duration-300",
-                  "relative overflow-hidden group"
+                  "relative overflow-hidden group cursor-default"
                 )}
               >
                 {/* Gradient Background */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
+                <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
                 
                 <div className="relative">
                   {/* Icon */}
                   <div className="mb-4">
                     <div className="relative inline-block">
-                      <div className={`absolute -inset-1 bg-gradient-to-r ${feature.color} rounded-lg blur opacity-30`} />
-                      <div className={`relative p-3 bg-gradient-to-br ${feature.color} rounded-lg`}>
+                      <motion.div
+                        animate={{ opacity: [0.2, 0.5, 0.2] }}
+                        transition={{ duration: 2.5, repeat: Infinity, delay: index * 0.3 }}
+                        className={`absolute -inset-1 bg-gradient-to-r ${feature.color} rounded-lg blur`}
+                      />
+                      <motion.div
+                        whileHover={{ rotate: [0, -10, 10, 0] }}
+                        transition={{ duration: 0.5 }}
+                        className={`relative p-3 bg-gradient-to-br ${feature.color} rounded-lg`}
+                      >
                         <Icon className="h-6 w-6 text-white" />
-                      </div>
+                      </motion.div>
                     </div>
                   </div>
 
@@ -154,7 +173,7 @@ export default function WhyInspireLeapSection() {
                   <h3 className="text-xl font-bold text-white mb-3">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-400 mb-4">
+                  <p className="text-gray-400 mb-4 text-sm leading-relaxed">
                     {feature.description}
                   </p>
 
@@ -163,7 +182,12 @@ export default function WhyInspireLeapSection() {
                     <span className="text-sm font-semibold text-primary">
                       {feature.stats}
                     </span>
-                    <CheckCircle className="h-4 w-4 text-success" />
+                    <motion.div
+                      animate={{ scale: [1, 1.15, 1] }}
+                      transition={{ duration: 2, repeat: Infinity, delay: index * 0.4 }}
+                    >
+                      <CheckCircle className="h-4 w-4 text-success" />
+                    </motion.div>
                   </div>
                 </div>
               </motion.div>
