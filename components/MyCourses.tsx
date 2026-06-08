@@ -223,10 +223,12 @@ export default function MyCourses() {
                           <Users className="h-3 w-3 mr-1" />
                           {course.instructor}
                         </span>
-                        <span className="flex items-center">
-                          <Star className="h-3 w-3 mr-1 text-yellow-500" />
-                          {course.rating}
-                        </span>
+                        {'rating' in course && course.rating && (
+                          <span className="flex items-center">
+                            <Star className="h-3 w-3 mr-1 text-yellow-500" />
+                            {course.rating}
+                          </span>
+                        )}
                       </div>
                     </div>
                   </div>
