@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, useScroll, useTransform } from "framer-motion"
+import { motion, useScroll, useTransform, Variants } from "framer-motion"
 import { ArrowRight, Play, CheckCircle, Users, Award, Briefcase, Sparkles } from "lucide-react"
 import { cn } from "@/lib/utils"
 import HeroScene from "./HeroScene"
@@ -23,7 +23,7 @@ const features = [
   "Lifetime Access",
 ]
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
@@ -34,16 +34,16 @@ const containerVariants = {
   },
 }
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
+    transition: { duration: 0.6, ease: "easeOut" },
   },
 }
 
-const statVariants = {
+const statVariants: Variants = {
   hidden: { opacity: 0, scale: 0.8, y: 20 },
   show: (i: number) => ({
     opacity: 1,
