@@ -172,13 +172,16 @@ export default function CoursesSection() {
                   "px-6 py-3 rounded-full text-sm font-medium transition-all duration-300",
                   activeCategory === category.id
                     ? "bg-gradient-to-r from-primary to-secondary text-white shadow-lg shadow-primary/30"
-                    : "glass text-gray-400 hover:text-white hover:bg-white/5"
+                    : "bg-white text-gray-600 hover:text-gray-900 shadow-sm border border-gray-100"
                 )}
               >
                 <span className="flex items-center space-x-2">
                   <span>{category.label}</span>
                   {category.count && (
-                    <span className="text-xs bg-white/10 px-2 py-0.5 rounded-full">
+                    <span className={cn(
+                      "text-xs px-2 py-0.5 rounded-full",
+                      activeCategory === category.id ? "bg-white/20" : "bg-gray-100 text-gray-500"
+                    )}>
                       {category.count}
                     </span>
                   )}
@@ -209,7 +212,7 @@ export default function CoursesSection() {
                 onMouseEnter={() => setHoveredCourse(course.id)}
                 onMouseLeave={() => setHoveredCourse(null)}
                 className={cn(
-                  "glass rounded-2xl border border-white/10 overflow-hidden",
+                  "bg-white shadow-xl rounded-2xl border border-gray-100 overflow-hidden",
                   "transition-all duration-300 relative group",
                   hoveredCourse === course.id && "border-primary/30"
                 )}
@@ -233,20 +236,20 @@ export default function CoursesSection() {
                       )}
                     </div>
                     <div className="text-right">
-                      <div className="text-2xl font-bold text-white">
+                      <div className="text-2xl font-bold text-gray-900">
                         {formatCurrency(course.discountedPrice)}
                       </div>
-                      <div className="text-sm text-gray-400 line-through">
+                      <div className="text-sm text-gray-500 line-through">
                         {formatCurrency(course.price)}
                       </div>
                     </div>
                   </div>
 
                   {/* Course Title */}
-                  <h3 className="text-xl font-bold text-white mb-3">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">
                     {course.title}
                   </h3>
-                  <p className="text-gray-400 text-sm mb-6">
+                  <p className="text-gray-600 text-sm mb-6">
                     {course.description}
                   </p>
 
@@ -254,15 +257,15 @@ export default function CoursesSection() {
                   <div className="grid grid-cols-3 gap-4 mb-6">
                     <div className="flex items-center space-x-2">
                       <Clock className="h-4 w-4 text-gray-500" />
-                      <span className="text-sm text-gray-300">{course.duration}</span>
+                      <span className="text-sm text-gray-600">{course.duration}</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <Users className="h-4 w-4 text-gray-500" />
-                      <span className="text-sm text-gray-300">{course.students}</span>
+                      <span className="text-sm text-gray-600">{course.students}</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <Star className="h-4 w-4 text-yellow-500" />
-                      <span className="text-sm text-gray-300">{course.rating}</span>
+                      <span className="text-sm text-gray-600">{course.rating}</span>
                     </div>
                   </div>
 
@@ -271,7 +274,7 @@ export default function CoursesSection() {
                     {course.features.map((feature, index) => (
                       <div key={index} className="flex items-center space-x-2">
                         <CheckCircle className="h-4 w-4 text-success" />
-                        <span className="text-sm text-gray-300">{feature}</span>
+                        <span className="text-sm text-gray-600">{feature}</span>
                       </div>
                     ))}
                   </div>
@@ -284,10 +287,10 @@ export default function CoursesSection() {
                       </span>
                     </div>
                     <div>
-                      <div className="text-sm font-medium text-white">
+                      <div className="text-sm font-medium text-gray-900">
                         {course.instructor}
                       </div>
-                      <div className="text-xs text-gray-400">
+                      <div className="text-xs text-gray-600">
                         {course.instructorRole}
                       </div>
                     </div>
@@ -295,7 +298,7 @@ export default function CoursesSection() {
                 </div>
 
                 {/* Course Footer */}
-                <div className="px-6 py-4 bg-white/5 border-t border-white/10">
+                <div className="px-6 py-4 bg-gray-50 border-t border-gray-100">
                   <div className="flex items-center justify-between">
                     <motion.button
                       whileHover={{ scale: 1.05 }}
@@ -308,7 +311,7 @@ export default function CoursesSection() {
                     <motion.button
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
-                      className="p-2 glass rounded-lg text-gray-400 hover:text-white transition-colors"
+                      className="p-2 bg-white border border-gray-200 shadow-sm rounded-lg text-gray-600 hover:text-primary transition-colors"
                     >
                       <PlayCircle className="h-5 w-5" />
                     </motion.button>
@@ -328,7 +331,7 @@ export default function CoursesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-20 glass rounded-2xl border border-white/10 p-8"
+          className="mt-20 bg-white shadow-xl rounded-2xl border border-gray-100 p-8"
         >
           <div className="grid md:grid-cols-4 gap-8">
             {[
@@ -346,10 +349,10 @@ export default function CoursesSection() {
                       <Icon className="h-6 w-6 text-white" />
                     </div>
                   </div>
-                  <div className="text-3xl font-bold text-white mb-2">
+                  <div className="text-3xl font-bold text-gray-900 mb-2">
                     {stat.value}
                   </div>
-                  <div className="text-sm text-gray-400">
+                  <div className="text-sm text-gray-600">
                     {stat.label}
                   </div>
                 </div>
@@ -385,7 +388,7 @@ export default function CoursesSection() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 glass rounded-xl text-lg font-semibold text-white"
+                className="px-8 py-4 bg-white shadow-lg border border-gray-100 rounded-xl text-lg font-semibold text-gray-900"
               >
                 Book Free Consultation
               </motion.button>

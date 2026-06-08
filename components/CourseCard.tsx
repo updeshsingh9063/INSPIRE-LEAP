@@ -51,7 +51,7 @@ export default function CourseCard({ course, viewMode }: CourseCardProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
         whileHover={{ scale: 1.02 }}
-        className="glass rounded-2xl p-6 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300"
+        className="bg-white rounded-2xl p-6 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300"
       >
         <div className="flex flex-col lg:flex-row gap-6">
           {/* Course Image/Thumbnail */}
@@ -81,29 +81,29 @@ export default function CourseCard({ course, viewMode }: CourseCardProps) {
           <div className="lg:w-2/4">
             <div className="flex items-start justify-between mb-3">
               <div>
-                <h3 className="text-xl font-bold text-white mb-2">
+                <h3 className="text-xl font-bold text-gray-900 mb-2">
                   <Link href={`/course/${course.slug}`} className="hover:text-primary transition-colors">
                     {course.title}
                   </Link>
                 </h3>
-                <p className="text-gray-400 text-sm mb-4">{course.description}</p>
+                <p className="text-gray-600 text-sm mb-4">{course.description}</p>
               </div>
             </div>
 
             <div className="flex flex-wrap gap-4 mb-4">
-              <div className="flex items-center text-sm text-gray-400">
+              <div className="flex items-center text-sm text-gray-600">
                 <Clock className="h-4 w-4 mr-2" />
                 {course.duration}
               </div>
-              <div className="flex items-center text-sm text-gray-400">
+              <div className="flex items-center text-sm text-gray-600">
                 <Users className="h-4 w-4 mr-2" />
                 {course.students} students
               </div>
-              <div className="flex items-center text-sm text-gray-400">
+              <div className="flex items-center text-sm text-gray-600">
                 <Star className="h-4 w-4 mr-2 text-yellow-500" />
                 {course.rating} rating
               </div>
-              <div className="flex items-center text-sm text-gray-400">
+              <div className="flex items-center text-sm text-gray-600">
                 <Award className="h-4 w-4 mr-2" />
                 {course.certificate}
               </div>
@@ -113,7 +113,7 @@ export default function CourseCard({ course, viewMode }: CourseCardProps) {
               {course.features.slice(0, 3).map((feature, index) => (
                 <div
                   key={index}
-                  className="px-3 py-1 bg-white/5 rounded-full text-xs text-gray-400"
+                  className="px-3 py-1 bg-gray-100 rounded-full text-xs text-gray-600"
                 >
                   {feature}
                 </div>
@@ -125,12 +125,12 @@ export default function CourseCard({ course, viewMode }: CourseCardProps) {
           <div className="lg:w-1/4 flex flex-col justify-between">
             <div>
               <div className="flex items-center space-x-2 mb-2">
-                <span className="text-2xl font-bold text-white">
+                <span className="text-2xl font-bold text-gray-900">
                   {formatCurrency(course.discountedPrice)}
                 </span>
                 {discountPercentage > 0 && (
                   <>
-                    <span className="text-lg text-gray-400 line-through">
+                    <span className="text-lg text-gray-500 line-through">
                       {formatCurrency(course.price)}
                     </span>
                     <span className="px-2 py-1 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-xs font-medium rounded">
@@ -139,7 +139,7 @@ export default function CourseCard({ course, viewMode }: CourseCardProps) {
                   </>
                 )}
               </div>
-              <div className="text-sm text-gray-400 mb-4">
+              <div className="text-sm text-gray-600 mb-4">
                 <div className="flex items-center">
                   <CheckCircle className="h-4 w-4 mr-2 text-green-500" />
                   {course.placementRate} placement rate
@@ -155,7 +155,7 @@ export default function CourseCard({ course, viewMode }: CourseCardProps) {
                 View Details
                 <ExternalLink className="h-4 w-4 ml-2" />
               </Link>
-              <button className="w-full px-6 py-3 glass text-white rounded-lg font-medium hover:bg-white/10 transition-colors">
+              <button className="w-full px-6 py-3 border border-gray-200 text-gray-900 rounded-lg font-medium hover:bg-gray-50 transition-colors">
                 Add to Wishlist
               </button>
             </div>
@@ -172,7 +172,7 @@ export default function CourseCard({ course, viewMode }: CourseCardProps) {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
       whileHover={{ y: -10, scale: 1.02 }}
-      className="glass rounded-2xl p-6 hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 hover-glow gradient-border flex flex-col h-full"
+      className="bg-white rounded-2xl p-6 hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 flex flex-col h-full"
     >
       {/* Course Header */}
       <div className="relative mb-6">
@@ -185,7 +185,7 @@ export default function CourseCard({ course, viewMode }: CourseCardProps) {
         <div className="flex justify-between items-start">
           <div>
             <div className="flex items-center space-x-2 mb-2">
-              <span className="px-3 py-1 bg-white/10 text-primary text-xs font-medium rounded-full">
+              <span className="px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full">
                 {course.category}
               </span>
               {course.trending && (
@@ -194,7 +194,7 @@ export default function CourseCard({ course, viewMode }: CourseCardProps) {
                 </span>
               )}
             </div>
-            <h3 className="text-xl font-bold text-white mb-2">
+            <h3 className="text-xl font-bold text-gray-900 mb-2">
               <Link href={`/course/${course.slug}`} className="hover:text-primary transition-colors">
                 {course.title}
               </Link>
@@ -209,26 +209,26 @@ export default function CourseCard({ course, viewMode }: CourseCardProps) {
       </div>
 
       {/* Course Description */}
-      <p className="text-gray-400 text-sm mb-6 line-clamp-2">
+      <p className="text-gray-600 text-sm mb-6 line-clamp-2">
         {course.description}
       </p>
 
       {/* Course Stats */}
       <div className="grid grid-cols-2 gap-4 mb-6">
-        <div className="flex items-center text-sm text-gray-400">
-          <Clock className="h-4 w-4 mr-2" />
+        <div className="flex items-center text-sm text-gray-600">
+          <Clock className="h-4 w-4 mr-2 text-gray-400" />
           {course.duration}
         </div>
-        <div className="flex items-center text-sm text-gray-400">
-          <Users className="h-4 w-4 mr-2" />
+        <div className="flex items-center text-sm text-gray-600">
+          <Users className="h-4 w-4 mr-2 text-gray-400" />
           {course.students}
         </div>
-        <div className="flex items-center text-sm text-gray-400">
+        <div className="flex items-center text-sm text-gray-600">
           <Star className="h-4 w-4 mr-2 text-yellow-500" />
           {course.rating}
         </div>
-        <div className="flex items-center text-sm text-gray-400">
-          <Award className="h-4 w-4 mr-2" />
+        <div className="flex items-center text-sm text-gray-600">
+          <Award className="h-4 w-4 mr-2 text-gray-400" />
           {course.level}
         </div>
       </div>
@@ -238,7 +238,7 @@ export default function CourseCard({ course, viewMode }: CourseCardProps) {
         {course.features.slice(0, 2).map((feature, index) => (
           <div
             key={index}
-            className="px-3 py-1 bg-white/5 rounded-full text-xs text-gray-400"
+            className="px-3 py-1 bg-gray-100 rounded-full text-xs text-gray-600"
           >
             {feature}
           </div>
@@ -251,8 +251,8 @@ export default function CourseCard({ course, viewMode }: CourseCardProps) {
           {course.instructor.charAt(0)}
         </div>
         <div>
-          <div className="text-sm font-medium text-white">{course.instructor}</div>
-          <div className="text-xs text-gray-400">{course.instructorRole}</div>
+          <div className="text-sm font-medium text-gray-900">{course.instructor}</div>
+          <div className="text-xs text-gray-500">{course.instructorRole}</div>
         </div>
       </div>
 
@@ -260,12 +260,12 @@ export default function CourseCard({ course, viewMode }: CourseCardProps) {
       <div className="flex flex-wrap items-center justify-between gap-4 mt-auto">
         <div>
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-2xl font-bold text-white">
+            <span className="text-2xl font-bold text-gray-900">
               {formatCurrency(course.discountedPrice)}
             </span>
             {discountPercentage > 0 && (
               <>
-                <span className="text-lg text-gray-400 line-through">
+                <span className="text-lg text-gray-500 line-through">
                   {formatCurrency(course.price)}
                 </span>
                 <span className="px-2 py-1 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-xs font-medium rounded whitespace-nowrap">
@@ -274,7 +274,7 @@ export default function CourseCard({ course, viewMode }: CourseCardProps) {
               </>
             )}
           </div>
-          <div className="text-xs text-gray-400 mt-1">
+          <div className="text-xs text-gray-600 mt-1">
             {course.placementRate} placement rate
           </div>
         </div>

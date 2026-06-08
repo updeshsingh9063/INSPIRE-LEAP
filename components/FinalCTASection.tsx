@@ -220,12 +220,12 @@ export default function FinalCTASection() {
               <div className="absolute -inset-0.5 bg-gradient-to-br rounded-2xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"
                 style={{ background: `linear-gradient(to bottom right, var(--color-primary), var(--color-secondary))` }}
               />
-              <div className="relative bg-gradient-to-br from-gray-900/30 to-black/30 backdrop-blur-sm border border-white/10 rounded-2xl p-5 md:p-6 text-center group-hover:border-primary/30 transition-all duration-300">
+              <div className="relative bg-white shadow-xl border border-gray-100 rounded-2xl p-5 md:p-6 text-center group-hover:border-primary/30 transition-all duration-300">
                 <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${benefit.color} mb-4 group-hover:scale-110 transition-transform duration-300`}>
                   <benefit.icon className="w-6 h-6 text-white" />
                 </div>
-                <div className="text-lg font-bold text-white mb-2">{benefit.title}</div>
-                <div className="text-sm text-gray-400">{benefit.description}</div>
+                <div className="text-lg font-bold text-gray-900 mb-2">{benefit.title}</div>
+                <div className="text-sm text-gray-600">{benefit.description}</div>
               </div>
             </motion.div>
           ))}
@@ -238,14 +238,14 @@ export default function FinalCTASection() {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <div className="bg-gradient-to-br from-gray-900/30 to-black/30 backdrop-blur-sm border border-white/10 rounded-3xl p-5 md:p-8">
+          <div className="bg-white shadow-xl border border-gray-100 rounded-3xl p-5 md:p-8">
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold mb-4">
                 <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                   Simple 4-Step Enrollment
                 </span>
               </h2>
-              <p className="text-gray-400 max-w-2xl mx-auto">
+              <p className="text-gray-600 max-w-2xl mx-auto">
                 From registration to placement - we guide you every step of the way
               </p>
             </div>
@@ -265,13 +265,13 @@ export default function FinalCTASection() {
                     <div className="hidden lg:block absolute top-1/2 right-0 w-full h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent transform translate-x-1/2" />
                   )}
                   
-                  <div className="relative bg-gradient-to-br from-gray-900/50 to-black/50 border border-white/10 rounded-2xl p-5 md:p-6 text-center group hover:border-primary/30 transition-all duration-300">
+                  <div className="relative bg-gray-50 shadow-sm border border-gray-100 rounded-2xl p-5 md:p-6 text-center group hover:border-primary/30 transition-all duration-300">
                     <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${step.color} mb-4`}>
                       <step.icon className="w-6 h-6 text-white" />
                     </div>
                     <div className="text-2xl font-bold text-primary mb-2">{step.step}</div>
-                    <div className="text-lg font-bold text-white mb-2">{step.title}</div>
-                    <div className="text-sm text-gray-400">{step.description}</div>
+                    <div className="text-lg font-bold text-gray-900 mb-2">{step.title}</div>
+                    <div className="text-sm text-gray-600">{step.description}</div>
                   </div>
                 </motion.div>
               ))}

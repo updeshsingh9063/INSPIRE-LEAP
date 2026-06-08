@@ -197,14 +197,14 @@ export default function SuccessStoriesSection() {
               className="relative group"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300" />
-              <div className="relative bg-gradient-to-br from-gray-900/50 to-black/50 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center">
+              <div className="relative bg-white shadow-xl border border-gray-100 rounded-2xl p-6 text-center">
                 <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${stat.color} mb-4`}>
                   <stat.icon className="w-6 h-6 text-white" />
                 </div>
-                <div className="text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent mb-2">
+                <div className="text-3xl font-bold text-gray-900 mb-2">
                   {stat.value}
                 </div>
-                <div className="text-sm text-gray-400">{stat.label}</div>
+                <div className="text-sm text-gray-600">{stat.label}</div>
               </div>
             </motion.div>
           ))}
@@ -219,7 +219,7 @@ export default function SuccessStoriesSection() {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-br from-gray-900/50 to-black/50 backdrop-blur-sm">
+            <div className="relative rounded-3xl shadow-xl overflow-hidden border border-gray-100 bg-white">
               {/* Video thumbnail with play button */}
               <div className="relative aspect-video">
                 {playingVideo === currentStory.id ? (
@@ -258,8 +258,8 @@ export default function SuccessStoriesSection() {
                     <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 border-2 border-gray-900" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold">{currentStory.name}</h3>
-                    <p className="text-gray-400">
+                    <h3 className="text-xl font-bold text-gray-900">{currentStory.name}</h3>
+                    <p className="text-gray-600">
                       {currentStory.role} at {currentStory.company}
                     </p>
                   </div>
@@ -267,11 +267,11 @@ export default function SuccessStoriesSection() {
                     <div className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                       {currentStory.package}
                     </div>
-                    <div className="text-sm text-gray-500">Package</div>
+                    <div className="text-sm text-gray-600">Package</div>
                   </div>
                 </div>
 
-                <p className="text-gray-300 mb-6">{currentStory.story}</p>
+                <p className="text-gray-700 mb-6">{currentStory.story}</p>
 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2">
@@ -296,31 +296,31 @@ export default function SuccessStoriesSection() {
             className="space-y-8"
           >
             {/* Before/After comparison */}
-            <div className="bg-gradient-to-br from-gray-900/50 to-black/50 backdrop-blur-sm border border-white/10 rounded-3xl p-8">
-              <h3 className="text-2xl font-bold mb-6">Career Transformation</h3>
+            <div className="bg-white shadow-xl border border-gray-100 rounded-3xl p-8">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Career Transformation</h3>
               <div className="grid grid-cols-2 gap-6">
                 {/* Before */}
                 <div className="relative group">
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-red-500/20 to-red-600/20 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="relative bg-gray-900/50 rounded-2xl p-6 border border-red-500/20">
+                  <div className="relative bg-white shadow-sm rounded-2xl p-6 border border-red-200">
                     <div className="text-center mb-4">
                       <div className="inline-flex p-2 rounded-lg bg-red-500/20 mb-2">
-                        <GraduationCap className="w-5 h-5 text-red-400" />
+                        <GraduationCap className="w-5 h-5 text-red-500" />
                       </div>
-                      <div className="text-sm text-gray-400 mb-1">Before Inspire Leap</div>
+                      <div className="text-sm text-gray-600 mb-1">Before Inspire Leap</div>
                     </div>
                     <div className="space-y-3">
                       <div>
                         <div className="text-sm text-gray-500">Role</div>
-                        <div className="font-semibold">{currentStory.before.role}</div>
+                        <div className="font-semibold text-gray-900">{currentStory.before.role}</div>
                       </div>
                       <div>
                         <div className="text-sm text-gray-500">Salary</div>
-                        <div className="font-semibold text-red-400">{currentStory.before.salary}</div>
+                        <div className="font-semibold text-red-600">{currentStory.before.salary}</div>
                       </div>
                       <div>
                         <div className="text-sm text-gray-500">Company</div>
-                        <div className="font-semibold">{currentStory.before.company}</div>
+                        <div className="font-semibold text-gray-900">{currentStory.before.company}</div>
                       </div>
                     </div>
                   </div>
@@ -329,25 +329,25 @@ export default function SuccessStoriesSection() {
                 {/* After */}
                 <div className="relative group">
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-green-500/20 to-emerald-600/20 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="relative bg-gray-900/50 rounded-2xl p-6 border border-green-500/20">
+                  <div className="relative bg-white shadow-sm rounded-2xl p-6 border border-green-200">
                     <div className="text-center mb-4">
                       <div className="inline-flex p-2 rounded-lg bg-green-500/20 mb-2">
-                        <Briefcase className="w-5 h-5 text-green-400" />
+                        <Briefcase className="w-5 h-5 text-green-500" />
                       </div>
-                      <div className="text-sm text-gray-400 mb-1">After Inspire Leap</div>
+                      <div className="text-sm text-gray-600 mb-1">After Inspire Leap</div>
                     </div>
                     <div className="space-y-3">
                       <div>
                         <div className="text-sm text-gray-500">Role</div>
-                        <div className="font-semibold">{currentStory.after.role}</div>
+                        <div className="font-semibold text-gray-900">{currentStory.after.role}</div>
                       </div>
                       <div>
                         <div className="text-sm text-gray-500">Salary</div>
-                        <div className="font-semibold text-green-400">{currentStory.after.salary}</div>
+                        <div className="font-semibold text-green-600">{currentStory.after.salary}</div>
                       </div>
                       <div>
                         <div className="text-sm text-gray-500">Company</div>
-                        <div className="font-semibold">{currentStory.after.company}</div>
+                        <div className="font-semibold text-gray-900">{currentStory.after.company}</div>
                       </div>
                     </div>
                   </div>
@@ -357,7 +357,7 @@ export default function SuccessStoriesSection() {
               {/* Salary hike percentage */}
               <div className="mt-8 pt-6 border-t border-white/10">
                 <div className="flex items-center justify-between">
-                  <div className="text-sm text-gray-400">Career Growth</div>
+                  <div className="text-sm text-gray-600">Career Growth</div>
                   <div className="text-2xl font-bold bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
                     +{Math.round(
                       (parseInt(currentStory.after.salary.replace(/[^0-9]/g, '')) / 
@@ -378,8 +378,8 @@ export default function SuccessStoriesSection() {
             </div>
 
             {/* Achievements */}
-            <div className="bg-gradient-to-br from-gray-900/50 to-black/50 backdrop-blur-sm border border-white/10 rounded-3xl p-8">
-              <h3 className="text-2xl font-bold mb-6">Key Achievements</h3>
+            <div className="bg-white shadow-xl border border-gray-100 rounded-3xl p-8">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Key Achievements</h3>
               <div className="grid grid-cols-3 gap-4">
                 {currentStory.achievements.map((achievement, index) => (
                   <motion.div
@@ -393,8 +393,8 @@ export default function SuccessStoriesSection() {
                     <div className="inline-flex p-3 rounded-xl bg-gradient-to-br from-primary/20 to-secondary/20 mb-3">
                       <achievement.icon className="w-5 h-5 text-primary" />
                     </div>
-                    <div className="text-sm text-gray-400 mb-1">{achievement.label}</div>
-                    <div className="text-lg font-bold">{achievement.value}</div>
+                    <div className="text-sm text-gray-600 mb-1">{achievement.label}</div>
+                    <div className="text-lg font-bold text-gray-900">{achievement.value}</div>
                   </motion.div>
                 ))}
               </div>
@@ -448,8 +448,8 @@ export default function SuccessStoriesSection() {
               onClick={() => setActiveStory(index)}
               className={`text-left p-6 rounded-2xl border transition-all duration-300 ${
                 index === activeStory
-                  ? "bg-gradient-to-br from-primary/10 via-primary/5 to-secondary/10 border-primary/30"
-                  : "bg-gradient-to-br from-gray-900/30 to-black/30 border-white/10 hover:border-primary/20 hover:bg-gray-900/50"
+                  ? "bg-white border-primary/30 shadow-xl ring-2 ring-primary/20"
+                  : "bg-white border-gray-100 hover:border-primary/20 hover:shadow-xl shadow-md"
               }`}
             >
               <div className="flex items-center gap-4 mb-4">
@@ -459,14 +459,14 @@ export default function SuccessStoriesSection() {
                   </div>
                 </div>
                 <div>
-                  <div className="font-semibold">{story.name}</div>
-                  <div className="text-sm text-gray-400">{story.company}</div>
+                  <div className="font-semibold text-gray-900">{story.name}</div>
+                  <div className="text-sm text-gray-600">{story.company}</div>
                 </div>
               </div>
               <div className="text-lg font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2">
                 {story.package}
               </div>
-              <p className="text-sm text-gray-400 line-clamp-2">{story.story}</p>
+              <p className="text-sm text-gray-600 line-clamp-2">{story.story}</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {story.tags.slice(0, 2).map((tag, tagIndex) => (
                   <span
@@ -488,10 +488,10 @@ export default function SuccessStoriesSection() {
           viewport={{ once: true }}
           className="mt-16 text-center"
         >
-          <div className="inline-flex flex-col sm:flex-row items-center gap-6 p-8 rounded-3xl bg-gradient-to-br from-primary/10 via-primary/5 to-secondary/10 border border-primary/30">
+          <div className="inline-flex flex-col sm:flex-row items-center gap-6 p-8 rounded-3xl bg-white shadow-xl border border-gray-100">
             <div className="text-left">
-              <h3 className="text-2xl font-bold mb-2">Ready to Write Your Success Story?</h3>
-              <p className="text-gray-300">
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Ready to Write Your Success Story?</h3>
+              <p className="text-gray-600">
                 Join thousands of students who transformed their careers with Inspire Leap.
               </p>
             </div>

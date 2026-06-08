@@ -114,7 +114,7 @@ export default function WhyInspireLeapSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass border border-primary/20 mb-6"
+            className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-white/10 border border-primary/20 mb-6"
           >
             <TrendingUp className="h-4 w-4 text-primary" />
             <span className="text-sm font-medium text-primary">Why We're Different</span>
@@ -142,7 +142,7 @@ export default function WhyInspireLeapSection() {
                 transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
                 whileHover={{ scale: 1.04, y: -8 }}
                 className={cn(
-                  "glass p-5 md:p-6 rounded-2xl border border-white/10 gradient-border",
+                  "bg-white shadow-xl p-5 md:p-6 rounded-2xl border border-gray-100 gradient-border",
                   "hover:border-transparent transition-all duration-300",
                   "relative overflow-hidden group cursor-default"
                 )}
@@ -170,10 +170,10 @@ export default function WhyInspireLeapSection() {
                   </div>
 
                   {/* Content */}
-                  <h3 className="text-xl font-bold text-white mb-3">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-400 mb-4 text-sm leading-relaxed">
+                  <p className="text-gray-600 mb-4 text-sm leading-relaxed">
                     {feature.description}
                   </p>
 
@@ -229,12 +229,12 @@ export default function WhyInspireLeapSection() {
                   className="text-center"
                 >
                   <div className={cn(
-                    "w-16 h-16 mx-auto mb-4 rounded-full glass border-2",
+                    "w-16 h-16 mx-auto mb-4 rounded-full bg-white border-2",
                     step.color,
                     "flex items-center justify-center",
-                    "relative group"
+                    "relative group shadow-lg"
                   )}>
-                    <div className="text-2xl font-bold text-white">
+                    <div className="text-2xl font-bold text-gray-900">
                       {step.step}
                     </div>
                     {/* Hover Effect */}
@@ -258,13 +258,13 @@ export default function WhyInspireLeapSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="glass rounded-2xl border border-white/10 p-4 md:p-8"
+          className="bg-white rounded-2xl shadow-xl border border-gray-100 p-4 md:p-8"
         >
           <div className="text-center mb-8">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
               How We Compare
             </h3>
-            <p className="text-gray-400">
+            <p className="text-gray-600">
               See why Inspire Leap stands out from traditional learning platforms
             </p>
           </div>
@@ -272,14 +272,14 @@ export default function WhyInspireLeapSection() {
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-b border-white/10">
-                  <th className="text-left py-4 px-6 text-gray-400 font-medium">
+                <tr className="border-b border-gray-200">
+                  <th className="text-left py-4 px-6 text-gray-600 font-medium">
                     Features
                   </th>
                   <th className="text-center py-4 px-6 text-primary font-semibold">
                     Inspire Leap
                   </th>
-                  <th className="text-center py-4 px-6 text-gray-400 font-medium">
+                  <th className="text-center py-4 px-6 text-gray-600 font-medium">
                     Traditional Platforms
                   </th>
                 </tr>
@@ -293,8 +293,8 @@ export default function WhyInspireLeapSection() {
                   { feature: "Wipro Certification", inspireLeap: "✓", traditional: "✗" },
                   { feature: "Lifetime Access", inspireLeap: "✓", traditional: "Limited Time" },
                 ].map((row, index) => (
-                  <tr key={index} className="border-b border-white/5 hover:bg-white/5">
-                    <td className="py-4 px-6 text-gray-300">
+                  <tr key={index} className="border-b border-gray-100 hover:bg-gray-50">
+                    <td className="py-4 px-6 text-gray-800">
                       {row.feature}
                     </td>
                     <td className="py-4 px-6 text-center">
@@ -302,7 +302,7 @@ export default function WhyInspireLeapSection() {
                         {row.inspireLeap}
                       </span>
                     </td>
-                    <td className="py-4 px-6 text-center text-gray-400">
+                    <td className="py-4 px-6 text-center text-gray-600">
                       {row.traditional}
                     </td>
                   </tr>

@@ -170,7 +170,7 @@ export default function StatisticsSection() {
               />
               
               {/* Card */}
-              <div className="relative bg-gradient-to-br from-gray-900/50 to-black/50 backdrop-blur-sm border border-white/10 rounded-2xl p-4 md:p-6 text-center group-hover:border-primary/30 transition-all duration-300">
+              <div className="relative bg-white shadow-xl border border-gray-100 rounded-2xl p-4 md:p-6 text-center group-hover:border-primary/30 transition-all duration-300">
                 {/* Icon */}
                 <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${stat.color} mb-4 group-hover:scale-110 transition-transform duration-300`}>
                   <stat.icon className="w-6 h-6 text-white" />
@@ -185,18 +185,18 @@ export default function StatisticsSection() {
                       suffix={stat.suffix}
                       duration={2.5}
                       decimals={stat.value === 4.9 ? 1 : 0}
-                      className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent"
+                      className="text-gray-900 font-extrabold"
                     />
                   ) : (
-                    <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                    <span className="text-gray-900 font-extrabold">
                       0{stat.suffix}
                     </span>
                   )}
                 </div>
 
                 {/* Label and description */}
-                <div className="text-lg font-semibold text-white mb-2">{stat.label}</div>
-                <div className="text-sm text-gray-400">{stat.description}</div>
+                <div className="text-lg font-semibold text-gray-900 mb-2">{stat.label}</div>
+                <div className="text-sm text-gray-600">{stat.description}</div>
 
                 {/* Progress indicator (for percentage stats) */}
                 {(stat.label.includes("%") || stat.label.includes("Rate") || stat.label.includes("Satisfaction")) && (
@@ -205,7 +205,7 @@ export default function StatisticsSection() {
                       <span>Progress</span>
                       <span>{stat.value}{stat.suffix}</span>
                     </div>
-                    <div className="h-1.5 bg-gray-800 rounded-full overflow-hidden">
+                    <div className="h-1.5 bg-gray-200 rounded-full overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
                         whileInView={{ width: `${stat.value}%` }}
@@ -221,84 +221,7 @@ export default function StatisticsSection() {
           ))}
         </div>
 
-        {/* Growth visualization */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-16"
-        >
-          <div className="bg-gradient-to-br from-gray-900/30 to-black/30 backdrop-blur-sm border border-white/10 rounded-3xl p-5 md:p-8">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
-              <div>
-                <h3 className="text-2xl font-bold mb-2">Exponential Growth Journey</h3>
-                <p className="text-gray-400">Year-over-year growth in students trained and placements achieved</p>
-              </div>
-              <div className="flex items-center gap-4 mt-4 md:mt-0">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-gradient-to-r from-primary to-secondary" />
-                  <span className="text-sm">Students Trained</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-gradient-to-r from-accent to-primary" />
-                  <span className="text-sm">Placements Achieved</span>
-                </div>
-              </div>
-            </div>
 
-            {/* Growth bars */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-              {growthData.map((data, index) => (
-                <motion.div
-                  key={data.year}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="text-center"
-                >
-                  <div className="text-lg font-bold mb-2">{data.year}</div>
-                  
-                  {/* Students bar */}
-                  <div className="relative h-40 mb-2">
-                    <div className="absolute bottom-0 left-1/4 w-1/2">
-                      <motion.div
-                        initial={{ height: 0 }}
-                        whileInView={{ height: `${(data.students / 50000) * 100}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: index * 0.2 }}
-                        className="bg-gradient-to-t from-primary to-secondary rounded-t-lg"
-                      />
-                    </div>
-                    
-                    {/* Placements bar */}
-                    <div className="absolute bottom-0 right-1/4 w-1/2">
-                      <motion.div
-                        initial={{ height: 0 }}
-                        whileInView={{ height: `${(data.placements / 50000) * 100}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: index * 0.2 + 0.3 }}
-                        className="bg-gradient-to-t from-accent to-primary rounded-t-lg"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Labels */}
-                  <div className="space-y-2">
-                    <div>
-                      <div className="text-2xl font-bold">{data.students.toLocaleString()}</div>
-                      <div className="text-sm text-gray-400">Students</div>
-                    </div>
-                    <div>
-                      <div className="text-2xl font-bold">{data.placements.toLocaleString()}</div>
-                      <div className="text-sm text-gray-400">Placements</div>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
 
         {/* Additional metrics */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-12 md:mb-16">
@@ -306,18 +229,18 @@ export default function StatisticsSection() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-gray-900/30 to-black/30 backdrop-blur-sm border border-white/10 rounded-2xl p-6"
+            className="bg-white shadow-xl border border-gray-100 rounded-2xl p-6"
           >
             <div className="flex items-center gap-4 mb-4">
               <div className="p-3 rounded-xl bg-gradient-to-br from-primary/20 to-secondary/20">
                 <Clock className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <div className="text-2xl font-bold">24/7</div>
-                <div className="text-sm text-gray-400">Learning Support</div>
+                <div className="text-2xl font-bold text-gray-900">24/7</div>
+                <div className="text-sm text-gray-600">Learning Support</div>
               </div>
             </div>
-            <p className="text-gray-300 text-sm">
+            <p className="text-gray-600 text-sm">
               Round-the-clock doubt resolution and mentorship availability for uninterrupted learning.
             </p>
           </motion.div>
@@ -326,18 +249,18 @@ export default function StatisticsSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-gray-900/30 to-black/30 backdrop-blur-sm border border-white/10 rounded-2xl p-6"
+            className="bg-white shadow-xl border border-gray-100 rounded-2xl p-6"
           >
             <div className="flex items-center gap-4 mb-4">
               <div className="p-3 rounded-xl bg-gradient-to-br from-secondary/20 to-accent/20">
                 <Award className="w-6 h-6 text-secondary" />
               </div>
               <div>
-                <div className="text-2xl font-bold">500+</div>
-                <div className="text-sm text-gray-400">Hackathon Wins</div>
+                <div className="text-2xl font-bold text-gray-900">500+</div>
+                <div className="text-sm text-gray-600">Hackathon Wins</div>
               </div>
             </div>
-            <p className="text-gray-300 text-sm">
+            <p className="text-gray-600 text-sm">
               Our students have won prestigious hackathons and coding competitions globally.
             </p>
           </motion.div>
@@ -346,18 +269,18 @@ export default function StatisticsSection() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-gray-900/30 to-black/30 backdrop-blur-sm border border-white/10 rounded-2xl p-6"
+            className="bg-white shadow-xl border border-gray-100 rounded-2xl p-6"
           >
             <div className="flex items-center gap-4 mb-4">
               <div className="p-3 rounded-xl bg-gradient-to-br from-accent/20 to-primary/20">
                 <Globe className="w-6 h-6 text-accent" />
               </div>
               <div>
-                <div className="text-2xl font-bold">1000+</div>
-                <div className="text-sm text-gray-400">Corporate Partners</div>
+                <div className="text-2xl font-bold text-gray-900">1000+</div>
+                <div className="text-sm text-gray-600">Corporate Partners</div>
               </div>
             </div>
-            <p className="text-gray-300 text-sm">
+            <p className="text-gray-600 text-sm">
               Strong industry connections with leading companies for placement opportunities.
             </p>
           </motion.div>
@@ -370,10 +293,10 @@ export default function StatisticsSection() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <div className="inline-flex flex-col sm:flex-row items-center gap-6 md:gap-8 p-5 md:p-8 rounded-3xl bg-gradient-to-br from-primary/10 via-primary/5 to-secondary/10 border border-primary/30">
+          <div className="inline-flex flex-col sm:flex-row items-center gap-6 md:gap-8 p-5 md:p-8 rounded-3xl bg-white shadow-xl border border-gray-100">
             <div className="text-left">
-              <h3 className="text-2xl font-bold mb-2">Live Impact Counter</h3>
-              <p className="text-gray-300">
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Live Impact Counter</h3>
+              <p className="text-gray-600">
                 Students are transforming their careers right now. Join the movement.
               </p>
             </div>
@@ -393,7 +316,7 @@ export default function StatisticsSection() {
                     "0+"
                   )}
                 </div>
-                <div className="text-sm text-gray-400">Placements Today</div>
+                <div className="text-sm text-gray-600">Placements Today</div>
               </div>
               
               <div className="h-12 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent" />
@@ -413,7 +336,7 @@ export default function StatisticsSection() {
                     "0+"
                   )}
                 </div>
-                <div className="text-sm text-gray-400">New Enrollments</div>
+                <div className="text-sm text-gray-600">New Enrollments</div>
               </div>
             </div>
             

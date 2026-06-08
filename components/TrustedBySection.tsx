@@ -66,8 +66,8 @@ export default function TrustedBySection() {
                   key={`${company.name}-${index}`}
                   whileHover={{ scale: 1.08, y: -6 }}
                   className={cn(
-                    "flex-shrink-0 w-48 h-32 mx-4 bg-white/5 md:glass rounded-2xl",
-                    "border border-white/10 hover:border-primary/40",
+                    "flex-shrink-0 w-48 h-32 mx-4 bg-white rounded-2xl shadow-md",
+                    "border border-gray-100 hover:border-primary/40",
                     "flex flex-col items-center justify-center gap-3",
                     "transition-all duration-300 group cursor-pointer"
                   )}
@@ -81,7 +81,7 @@ export default function TrustedBySection() {
                       sizes="80px"
                     />
                   </div>
-                  <span className="text-sm font-semibold text-gray-400 group-hover:text-white transition-colors duration-300">
+                  <span className="text-sm font-semibold text-gray-600 group-hover:text-primary transition-colors duration-300">
                     {company.name}
                   </span>
                 </motion.div>
@@ -113,17 +113,17 @@ export default function TrustedBySection() {
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
                 whileHover={{ scale: 1.05 }}
                 className={cn(
-                  "glass p-5 md:p-8 rounded-2xl border border-white/10",
+                  "bg-white p-5 md:p-8 rounded-2xl shadow-xl border border-gray-100",
                   "hover:border-transparent transition-all duration-300"
                 )}
               >
                 <div className="relative">
                   <div className={`absolute -inset-1 bg-gradient-to-r ${stat.color} rounded-lg blur opacity-20`} />
                   <div className="relative">
-                    <div className="text-4xl md:text-5xl font-bold text-white mb-3">
+                    <div className="text-4xl md:text-5xl font-bold text-gray-900 mb-3">
                       {stat.value}
                     </div>
-                    <div className="text-sm text-gray-400">{stat.label}</div>
+                    <div className="text-sm text-gray-600">{stat.label}</div>
                   </div>
                 </div>
               </motion.div>
@@ -137,14 +137,14 @@ export default function TrustedBySection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-12 md:mt-20 glass p-5 md:p-8 rounded-2xl border border-white/10"
+          className="mt-12 md:mt-20 bg-white shadow-xl p-5 md:p-8 rounded-2xl border border-gray-100"
         >
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
-              <h3 className="text-2xl font-bold text-white mb-4">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
                 Success Stories That Inspire
               </h3>
-              <p className="text-gray-400 mb-6">
+              <p className="text-gray-600 mb-6">
                 Hear from our students who transformed their careers with 
                 Inspire Leap programs and secured dream jobs at top companies.
               </p>
@@ -170,7 +170,7 @@ export default function TrustedBySection() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
                   whileHover={{ scale: 1.05 }}
-                  className="p-4 bg-white/5 rounded-xl border border-white/10"
+                  className="p-4 bg-gray-50 rounded-xl border border-gray-100"
                 >
                   <div className="flex items-center space-x-3 mb-3">
                     <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
@@ -179,10 +179,10 @@ export default function TrustedBySection() {
                       </span>
                     </div>
                     <div>
-                      <div className="text-sm font-medium text-white">
+                      <div className="text-sm font-medium text-gray-900">
                         {student.name}
                       </div>
-                      <div className="text-xs text-gray-400">{student.role}</div>
+                      <div className="text-xs text-gray-600">{student.role}</div>
                     </div>
                   </div>
                   <div className="text-sm text-primary font-semibold">
