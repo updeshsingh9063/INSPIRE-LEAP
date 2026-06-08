@@ -22,11 +22,58 @@ import {
 import { cn, formatCurrency } from "@/lib/utils"
 import Link from "next/link"
 
+interface ActiveCourse {
+  id: number;
+  title: string;
+  instructor: string;
+  progress: number;
+  nextLesson: string;
+  dueDate: string;
+  modulesCompleted: number;
+  totalModules: number;
+  rating: number;
+  color: string;
+  status: "active";
+  lastAccessed: string;
+  assignments: { id: number; title: string; due: string; status: string }[];
+}
+
+interface CompletedCourse {
+  id: number;
+  title: string;
+  instructor: string;
+  progress: number;
+  completionDate: string;
+  certificate: string;
+  rating: number;
+  color: string;
+  status: "completed";
+  skills: string[];
+}
+
+interface UpcomingCourse {
+  id: number;
+  title: string;
+  instructor: string;
+  startDate: string;
+  duration: string;
+  prerequisites: string[];
+  color: string;
+  status: "upcoming";
+  description: string;
+}
+
+export type Course = ActiveCourse | CompletedCourse | UpcomingCourse;
+
 export default function MyCourses() {
   const [activeTab, setActiveTab] = useState<"active" | "completed" | "upcoming">("active")
   const [expandedCourse, setExpandedCourse] = useState<number | null>(null)
 
-  const courses = {
+  const courses: {
+    active: ActiveCourse[];
+    completed: CompletedCourse[];
+    upcoming: UpcomingCourse[];
+  } = {
     active: [
       {
         id: 1,
@@ -470,7 +517,7 @@ export default function MyCourses() {
                   >
                     <div className="p-6">
                       {/* Assignments */}
-                      {course.assignments.length > 0 && (
+                      {course.status === "active" && course.assignments.length > 0 && (
                         <div className="mb-6">
                           <h4 className="text-sm font-medium text-white mb-4">
                             Upcoming Assignments

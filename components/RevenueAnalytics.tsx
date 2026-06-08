@@ -139,7 +139,7 @@ export default function RevenueAnalytics() {
                     className="w-full bg-gradient-to-t from-primary to-primary/60 rounded-t-lg"
                   />
                   <div className="mt-2 text-xs text-gray-400">
-                    {item.month || item.quarter || item.year}
+                    {'month' in item ? item.month : 'quarter' in item ? item.quarter : item.year}
                   </div>
                   <div className="text-xs font-medium text-white mt-1">
                     ₹{(item.revenue / 1000).toFixed(0)}K
