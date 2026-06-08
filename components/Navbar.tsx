@@ -18,6 +18,8 @@ import {
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
+const MotionLink = motion.create(Link);
+
 const navigationItems = [
   {
     label: "Home",
@@ -124,8 +126,8 @@ export default function Navbar() {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
           isScrolled
-            ? "glass-dark py-3 border-b border-white/5"
-            : "bg-transparent py-5"
+            ? "bg-black py-3 border-b border-white/10"
+            : "bg-black py-5 border-b border-transparent"
         )}
       >
         <div className="container mx-auto px-4 md:px-6">
@@ -158,19 +160,18 @@ export default function Navbar() {
                   onMouseEnter={() => setActiveMegaMenu(item.label)}
                   onMouseLeave={() => setActiveMegaMenu(null)}
                 >
-                  <Link href={item.href} passHref legacyBehavior>
-                    <motion.a
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="flex items-center space-x-1 px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-colors"
-                    >
-                      {item.icon && <item.icon className="h-4 w-4" />}
-                      <span>{item.label}</span>
-                      {(item.megaMenu || item.dropdown) && (
-                        <ChevronDown className="h-4 w-4" />
-                      )}
-                    </motion.a>
-                  </Link>
+                  <MotionLink
+                    href={item.href}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center space-x-1 px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-colors"
+                  >
+                    {item.icon && <item.icon className="h-4 w-4" />}
+                    <span>{item.label}</span>
+                    {(item.megaMenu || item.dropdown) && (
+                      <ChevronDown className="h-4 w-4" />
+                    )}
+                  </MotionLink>
 
                   {/* Mega Menu */}
                   {item.megaMenu && activeMegaMenu === item.label && (
@@ -262,25 +263,23 @@ export default function Navbar() {
 
               {/* Auth Buttons */}
               <div className="flex items-center space-x-2">
-                <Link href="/login" passHref legacyBehavior>
-                  <motion.a
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-colors"
-                  >
-                    <LogIn className="h-4 w-4" />
-                    <span>Login</span>
-                  </motion.a>
-                </Link>
-                <Link href="/register" passHref legacyBehavior>
-                  <motion.a
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="px-4 py-2 bg-gradient-to-r from-primary to-secondary rounded-lg text-sm font-medium text-white shadow-lg shadow-primary/20"
-                  >
-                    Get Started
-                  </motion.a>
-                </Link>
+                <MotionLink
+                  href="/login"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-colors"
+                >
+                  <LogIn className="h-4 w-4" />
+                  <span>Login</span>
+                </MotionLink>
+                <MotionLink
+                  href="/register"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-4 py-2 bg-gradient-to-r from-primary to-secondary rounded-lg text-sm font-medium text-white shadow-lg shadow-primary/20"
+                >
+                  Get Started
+                </MotionLink>
               </div>
             </div>
 
@@ -371,24 +370,22 @@ export default function Navbar() {
 
                 {/* Mobile Auth Buttons */}
                 <div className="mt-8 pt-6 border-t border-white/10 space-y-3">
-                  <Link href="/login" passHref legacyBehavior>
-                    <motion.a
-                      whileTap={{ scale: 0.95 }}
-                      className="block w-full px-4 py-3 text-center rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-colors border border-white/10"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      Login
-                    </motion.a>
-                  </Link>
-                  <Link href="/register" passHref legacyBehavior>
-                    <motion.a
-                      whileTap={{ scale: 0.95 }}
-                      className="block w-full px-4 py-3 text-center bg-gradient-to-r from-primary to-secondary rounded-lg text-sm font-medium text-white shadow-lg shadow-primary/20"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      Get Started Free
-                    </motion.a>
-                  </Link>
+                  <MotionLink
+                    href="/login"
+                    whileTap={{ scale: 0.95 }}
+                    className="block w-full px-4 py-3 text-center rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-colors border border-white/10"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Login
+                  </MotionLink>
+                  <MotionLink
+                    href="/register"
+                    whileTap={{ scale: 0.95 }}
+                    className="block w-full px-4 py-3 text-center bg-gradient-to-r from-primary to-secondary rounded-lg text-sm font-medium text-white shadow-lg shadow-primary/20"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Get Started Free
+                  </MotionLink>
                 </div>
               </div>
             </div>

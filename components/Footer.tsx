@@ -112,9 +112,10 @@ export default function Footer() {
           </div>
 
           {/* Links columns */}
-          <div>
-            <h3 className="text-lg font-bold text-white mb-4">Company</h3>
-            <ul className="space-y-3">
+          <div className="col-span-1 lg:col-span-3 grid grid-cols-2 sm:grid-cols-3 gap-8">
+            <div>
+              <h3 className="text-lg font-bold text-white mb-4">Company</h3>
+              <ul className="space-y-3">
               {footerLinks.company.map((link, index) => (
                 <motion.li
                   key={index}
@@ -179,6 +180,7 @@ export default function Footer() {
                 </motion.li>
               ))}
             </ul>
+          </div>
           </div>
         </div>
 
