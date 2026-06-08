@@ -144,7 +144,7 @@ export default function PlacementSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
                 whileHover={{ scale: 1.05 }}
-                className="glass p-6 rounded-2xl border border-white/10 text-center"
+                className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm text-center"
               >
                 <div className="relative inline-block mb-4">
                   <div className={`absolute -inset-1 bg-gradient-to-r ${stat.color} rounded-full blur opacity-30`} />
@@ -152,10 +152,10 @@ export default function PlacementSection() {
                     <Icon className="h-6 w-6 text-white" />
                   </div>
                 </div>
-                <div className="text-3xl font-bold text-white mb-2">
+                <div className="text-3xl font-bold text-gray-900 mb-2">
                   {stat.value}
                 </div>
-                <div className="text-sm text-gray-400">
+                <div className="text-sm text-gray-600">
                   {stat.label}
                 </div>
               </motion.div>
@@ -182,7 +182,7 @@ export default function PlacementSection() {
                     "flex items-center space-x-2 px-6 py-3 rounded-full text-sm font-medium transition-all duration-300",
                     activeTab === tab.id
                       ? "bg-gradient-to-r from-primary to-secondary text-white shadow-lg shadow-primary/30"
-                      : "glass text-gray-400 hover:text-white hover:bg-white/5"
+                      : "bg-white border border-gray-100 shadow-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                   )}
                 >
                   <Icon className="h-4 w-4" />
@@ -201,7 +201,7 @@ export default function PlacementSection() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
-                className="glass rounded-2xl border border-white/10 p-8"
+                className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8"
               >
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {placementProcess.map((step) => (
@@ -222,15 +222,15 @@ export default function PlacementSection() {
                           </span>
                         </div>
                       </div>
-                      <h3 className="text-xl font-bold text-white mb-3">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3">
                         {step.title}
                       </h3>
-                      <p className="text-gray-400 mb-4">
+                      <p className="text-gray-600 mb-4">
                         {step.description}
                       </p>
-                      <div className="inline-flex items-center space-x-1 px-3 py-1 bg-white/5 rounded-full">
+                      <div className="inline-flex items-center space-x-1 px-3 py-1 bg-gray-50 border border-gray-100 rounded-full">
                         <Clock className="h-3 w-3 text-gray-400" />
-                        <span className="text-xs text-gray-300">{step.duration}</span>
+                        <span className="text-xs text-gray-600">{step.duration}</span>
                       </div>
                     </motion.div>
                   ))}
@@ -245,7 +245,7 @@ export default function PlacementSection() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
-                className="glass rounded-2xl border border-white/10 p-8"
+                className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8"
               >
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {topCompanies.map((company) => (
@@ -256,7 +256,7 @@ export default function PlacementSection() {
                       viewport={{ once: true }}
                       transition={{ duration: 0.4 }}
                       whileHover={{ scale: 1.05 }}
-                      className="glass p-6 rounded-xl border border-white/10"
+                      className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm"
                     >
                       <div className="flex items-center space-x-4 mb-4">
                         <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
@@ -265,7 +265,7 @@ export default function PlacementSection() {
                           </span>
                         </div>
                         <div>
-                          <h3 className="text-lg font-bold text-white">
+                          <h3 className="text-lg font-bold text-gray-900">
                             {company.name}
                           </h3>
                           <div className="text-sm text-primary font-semibold">
@@ -274,7 +274,7 @@ export default function PlacementSection() {
                         </div>
                       </div>
                       <div className="flex items-center justify-between">
-                        <div className="text-sm text-gray-400">
+                        <div className="text-sm text-gray-600">
                           Open Positions
                         </div>
                         <div className="px-3 py-1 bg-primary/10 rounded-full">
@@ -296,7 +296,7 @@ export default function PlacementSection() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
-                className="glass rounded-2xl border border-white/10 p-8"
+                className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8"
               >
                 <div className="grid md:grid-cols-3 gap-8">
                   {successStories.map((story) => (
@@ -307,7 +307,7 @@ export default function PlacementSection() {
                       viewport={{ once: true }}
                       transition={{ duration: 0.4 }}
                       whileHover={{ scale: 1.05 }}
-                      className="glass p-6 rounded-xl border border-white/10"
+                      className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm"
                     >
                       <div className="flex items-center space-x-3 mb-4">
                         <div className="w-14 h-14 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
@@ -316,31 +316,31 @@ export default function PlacementSection() {
                           </span>
                         </div>
                         <div>
-                          <h3 className="text-lg font-bold text-white">
+                          <h3 className="text-lg font-bold text-gray-900">
                             {story.name}
                           </h3>
-                          <div className="text-sm text-gray-400">
+                          <div className="text-sm text-gray-600">
                             {story.role} @ {story.company}
                           </div>
                         </div>
                       </div>
                       <div className="space-y-3 mb-6">
                         <div className="flex items-center justify-between">
-                          <span className="text-sm text-gray-400">Package</span>
+                          <span className="text-sm text-gray-600">Package</span>
                           <span className="text-lg font-bold text-primary">
                             {story.package}
                           </span>
                         </div>
                         <div className="flex items-center justify-between">
-                          <span className="text-sm text-gray-400">Background</span>
-                          <span className="text-sm text-gray-300">{story.background}</span>
+                          <span className="text-sm text-gray-600">Background</span>
+                          <span className="text-sm text-gray-600">{story.background}</span>
                         </div>
                         <div className="flex items-center justify-between">
-                          <span className="text-sm text-gray-400">Duration</span>
-                          <span className="text-sm text-gray-300">{story.duration}</span>
+                          <span className="text-sm text-gray-600">Duration</span>
+                          <span className="text-sm text-gray-600">{story.duration}</span>
                         </div>
                       </div>
-                      <div className="flex items-center space-x-2 text-sm text-gray-400">
+                      <div className="flex items-center space-x-2 text-sm text-gray-600">
                         <CheckCircle className="h-4 w-4 text-success" />
                         <span>Successfully Placed</span>
                       </div>
@@ -406,7 +406,7 @@ export default function PlacementSection() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
                   whileHover={{ scale: 1.05 }}
-                  className="glass p-6 rounded-2xl border border-white/10"
+                  className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm"
                 >
                   <div className="mb-4">
                     <div className="relative inline-block">
@@ -416,10 +416,10 @@ export default function PlacementSection() {
                       </div>
                     </div>
                   </div>
-                  <h4 className="text-lg font-bold text-white mb-3">
+                  <h4 className="text-lg font-bold text-gray-900 mb-3">
                     {feature.title}
                   </h4>
-                  <p className="text-sm text-gray-400">
+                  <p className="text-sm text-gray-600">
                     {feature.description}
                   </p>
                 </motion.div>
@@ -437,11 +437,11 @@ export default function PlacementSection() {
           className="text-center"
         >
           <div className="inline-flex flex-col items-center space-y-6">
-            <div className="glass p-8 rounded-2xl border border-white/10 max-w-2xl">
-              <h3 className="text-2xl font-bold text-white mb-4">
+            <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-xl max-w-2xl">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
                 Start Your Placement Journey Today
               </h3>
-              <p className="text-gray-400 mb-6">
+              <p className="text-gray-600 mb-6">
                 Join our placement program and get guaranteed interviews with 
                 top companies. Our 95% success rate speaks for itself.
               </p>
@@ -457,7 +457,7 @@ export default function PlacementSection() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 glass rounded-xl text-lg font-semibold text-white"
+                  className="px-8 py-4 bg-white border border-gray-200 rounded-xl text-lg font-semibold text-gray-900 shadow-sm hover:bg-gray-50"
                 >
                   View Placement Statistics
                 </motion.button>

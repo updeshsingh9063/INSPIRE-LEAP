@@ -188,13 +188,13 @@ export default function Footer() {
         <div className="grid lg:grid-cols-3 gap-8 mb-12">
           {/* Newsletter */}
           <div className="lg:col-span-2">
-            <div className="bg-gradient-to-br from-gray-900/30 to-black/30 backdrop-blur-sm border border-white/10 rounded-2xl p-6">
+            <div className="bg-white shadow-xl border border-gray-100 rounded-2xl p-6">
               <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold text-white mb-2">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
                     Stay Updated with Career Insights
                   </h3>
-                  <p className="text-gray-400">
+                  <p className="text-gray-600">
                     Get weekly tips, industry trends, and exclusive offers delivered to your inbox.
                   </p>
                 </div>
@@ -206,7 +206,7 @@ export default function Footer() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Enter your email"
-                      className="flex-1 px-4 py-3 rounded-xl bg-gradient-to-br from-gray-900/50 to-black/50 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-primary/50 transition-colors"
+                      className="flex-1 px-4 py-3 rounded-xl bg-black border border-gray-800 text-white placeholder-gray-400 focus:outline-none focus:border-primary/50 transition-colors"
                       required
                     />
                     <button
@@ -227,8 +227,8 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <div className="bg-gradient-to-br from-gray-900/30 to-black/30 backdrop-blur-sm border border-white/10 rounded-2xl p-6 h-full">
-              <h3 className="text-xl font-bold text-white mb-4">Contact Us</h3>
+            <div className="bg-white shadow-xl border border-gray-100 rounded-2xl p-6 h-full">
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Contact Us</h3>
               <div className="space-y-4">
                 {contactInfo.map((info, index) => (
                   <motion.a
@@ -243,7 +243,7 @@ export default function Footer() {
                     <div className="p-2 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 group-hover:scale-110 transition-transform duration-300">
                       <info.icon className="w-4 h-4 text-primary" />
                     </div>
-                    <span className="text-gray-400 group-hover:text-white transition-colors">
+                    <span className="text-gray-600 group-hover:text-gray-900 transition-colors">
                       {info.label}
                     </span>
                   </motion.a>

@@ -261,8 +261,8 @@ export default function CertificationsSection() {
                       onClick={() => setActiveCert(cert.id)}
                       className={`relative group overflow-hidden rounded-2xl border transition-all duration-300 ${
                         isActive
-                          ? 'bg-gradient-to-br from-amber-500/10 via-amber-500/5 to-orange-500/10 border-amber-500/30 shadow-lg shadow-amber-500/20'
-                          : 'bg-gradient-to-br from-gray-900/30 to-black/30 border-white/10 hover:border-amber-500/20 hover:bg-gray-900/50'
+                          ? 'bg-gradient-to-br from-amber-50 to-orange-50 border-amber-400 shadow-lg shadow-amber-300/40'
+                          : 'bg-white border-gray-100 hover:border-amber-300 shadow-sm hover:shadow-md'
                       }`}
                     >
                       {/* Glow effect */}
@@ -273,28 +273,28 @@ export default function CertificationsSection() {
                         {/* Certificate badge */}
                         <div className="relative mb-4">
                           <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${cert.color} p-0.5 mx-auto`}>
-                            <div className="w-full h-full rounded-2xl bg-gray-900 flex items-center justify-center">
+                            <div className="w-full h-full rounded-2xl bg-white flex items-center justify-center">
                               <Award className="w-10 h-10 text-amber-400" />
                             </div>
                           </div>
-                          <div className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 border-2 border-gray-900" />
+                          <div className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 border-2 border-white" />
                         </div>
 
                         {/* Details */}
                         <div className="text-center">
-                          <h3 className="font-bold text-white mb-2 line-clamp-2">{cert.title}</h3>
-                          <div className="text-sm text-gray-400 mb-3">{cert.issuer}</div>
+                          <h3 className="font-bold text-gray-900 mb-2 line-clamp-2">{cert.title}</h3>
+                          <div className="text-sm text-gray-600 mb-3">{cert.issuer}</div>
                           
                           {/* Level and duration */}
                           <div className="flex items-center justify-center gap-4 mb-3">
-                            <div className="text-xs px-2 py-1 rounded-full bg-gradient-to-r from-amber-500/20 to-orange-500/20 text-amber-300">
+                            <div className="text-xs px-2 py-1 rounded-full bg-gradient-to-r from-amber-400 to-orange-400 text-white font-semibold">
                               {cert.level}
                             </div>
                             <div className="text-xs text-gray-500">{cert.duration}</div>
                           </div>
 
                           {/* Value tag */}
-                          <div className="text-xs font-semibold text-amber-400">
+                          <div className="text-xs font-semibold text-amber-600">
                             {cert.value}
                           </div>
                         </div>
@@ -318,8 +318,8 @@ export default function CertificationsSection() {
                       onClick={() => setActiveCert(cert.id)}
                       className={`w-full text-left p-6 rounded-2xl border transition-all duration-300 ${
                         isActive
-                          ? 'bg-gradient-to-br from-amber-500/10 via-amber-500/5 to-orange-500/10 border-amber-500/30 shadow-lg shadow-amber-500/20'
-                          : 'bg-gradient-to-br from-gray-900/30 to-black/30 border-white/10 hover:border-amber-500/20 hover:bg-gray-900/50'
+                          ? 'bg-gradient-to-br from-amber-50 to-orange-50 border-amber-400 shadow-lg shadow-amber-300/40'
+                          : 'bg-white border-gray-100 hover:border-amber-300 shadow-sm hover:shadow-md'
                       }`}
                     >
                       <div className="flex items-center gap-4">
@@ -327,8 +327,8 @@ export default function CertificationsSection() {
                           <Award className="w-6 h-6 text-white" />
                         </div>
                         <div className="flex-1">
-                          <h3 className="font-bold text-white mb-1">{cert.title}</h3>
-                          <div className="text-sm text-gray-400">{cert.issuer}</div>
+                          <h3 className="font-bold text-gray-900 mb-1">{cert.title}</h3>
+                          <div className="text-sm text-gray-600">{cert.issuer}</div>
                         </div>
                         <div className="text-right">
                           <div className="text-sm font-semibold text-amber-400 mb-1">{cert.level}</div>
@@ -350,36 +350,36 @@ export default function CertificationsSection() {
               animate={{ opacity: 1, x: 0 }}
               className="h-full"
             >
-              <div className="bg-gradient-to-br from-gray-900/30 to-black/30 backdrop-blur-sm border border-amber-500/20 rounded-3xl p-8 h-full">
+              <div className="bg-white shadow-xl border border-amber-200 rounded-3xl p-8 h-full">
                 {/* Certificate header */}
                 <div className="text-center mb-6">
                   <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${currentCert.color} mb-4`}>
                     <Award className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-2">{currentCert.title}</h3>
-                  <div className="text-lg text-amber-400 font-semibold">{currentCert.issuer}</div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{currentCert.title}</h3>
+                  <div className="text-lg text-amber-600 font-semibold">{currentCert.issuer}</div>
                 </div>
 
                 {/* Stats */}
                 <div className="grid grid-cols-2 gap-4 mb-6">
-                  <div className="bg-gradient-to-br from-gray-900/50 to-black/50 border border-white/10 rounded-xl p-4 text-center">
-                    <div className="text-xl font-bold text-white mb-1">{currentCert.level}</div>
-                    <div className="text-xs text-gray-400">Level</div>
+                  <div className="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 rounded-xl p-4 text-center">
+                    <div className="text-xl font-bold text-gray-900 mb-1">{currentCert.level}</div>
+                    <div className="text-xs text-gray-600">Level</div>
                   </div>
-                  <div className="bg-gradient-to-br from-gray-900/50 to-black/50 border border-white/10 rounded-xl p-4 text-center">
-                    <div className="text-xl font-bold text-white mb-1">{currentCert.duration}</div>
-                    <div className="text-xs text-gray-400">Duration</div>
+                  <div className="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 rounded-xl p-4 text-center">
+                    <div className="text-xl font-bold text-gray-900 mb-1">{currentCert.duration}</div>
+                    <div className="text-xs text-gray-600">Duration</div>
                   </div>
                 </div>
 
                 {/* Skills */}
                 <div className="mb-6">
-                  <h4 className="text-lg font-semibold text-white mb-3">Skills You'll Master</h4>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-3">Skills You'll Master</h4>
                   <div className="flex flex-wrap gap-2">
                     {currentCert.skills.map((skill, i) => (
                       <span
                         key={i}
-                        className="px-3 py-1.5 text-sm rounded-lg bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20 text-amber-300"
+                        className="px-3 py-1.5 text-sm rounded-lg bg-gradient-to-r from-amber-400 to-orange-400 text-white font-medium"
                       >
                         {skill}
                       </span>
@@ -389,30 +389,30 @@ export default function CertificationsSection() {
 
                 {/* Benefits */}
                 <div className="mb-6">
-                  <h4 className="text-lg font-semibold text-white mb-3">Key Benefits</h4>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-3">Key Benefits</h4>
                   <ul className="space-y-3">
                     {currentCert.benefits.map((benefit, i) => (
                       <li key={i} className="flex items-start gap-3">
-                        <CheckCircle className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" />
-                        <span className="text-sm text-gray-300">{benefit}</span>
+                        <CheckCircle className="w-4 h-4 text-amber-500 mt-0.5 flex-shrink-0" />
+                        <span className="text-sm text-gray-600">{benefit}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
                 {/* Value Proposition */}
-                <div className="pt-6 border-t border-white/10">
+                <div className="pt-6 border-t border-amber-100">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="p-2 rounded-lg bg-gradient-to-br from-amber-500/20 to-orange-500/20">
-                      <TrendingUp className="w-5 h-5 text-amber-400" />
+                    <div className="p-2 rounded-lg bg-gradient-to-br from-amber-400 to-orange-400">
+                      <TrendingUp className="w-5 h-5 text-white" />
                     </div>
                     <div>
-                      <div className="font-semibold text-white">Career Impact</div>
-                      <div className="text-sm text-gray-400">Average 40% salary increase</div>
+                      <div className="font-semibold text-gray-900">Career Impact</div>
+                      <div className="text-sm text-gray-600">Average 40% salary increase</div>
                     </div>
                   </div>
                   
-                  <button className="w-full px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 font-semibold hover:shadow-lg hover:shadow-amber-500/30 transition-all duration-300">
+                  <button className="w-full px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 font-semibold text-white hover:shadow-lg hover:shadow-amber-500/30 transition-all duration-300">
                     Enroll Now
                   </button>
                 </div>
@@ -428,14 +428,14 @@ export default function CertificationsSection() {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <div className="bg-gradient-to-br from-gray-900/30 to-black/30 backdrop-blur-sm border border-white/10 rounded-3xl p-8">
+          <div className="bg-white shadow-xl border border-amber-100 rounded-3xl p-8">
             <div className="text-center mb-8">
               <h3 className="text-2xl md:text-3xl font-bold mb-4">
                 <span className="bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">
                   How to Earn Your Certification
                 </span>
               </h3>
-              <p className="text-gray-400 max-w-2xl mx-auto">
+              <p className="text-gray-600 max-w-2xl mx-auto">
                 A straightforward process to validate your skills and boost your career
               </p>
             </div>
@@ -451,8 +451,8 @@ export default function CertificationsSection() {
                 <div className="inline-flex p-4 rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 mb-4">
                   <BookOpen className="w-6 h-6 text-blue-400" />
                 </div>
-                <div className="text-lg font-semibold text-white mb-2">Complete Coursework</div>
-                <div className="text-sm text-gray-400">
+                <div className="text-lg font-semibold text-gray-900 mb-2">Complete Coursework</div>
+                <div className="text-sm text-gray-600">
                   Master all modules and complete hands-on projects
                 </div>
               </motion.div>
@@ -467,8 +467,8 @@ export default function CertificationsSection() {
                 <div className="inline-flex p-4 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-emerald-500/20 mb-4">
                   <Target className="w-6 h-6 text-cyan-400" />
                 </div>
-                <div className="text-lg font-semibold text-white mb-2">Pass Assessments</div>
-                <div className="text-sm text-gray-400">
+                <div className="text-lg font-semibold text-gray-900 mb-2">Pass Assessments</div>
+                <div className="text-sm text-gray-600">
                   Clear all quizzes, assignments, and final exams
                 </div>
               </motion.div>
@@ -483,8 +483,8 @@ export default function CertificationsSection() {
                 <div className="inline-flex p-4 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-green-500/20 mb-4">
                   <Shield className="w-6 h-6 text-emerald-400" />
                 </div>
-                <div className="text-lg font-semibold text-white mb-2">Get Certified</div>
-                <div className="text-sm text-gray-400">
+                <div className="text-lg font-semibold text-gray-900 mb-2">Get Certified</div>
+                <div className="text-sm text-gray-600">
                   Receive digital badge and official certificate
                 </div>
               </motion.div>
@@ -499,8 +499,8 @@ export default function CertificationsSection() {
                 <div className="inline-flex p-4 rounded-2xl bg-gradient-to-br from-green-500/20 to-teal-500/20 mb-4">
                   <Briefcase className="w-6 h-6 text-green-400" />
                 </div>
-                <div className="text-lg font-semibold text-white mb-2">Advance Career</div>
-                <div className="text-sm text-gray-400">
+                <div className="text-lg font-semibold text-gray-900 mb-2">Advance Career</div>
+                <div className="text-sm text-gray-600">
                   Access exclusive job opportunities and networks
                 </div>
               </motion.div>
@@ -515,23 +515,23 @@ export default function CertificationsSection() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <div className="inline-flex flex-col sm:flex-row items-center gap-8 p-8 rounded-3xl bg-gradient-to-br from-amber-500/10 via-orange-500/5 to-red-500/10 border border-orange-500/30">
+          <div className="inline-flex flex-col sm:flex-row items-center gap-8 p-8 rounded-3xl bg-white shadow-xl border border-amber-200">
             <div className="text-left">
               <h3 className="text-2xl font-bold mb-2">
                 <span className="bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent">
                   Boost Your Career with Certifications
                 </span>
               </h3>
-              <p className="text-gray-300">
+              <p className="text-gray-600">
                 Stand out in the job market with industry-recognized credentials.
               </p>
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 font-semibold hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300">
+              <button className="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 font-semibold text-white hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300">
                 View All Certifications
               </button>
-              <button className="px-6 py-3 rounded-xl bg-gradient-to-br from-gray-900/50 to-black/50 backdrop-blur-sm border border-white/10 font-semibold hover:border-orange-500/30 transition-all duration-300">
+              <button className="px-6 py-3 rounded-xl bg-white border border-amber-200 text-gray-900 font-semibold shadow-sm hover:bg-amber-50 transition-all duration-300">
                 Talk to Advisor
               </button>
             </div>

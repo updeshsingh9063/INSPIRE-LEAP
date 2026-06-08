@@ -203,16 +203,16 @@ export default function FAQSection() {
                   onClick={() => setActiveCategory(category.id)}
                   className={`flex items-center gap-3 px-6 py-3 rounded-xl border transition-all duration-300 ${
                     isActive
-                      ? 'bg-gradient-to-br from-indigo-500/10 via-indigo-500/5 to-violet-500/10 border-indigo-500/30 shadow-lg shadow-indigo-500/20'
-                      : 'bg-gradient-to-br from-gray-900/30 to-black/30 border-white/10 hover:border-indigo-500/20 hover:bg-gray-900/50'
+                      ? 'bg-white border-indigo-500/30 shadow-lg shadow-indigo-500/20'
+                      : 'bg-white border-gray-100 hover:border-indigo-500/20 shadow-sm hover:shadow-md'
                   }`}
                 >
                   <div className={`p-2 rounded-lg bg-gradient-to-br ${category.color}`}>
                     <category.icon className="w-4 h-4 text-white" />
                   </div>
                   <div className="text-left">
-                    <div className="font-semibold text-white">{category.label}</div>
-                    <div className="text-xs text-gray-400">{itemCount} questions</div>
+                    <div className="font-semibold text-gray-900">{category.label}</div>
+                    <div className="text-xs text-gray-600">{itemCount} questions</div>
                   </div>
                 </motion.button>
               );
@@ -241,8 +241,8 @@ export default function FAQSection() {
                       onClick={() => toggleItem(item.id)}
                       className={`w-full text-left p-6 rounded-2xl border transition-all duration-300 ${
                         isOpen
-                          ? 'bg-gradient-to-br from-indigo-500/10 via-indigo-500/5 to-violet-500/10 border-indigo-500/30'
-                          : 'bg-gradient-to-br from-gray-900/30 to-black/30 border-white/10 hover:border-indigo-500/20 hover:bg-gray-900/50'
+                          ? 'bg-white border-indigo-500/30 shadow-md'
+                          : 'bg-white border-gray-100 hover:border-indigo-500/20 shadow-sm hover:shadow-md'
                       }`}
                     >
                       <div className="flex items-start gap-4">
@@ -251,7 +251,7 @@ export default function FAQSection() {
                         </div>
                         <div className="flex-1">
                           <div className="flex items-start justify-between gap-4">
-                            <h3 className="text-lg font-semibold text-white mb-2">
+                            <h3 className="text-lg font-semibold text-gray-900 mb-2">
                               {item.question}
                             </h3>
                             <motion.div
@@ -272,7 +272,7 @@ export default function FAQSection() {
                                 transition={{ duration: 0.3 }}
                                 className="overflow-hidden"
                               >
-                                <p className="text-gray-300 pt-4 border-t border-white/10 mt-4">
+                                <p className="text-gray-600 pt-4 border-t border-gray-100 mt-4">
                                   {item.answer}
                                 </p>
                               </motion.div>
@@ -295,21 +295,21 @@ export default function FAQSection() {
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="bg-gradient-to-br from-gray-900/30 to-black/30 backdrop-blur-sm border border-indigo-500/20 rounded-2xl p-6"
+                className="bg-white shadow-md border border-gray-100 rounded-2xl p-6"
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div className={`p-3 rounded-xl bg-gradient-to-br ${currentCategory.color}`}>
                     <currentCategory.icon className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white">{currentCategory.label}</h3>
-                    <div className="text-sm text-gray-400">
+                    <h3 className="text-xl font-bold text-gray-900">{currentCategory.label}</h3>
+                    <div className="text-sm text-gray-600">
                       {filteredItems.length} questions answered
                     </div>
                   </div>
                 </div>
                 
-                <p className="text-gray-300 text-sm mb-4">
+                <p className="text-gray-600 text-sm mb-4">
                   Find answers to common questions about {currentCategory.label.toLowerCase()}. 
                   If you need more specific information, contact our support team.
                 </p>
@@ -325,26 +325,26 @@ export default function FAQSection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className="bg-gradient-to-br from-gray-900/30 to-black/30 backdrop-blur-sm border border-violet-500/20 rounded-2xl p-6"
+                className="bg-white shadow-md border border-gray-100 rounded-2xl p-6"
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div className="p-3 rounded-xl bg-gradient-to-br from-violet-500 to-purple-500">
                     <MessageSquare className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white">Need Help?</h3>
-                    <div className="text-sm text-gray-400">We're here to assist you</div>
+                    <h3 className="text-xl font-bold text-gray-900">Need Help?</h3>
+                    <div className="text-sm text-gray-600">We're here to assist you</div>
                   </div>
                 </div>
                 
                 <div className="space-y-3">
-                  <button className="w-full px-4 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-500 font-semibold hover:shadow-lg hover:shadow-indigo-500/30 transition-all duration-300">
+                  <button className="w-full px-4 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-500 font-semibold text-white hover:shadow-lg hover:shadow-indigo-500/30 transition-all duration-300">
                     Live Chat Support
                   </button>
-                  <button className="w-full px-4 py-3 rounded-xl bg-gradient-to-br from-gray-900/50 to-black/50 backdrop-blur-sm border border-white/10 font-semibold hover:border-violet-500/30 transition-all duration-300">
+                  <button className="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 text-gray-900 font-semibold shadow-sm hover:bg-gray-50 transition-all duration-300">
                     Schedule Call
                   </button>
-                  <button className="w-full px-4 py-3 rounded-xl bg-gradient-to-br from-gray-900/50 to-black/50 backdrop-blur-sm border border-white/10 font-semibold hover:border-violet-500/30 transition-all duration-300">
+                  <button className="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 text-gray-900 font-semibold shadow-sm hover:bg-gray-50 transition-all duration-300">
                     Email Support
                   </button>
                 </div>
@@ -356,9 +356,9 @@ export default function FAQSection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="bg-gradient-to-br from-gray-900/30 to-black/30 backdrop-blur-sm border border-white/10 rounded-2xl p-6"
+                className="bg-white shadow-md border border-gray-100 rounded-2xl p-6"
               >
-                <h3 className="text-lg font-semibold text-white mb-4">Popular Questions</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Popular Questions</h3>
                 <div className="space-y-3">
                   {faqItems
                     .filter(item => item.id !== 1 && item.id <= 4)
@@ -369,9 +369,9 @@ export default function FAQSection() {
                           setActiveCategory(item.category);
                           setOpenItems([item.id]);
                         }}
-                        className="w-full text-left p-3 rounded-lg hover:bg-white/5 transition-colors"
+                        className="w-full text-left p-3 rounded-lg hover:bg-gray-50 transition-colors"
                       >
-                        <div className="text-sm font-medium text-white mb-1 line-clamp-2">
+                        <div className="text-sm font-medium text-gray-900 mb-1 line-clamp-2">
                           {item.question}
                         </div>
                         <div className="text-xs text-gray-500">{item.category}</div>
@@ -391,54 +391,54 @@ export default function FAQSection() {
           className="grid md:grid-cols-2 gap-8 mb-16"
         >
           {/* Search FAQ */}
-          <div className="bg-gradient-to-br from-gray-900/30 to-black/30 backdrop-blur-sm border border-white/10 rounded-2xl p-6">
-            <h3 className="text-xl font-bold text-white mb-4">Search FAQ</h3>
+          <div className="bg-white shadow-md border border-gray-100 rounded-2xl p-6">
+            <h3 className="text-xl font-bold text-gray-900 mb-4">Search FAQ</h3>
             <div className="relative">
               <input
                 type="text"
                 placeholder="Type your question here..."
-                className="w-full px-4 py-3 rounded-xl bg-gradient-to-br from-gray-900/50 to-black/50 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500/50 transition-colors"
+                className="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 text-gray-900 placeholder-gray-500 shadow-sm focus:outline-none focus:border-indigo-500/50 transition-colors"
               />
-              <button className="absolute right-2 top-2 px-4 py-1.5 rounded-lg bg-gradient-to-r from-indigo-500 to-violet-500 font-semibold">
+              <button className="absolute right-2 top-2 px-4 py-1.5 rounded-lg bg-gradient-to-r from-indigo-500 to-violet-500 font-semibold text-white">
                 Search
               </button>
             </div>
-            <div className="mt-4 text-sm text-gray-400">
+            <div className="mt-4 text-sm text-gray-600">
               Can't find your answer? Try different keywords or contact support.
             </div>
           </div>
 
           {/* Contact Options */}
-          <div className="bg-gradient-to-br from-gray-900/30 to-black/30 backdrop-blur-sm border border-white/10 rounded-2xl p-6">
-            <h3 className="text-xl font-bold text-white mb-4">Other Ways to Connect</h3>
+          <div className="bg-white shadow-md border border-gray-100 rounded-2xl p-6">
+            <h3 className="text-xl font-bold text-gray-900 mb-4">Other Ways to Connect</h3>
             <div className="space-y-4">
-              <div className="flex items-center gap-3 p-3 rounded-lg bg-gradient-to-br from-gray-900/50 to-black/50 border border-white/10">
+              <div className="flex items-center gap-3 p-3 rounded-lg bg-white border border-gray-100 shadow-sm">
                 <div className="p-2 rounded-lg bg-gradient-to-br from-blue-500/20 to-cyan-500/20">
                   <MessageSquare className="w-5 h-5 text-blue-400" />
                 </div>
                 <div>
-                  <div className="font-medium text-white">24/7 Live Chat</div>
-                  <div className="text-xs text-gray-400">Instant answers</div>
+                  <div className="font-medium text-gray-900">24/7 Live Chat</div>
+                  <div className="text-xs text-gray-600">Instant answers</div>
                 </div>
               </div>
               
-              <div className="flex items-center gap-3 p-3 rounded-lg bg-gradient-to-br from-gray-900/50 to-black/50 border border-white/10">
+              <div className="flex items-center gap-3 p-3 rounded-lg bg-white border border-gray-100 shadow-sm">
                 <div className="p-2 rounded-lg bg-gradient-to-br from-cyan-500/20 to-emerald-500/20">
                   <Users className="w-5 h-5 text-cyan-400" />
                 </div>
                 <div>
-                  <div className="font-medium text-white">Community Forum</div>
-                  <div className="text-xs text-gray-400">Peer support</div>
+                  <div className="font-medium text-gray-900">Community Forum</div>
+                  <div className="text-xs text-gray-600">Peer support</div>
                 </div>
               </div>
               
-              <div className="flex items-center gap-3 p-3 rounded-lg bg-gradient-to-br from-gray-900/50 to-black/50 border border-white/10">
+              <div className="flex items-center gap-3 p-3 rounded-lg bg-white border border-gray-100 shadow-sm">
                 <div className="p-2 rounded-lg bg-gradient-to-br from-emerald-500/20 to-green-500/20">
                   <BookOpen className="w-5 h-5 text-emerald-400" />
                 </div>
                 <div>
-                  <div className="font-medium text-white">Knowledge Base</div>
-                  <div className="text-xs text-gray-400">Detailed guides</div>
+                  <div className="font-medium text-gray-900">Knowledge Base</div>
+                  <div className="text-xs text-gray-600">Detailed guides</div>
                 </div>
               </div>
             </div>
@@ -452,24 +452,24 @@ export default function FAQSection() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <div className="inline-flex flex-col sm:flex-row items-center gap-8 p-8 rounded-3xl bg-gradient-to-br from-indigo-500/10 via-violet-500/5 to-purple-500/10 border border-violet-500/30">
+          <div className="inline-flex flex-col sm:flex-row items-center gap-8 p-8 rounded-3xl bg-white shadow-xl border border-gray-100">
             <div className="text-left">
               <h3 className="text-2xl font-bold mb-2">
                 <span className="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
                   Still Have Questions?
                 </span>
               </h3>
-              <p className="text-gray-300">
+              <p className="text-gray-600">
                 Our support team is ready to help you with any questions about courses, 
                 admissions, or placements.
               </p>
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-500 font-semibold hover:shadow-lg hover:shadow-violet-500/30 transition-all duration-300">
+              <button className="px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-500 font-semibold text-white hover:shadow-lg hover:shadow-violet-500/30 transition-all duration-300">
                 Contact Support
               </button>
-              <button className="px-6 py-3 rounded-xl bg-gradient-to-br from-gray-900/50 to-black/50 backdrop-blur-sm border border-white/10 font-semibold hover:border-indigo-500/30 transition-all duration-300">
+              <button className="px-6 py-3 rounded-xl bg-white border border-gray-200 text-gray-900 font-semibold shadow-sm hover:bg-gray-50 transition-all duration-300">
                 View All FAQ
               </button>
             </div>

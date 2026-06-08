@@ -5,14 +5,14 @@ import { Building2, Handshake, Globe, Target, Users, Award, Shield, Zap } from "
 import Image from "next/image";
 
 const partners = [
-  { name: "Wipro", logo: "/api/placeholder/160/80", type: "Strategic Partner", description: "Official Wipro Partner Program" },
-  { name: "Microsoft", logo: "/api/placeholder/160/80", type: "Technology Partner", description: "Azure Cloud & AI Solutions" },
-  { name: "Google", logo: "/api/placeholder/160/80", type: "Cloud Partner", description: "Google Cloud Platform" },
-  { name: "Amazon", logo: "/api/placeholder/160/80", type: "AWS Partner", description: "Amazon Web Services" },
-  { name: "IBM", logo: "/api/placeholder/160/80", type: "AI Partner", description: "IBM Watson & AI Solutions" },
-  { name: "Salesforce", logo: "/api/placeholder/160/80", type: "CRM Partner", description: "Salesforce Ecosystem" },
-  { name: "Oracle", logo: "/api/placeholder/160/80", type: "Database Partner", description: "Oracle Cloud Infrastructure" },
-  { name: "SAP", logo: "/api/placeholder/160/80", type: "ERP Partner", description: "SAP Business Solutions" },
+  { name: "Wipro", logo: "/logos/wipro.webp", type: "Strategic Partner", description: "Official Wipro Partner Program" },
+  { name: "Microsoft", logo: "/logos/microsoft.webp", type: "Technology Partner", description: "Azure Cloud & AI Solutions" },
+  { name: "Google", logo: "/logos/google.webp", type: "Cloud Partner", description: "Google Cloud Platform" },
+  { name: "Amazon", logo: "/logos/amazon.webp", type: "AWS Partner", description: "Amazon Web Services" },
+  { name: "IBM", logo: "/logos/ibm.webp", type: "AI Partner", description: "IBM Watson & AI Solutions" },
+  { name: "TCS", logo: "/logos/tcs.png", type: "IT Services Partner", description: "Tata Consultancy Services" },
+  { name: "Infosys", logo: "/logos/infosys.webp", type: "Digital Partner", description: "Next-generation digital services" },
+  { name: "Accenture", logo: "/logos/accenture.webp", type: "Consulting Partner", description: "Global professional services" },
 ];
 
 const wiproBenefits = [
@@ -121,7 +121,7 @@ export default function PartnerEcosystemSection() {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <div className="bg-gradient-to-br from-gray-900/30 to-black/30 backdrop-blur-sm border border-blue-500/20 rounded-3xl p-8 md:p-12">
+          <div className="bg-white shadow-xl border border-gray-100 rounded-3xl p-8 md:p-12">
             <div className="flex flex-col lg:flex-row items-center gap-8">
               {/* Wipro Logo and Badge */}
               <div className="flex-shrink-0">
@@ -147,7 +147,7 @@ export default function PartnerEcosystemSection() {
                     Wipro Partner Program
                   </span>
                 </h3>
-                <p className="text-gray-300 mb-6">
+                <p className="text-gray-600 mb-6">
                   As an official Wipro Partner Program, Inspire Leap provides direct access to 
                   Wipro's hiring pipeline, industry-designed curriculum, and guaranteed interview 
                   opportunities. Our students receive priority consideration for roles at Wipro 
@@ -169,8 +169,8 @@ export default function PartnerEcosystemSection() {
                         <benefit.icon className="w-4 h-4 text-white" />
                       </div>
                       <div>
-                        <div className="font-semibold text-white mb-1">{benefit.title}</div>
-                        <div className="text-sm text-gray-400">{benefit.description}</div>
+                        <div className="font-semibold text-gray-900 mb-1">{benefit.title}</div>
+                        <div className="text-sm text-gray-600">{benefit.description}</div>
                       </div>
                     </motion.div>
                   ))}
@@ -209,17 +209,21 @@ export default function PartnerEcosystemSection() {
                 className="relative group"
               >
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="relative bg-gradient-to-br from-gray-900/30 to-black/30 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center group-hover:border-blue-500/30 transition-all duration-300">
-                  {/* Logo placeholder */}
+                <div className="relative bg-white shadow-md border border-gray-100 rounded-2xl p-6 text-center group-hover:shadow-lg transition-all duration-300">
                   <div className="h-20 mb-4 flex items-center justify-center">
-                    <div className="w-32 h-10 bg-gradient-to-r from-gray-700 to-gray-800 rounded-lg flex items-center justify-center">
-                      <span className="font-bold text-gray-300">{partner.name}</span>
+                    <div className="relative w-32 h-16 flex items-center justify-center">
+                      <Image 
+                        src={partner.logo} 
+                        alt={`${partner.name} logo`} 
+                        fill
+                        className="object-contain"
+                      />
                     </div>
                   </div>
                   
-                  <div className="text-sm font-semibold text-white mb-1">{partner.name}</div>
+                  <div className="text-sm font-semibold text-gray-900 mb-1">{partner.name}</div>
                   <div className="text-xs text-blue-400 mb-2">{partner.type}</div>
-                  <div className="text-xs text-gray-500">{partner.description}</div>
+                  <div className="text-xs text-gray-600">{partner.description}</div>
                 </div>
               </motion.div>
             ))}
@@ -233,14 +237,14 @@ export default function PartnerEcosystemSection() {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <div className="bg-gradient-to-br from-gray-900/30 to-black/30 backdrop-blur-sm border border-white/10 rounded-3xl p-8">
+          <div className="bg-white shadow-xl border border-gray-100 rounded-3xl p-8">
             <div className="text-center mb-8">
               <h3 className="text-2xl md:text-3xl font-bold mb-4">
                 <span className="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
                   Strategic Industry Collaborations
                 </span>
               </h3>
-              <p className="text-gray-400 max-w-2xl mx-auto">
+              <p className="text-gray-600 max-w-2xl mx-auto">
                 Comprehensive partnerships across technology domains for holistic career development
               </p>
             </div>
@@ -256,18 +260,18 @@ export default function PartnerEcosystemSection() {
                   className="relative group"
                 >
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500/10 to-emerald-500/10 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="relative bg-gradient-to-br from-gray-900/50 to-black/50 backdrop-blur-sm border border-white/10 rounded-2xl p-6 group-hover:border-cyan-500/30 transition-all duration-300">
+                  <div className="relative bg-white shadow-md border border-gray-100 rounded-2xl p-6 transition-all duration-300">
                     <div className="flex items-center gap-3 mb-4">
                       <div className="p-2 rounded-lg bg-gradient-to-br from-cyan-500/20 to-emerald-500/20">
                         <collab.icon className="w-5 h-5 text-cyan-400" />
                       </div>
-                      <div className="font-bold text-white">{collab.category}</div>
+                      <div className="font-bold text-gray-900">{collab.category}</div>
                     </div>
                     
                     <div className="space-y-3">
                       <div>
-                        <div className="text-sm text-gray-400 mb-2">Partner Companies</div>
-                        <div className="text-sm text-white">
+                        <div className="text-sm text-gray-600 mb-2">Partner Companies</div>
+                        <div className="text-sm text-gray-900">
                           {collab.companies.map((company, i) => (
                             <div key={i} className="flex items-center gap-2">
                               <div className="w-1.5 h-1.5 rounded-full bg-cyan-500" />
@@ -278,7 +282,7 @@ export default function PartnerEcosystemSection() {
                       </div>
                       
                       <div>
-                        <div className="text-sm text-gray-400 mb-1">Focus Area</div>
+                        <div className="text-sm text-gray-600 mb-1">Focus Area</div>
                         <div className="text-sm text-cyan-300">{collab.focus}</div>
                       </div>
                     </div>
@@ -300,15 +304,15 @@ export default function PartnerEcosystemSection() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-6"
+            className="bg-white shadow-md border border-gray-100 rounded-2xl p-6"
           >
             <div className="flex items-center gap-3 mb-4">
               <div className="p-2 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500">
                 <Target className="w-5 h-5 text-white" />
               </div>
-              <div className="font-bold text-white">Industry-Ready Skills</div>
+              <div className="font-bold text-gray-900">Industry-Ready Skills</div>
             </div>
-            <p className="text-gray-300 text-sm">
+            <p className="text-gray-600 text-sm">
               Curriculum designed in collaboration with industry partners to ensure 
               students acquire skills that are in high demand.
             </p>
@@ -318,15 +322,15 @@ export default function PartnerEcosystemSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-cyan-500/10 to-emerald-500/10 backdrop-blur-sm border border-cyan-500/20 rounded-2xl p-6"
+            className="bg-white shadow-md border border-gray-100 rounded-2xl p-6"
           >
             <div className="flex items-center gap-3 mb-4">
               <div className="p-2 rounded-lg bg-gradient-to-br from-cyan-500 to-emerald-500">
                 <Shield className="w-5 h-5 text-white" />
               </div>
-              <div className="font-bold text-white">Guaranteed Opportunities</div>
+              <div className="font-bold text-gray-900">Guaranteed Opportunities</div>
             </div>
-            <p className="text-gray-300 text-sm">
+            <p className="text-gray-600 text-sm">
               Direct interview opportunities and priority consideration in partner 
               company hiring pipelines.
             </p>
@@ -336,15 +340,15 @@ export default function PartnerEcosystemSection() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-emerald-500/10 to-green-500/10 backdrop-blur-sm border border-emerald-500/20 rounded-2xl p-6"
+            className="bg-white shadow-md border border-gray-100 rounded-2xl p-6"
           >
             <div className="flex items-center gap-3 mb-4">
               <div className="p-2 rounded-lg bg-gradient-to-br from-emerald-500 to-green-500">
                 <Award className="w-5 h-5 text-white" />
               </div>
-              <div className="font-bold text-white">Recognized Certifications</div>
+              <div className="font-bold text-gray-900">Recognized Certifications</div>
             </div>
-            <p className="text-gray-300 text-sm">
+            <p className="text-gray-600 text-sm">
               Industry-recognized certifications that validate skills and enhance 
               career prospects globally.
             </p>
@@ -358,23 +362,23 @@ export default function PartnerEcosystemSection() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <div className="inline-flex flex-col sm:flex-row items-center gap-8 p-8 rounded-3xl bg-gradient-to-br from-blue-500/10 via-cyan-500/5 to-emerald-500/10 border border-cyan-500/30">
+          <div className="inline-flex flex-col sm:flex-row items-center gap-8 p-8 rounded-3xl bg-white shadow-xl border border-gray-100">
             <div className="text-left">
               <h3 className="text-2xl font-bold mb-2">
                 <span className="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
                   Join Our Partner Network
                 </span>
               </h3>
-              <p className="text-gray-300">
+              <p className="text-gray-600">
                 Become part of our growing ecosystem and access top talent from Inspire Leap.
               </p>
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500 font-semibold hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-300">
+              <button className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500 font-semibold text-white hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-300">
                 For Students
               </button>
-              <button className="px-6 py-3 rounded-xl bg-gradient-to-br from-gray-900/50 to-black/50 backdrop-blur-sm border border-white/10 font-semibold hover:border-cyan-500/30 transition-all duration-300">
+              <button className="px-6 py-3 rounded-xl bg-white border border-gray-200 font-semibold text-gray-900 shadow-sm hover:bg-gray-50 transition-all duration-300">
                 For Companies
               </button>
             </div>

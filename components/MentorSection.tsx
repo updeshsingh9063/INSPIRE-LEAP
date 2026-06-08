@@ -261,8 +261,8 @@ export default function MentorSection() {
                     onMouseLeave={() => setHoveredMentor(null)}
                     className={`relative group overflow-hidden rounded-2xl border transition-all duration-300 ${
                       isActive
-                        ? 'bg-gradient-to-br from-purple-500/10 via-purple-500/5 to-pink-500/10 border-purple-500/30 shadow-lg shadow-purple-500/20'
-                        : 'bg-gradient-to-br from-gray-900/30 to-black/30 border-white/10 hover:border-purple-500/20 hover:bg-gray-900/50'
+                        ? 'bg-white border-purple-500/30 shadow-lg shadow-purple-500/20'
+                        : 'bg-white border-gray-100 hover:border-purple-500/20 shadow-sm hover:shadow-md'
                     }`}
                   >
                     {/* Glow effect */}
@@ -280,8 +280,8 @@ export default function MentorSection() {
 
                       {/* Details */}
                       <div className="text-center">
-                        <h3 className="font-bold text-white mb-1">{mentor.name}</h3>
-                        <div className="text-sm text-gray-400 mb-2">{mentor.role}</div>
+                        <h3 className="font-bold text-gray-900 mb-1">{mentor.name}</h3>
+                        <div className="text-sm text-gray-600 mb-2">{mentor.role}</div>
                         <div className="text-xs text-purple-400 font-semibold mb-3">{mentor.company}</div>
                         
                         {/* Rating */}
@@ -314,11 +314,11 @@ export default function MentorSection() {
                         <motion.div
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
-                          className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 backdrop-blur-sm flex items-center justify-center"
+                          className="absolute inset-0 bg-white/90 backdrop-blur-sm flex items-center justify-center"
                         >
                           <div className="text-center">
-                            <MessageSquare className="w-8 h-8 text-purple-400 mx-auto mb-2" />
-                            <div className="text-sm font-semibold text-white">View Profile</div>
+                            <MessageSquare className="w-8 h-8 text-purple-500 mx-auto mb-2" />
+                            <div className="text-sm font-semibold text-gray-900">View Profile</div>
                           </div>
                         </motion.div>
                       )}
@@ -337,37 +337,37 @@ export default function MentorSection() {
               animate={{ opacity: 1, x: 0 }}
               className="h-full"
             >
-              <div className="bg-gradient-to-br from-gray-900/30 to-black/30 backdrop-blur-sm border border-purple-500/20 rounded-3xl p-8 h-full">
+              <div className="bg-white shadow-xl border border-gray-100 rounded-3xl p-8 h-full">
                 {/* Mentor header */}
                 <div className="flex items-center gap-4 mb-6">
                   <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${currentMentor.color} p-0.5 flex-shrink-0`}>
                     <div className="w-full h-full rounded-full bg-gray-900" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white">{currentMentor.name}</h3>
-                    <div className="text-sm text-gray-400">{currentMentor.role}</div>
-                    <div className="text-xs text-purple-400 font-semibold">{currentMentor.company}</div>
+                    <h3 className="text-xl font-bold text-gray-900">{currentMentor.name}</h3>
+                    <div className="text-sm text-gray-600">{currentMentor.role}</div>
+                    <div className="text-xs text-purple-600 font-semibold">{currentMentor.company}</div>
                   </div>
                 </div>
 
                 {/* Experience and Rating */}
                 <div className="grid grid-cols-2 gap-4 mb-6">
-                  <div className="bg-gradient-to-br from-gray-900/50 to-black/50 border border-white/10 rounded-xl p-4 text-center">
-                    <div className="text-2xl font-bold text-white mb-1">{currentMentor.experience}</div>
-                    <div className="text-xs text-gray-400">Experience</div>
+                  <div className="bg-white shadow-md border border-gray-100 rounded-xl p-4 text-center">
+                    <div className="text-2xl font-bold text-gray-900 mb-1">{currentMentor.experience}</div>
+                    <div className="text-xs text-gray-600">Experience</div>
                   </div>
-                  <div className="bg-gradient-to-br from-gray-900/50 to-black/50 border border-white/10 rounded-xl p-4 text-center">
+                  <div className="bg-white shadow-md border border-gray-100 rounded-xl p-4 text-center">
                     <div className="flex items-center justify-center gap-1 mb-1">
                       <Star className="w-4 h-4 text-yellow-500 fill-current" />
-                      <span className="text-2xl font-bold text-white">{currentMentor.rating}</span>
+                      <span className="text-2xl font-bold text-gray-900">{currentMentor.rating}</span>
                     </div>
-                    <div className="text-xs text-gray-400">Rating</div>
+                    <div className="text-xs text-gray-600">Rating</div>
                   </div>
                 </div>
 
                 {/* Expertise */}
                 <div className="mb-6">
-                  <h4 className="text-lg font-semibold text-white mb-3">Areas of Expertise</h4>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-3">Areas of Expertise</h4>
                   <div className="flex flex-wrap gap-2">
                     {currentMentor.expertise.map((skill, i) => (
                       <span
@@ -382,12 +382,12 @@ export default function MentorSection() {
 
                 {/* Achievements */}
                 <div className="mb-6">
-                  <h4 className="text-lg font-semibold text-white mb-3">Key Achievements</h4>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-3">Key Achievements</h4>
                   <ul className="space-y-3">
                     {currentMentor.achievements.map((achievement, i) => (
                       <li key={i} className="flex items-start gap-3">
-                        <Award className="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0" />
-                        <span className="text-sm text-gray-300">{achievement}</span>
+                        <Award className="w-4 h-4 text-purple-500 mt-0.5 flex-shrink-0" />
+                        <span className="text-sm text-gray-600">{achievement}</span>
                       </li>
                     ))}
                   </ul>
@@ -412,7 +412,7 @@ export default function MentorSection() {
                     >
                       <Share2 className="w-5 h-5 text-cyan-400" />
                     </a>
-                    <button className="ml-auto px-4 py-2 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 font-semibold hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300">
+                    <button className="ml-auto px-4 py-2 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 font-semibold text-white hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300">
                       Book Session
                     </button>
                   </div>
@@ -433,15 +433,15 @@ export default function MentorSection() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-6"
+            className="bg-white shadow-md border border-gray-100 rounded-2xl p-6"
           >
             <div className="flex items-center gap-3 mb-4">
               <div className="p-2 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500">
                 <Target className="w-5 h-5 text-white" />
               </div>
-              <div className="font-bold text-white">Personalized Guidance</div>
+              <div className="font-bold text-gray-900">Personalized Guidance</div>
             </div>
-            <p className="text-gray-300 text-sm">
+            <p className="text-gray-600 text-sm">
               One-on-one mentorship tailored to your career goals and learning pace.
             </p>
           </motion.div>
@@ -450,15 +450,15 @@ export default function MentorSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-6"
+            className="bg-white shadow-md border border-gray-100 rounded-2xl p-6"
           >
             <div className="flex items-center gap-3 mb-4">
               <div className="p-2 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500">
                 <Briefcase className="w-5 h-5 text-white" />
               </div>
-              <div className="font-bold text-white">Industry Insights</div>
+              <div className="font-bold text-gray-900">Industry Insights</div>
             </div>
-            <p className="text-gray-300 text-sm">
+            <p className="text-gray-600 text-sm">
               Real-world experience and insider knowledge from top tech professionals.
             </p>
           </motion.div>
@@ -467,15 +467,15 @@ export default function MentorSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-cyan-500/10 to-emerald-500/10 backdrop-blur-sm border border-cyan-500/20 rounded-2xl p-6"
+            className="bg-white shadow-md border border-gray-100 rounded-2xl p-6"
           >
             <div className="flex items-center gap-3 mb-4">
               <div className="p-2 rounded-lg bg-gradient-to-br from-cyan-500 to-emerald-500">
                 <Zap className="w-5 h-5 text-white" />
               </div>
-              <div className="font-bold text-white">Career Acceleration</div>
+              <div className="font-bold text-gray-900">Career Acceleration</div>
             </div>
-            <p className="text-gray-300 text-sm">
+            <p className="text-gray-600 text-sm">
               Fast-track your career growth with expert advice and networking opportunities.
             </p>
           </motion.div>
@@ -484,15 +484,15 @@ export default function MentorSection() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-emerald-500/10 to-green-500/10 backdrop-blur-sm border border-emerald-500/20 rounded-2xl p-6"
+            className="bg-white shadow-md border border-gray-100 rounded-2xl p-6"
           >
             <div className="flex items-center gap-3 mb-4">
               <div className="p-2 rounded-lg bg-gradient-to-br from-emerald-500 to-green-500">
                 <Globe className="w-5 h-5 text-white" />
               </div>
-              <div className="font-bold text-white">Global Network</div>
+              <div className="font-bold text-gray-900">Global Network</div>
             </div>
-            <p className="text-gray-300 text-sm">
+            <p className="text-gray-600 text-sm">
               Connect with mentors and peers from around the world in our exclusive community.
             </p>
           </motion.div>
@@ -505,23 +505,23 @@ export default function MentorSection() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <div className="inline-flex flex-col sm:flex-row items-center gap-8 p-8 rounded-3xl bg-gradient-to-br from-purple-500/10 via-pink-500/5 to-blue-500/10 border border-pink-500/30">
+          <div className="inline-flex flex-col sm:flex-row items-center gap-8 p-8 rounded-3xl bg-white shadow-xl border border-gray-100">
             <div className="text-left">
               <h3 className="text-2xl font-bold mb-2">
                 <span className="bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
                   Get Personalized Mentorship
                 </span>
               </h3>
-              <p className="text-gray-300">
+              <p className="text-gray-600">
                 Book one-on-one sessions with industry experts and accelerate your career growth.
               </p>
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 font-semibold hover:shadow-lg hover:shadow-pink-500/30 transition-all duration-300">
+              <button className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 font-semibold text-white hover:shadow-lg hover:shadow-pink-500/30 transition-all duration-300">
                 Find Your Mentor
               </button>
-              <button className="px-6 py-3 rounded-xl bg-gradient-to-br from-gray-900/50 to-black/50 backdrop-blur-sm border border-white/10 font-semibold hover:border-pink-500/30 transition-all duration-300">
+              <button className="px-6 py-3 rounded-xl bg-white border border-gray-200 font-semibold text-gray-900 shadow-sm hover:bg-gray-50 transition-all duration-300">
                 View All Mentors
               </button>
             </div>
