@@ -158,7 +158,7 @@ export default async function CourseDetailPage({ params }: CourseDetailPageProps
 
             {/* Right Column - Course Card & Related */}
             <div className="space-y-8">
-              <div className="glass rounded-2xl p-6 sticky top-24">
+              <div className="glass rounded-2xl p-6 lg:sticky lg:top-24">
                 <div className="text-center mb-6">
                   <div className="flex items-center justify-center space-x-2 mb-4">
                     <span className="text-3xl font-bold text-white">

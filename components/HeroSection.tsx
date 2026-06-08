@@ -214,7 +214,7 @@ export default function HeroSection() {
                   {playingVideo ? (
                     <video
                       ref={videoRef}
-                      src="/intro-video.mp4"
+                      src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"
                       className="w-full h-full object-cover"
                       controls
                       onEnded={() => stopVideo()}
