@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { 
   Menu, 
@@ -157,18 +158,19 @@ export default function Navbar() {
                   onMouseEnter={() => setActiveMegaMenu(item.label)}
                   onMouseLeave={() => setActiveMegaMenu(null)}
                 >
-                  <motion.a
-                    href={item.href}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center space-x-1 px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-colors"
-                  >
-                    {item.icon && <item.icon className="h-4 w-4" />}
-                    <span>{item.label}</span>
-                    {(item.megaMenu || item.dropdown) && (
-                      <ChevronDown className="h-4 w-4" />
-                    )}
-                  </motion.a>
+                  <Link href={item.href} passHref legacyBehavior>
+                    <motion.a
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="flex items-center space-x-1 px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-colors"
+                    >
+                      {item.icon && <item.icon className="h-4 w-4" />}
+                      <span>{item.label}</span>
+                      {(item.megaMenu || item.dropdown) && (
+                        <ChevronDown className="h-4 w-4" />
+                      )}
+                    </motion.a>
+                  </Link>
 
                   {/* Mega Menu */}
                   {item.megaMenu && activeMegaMenu === item.label && (
@@ -187,12 +189,12 @@ export default function Navbar() {
                             <ul className="space-y-2">
                               {category.items.map((subItem) => (
                                 <li key={subItem.name}>
-                                  <a
+                                  <Link
                                     href={subItem.href}
                                     className="text-sm text-gray-400 hover:text-white transition-colors block py-1"
                                   >
                                     {subItem.name}
-                                  </a>
+                                  </Link>
                                 </li>
                               ))}
                             </ul>
@@ -230,13 +232,13 @@ export default function Navbar() {
                       className="absolute left-0 top-full mt-2 w-48 glass-dark rounded-lg border border-white/10 p-2 shadow-xl"
                     >
                       {item.dropdown.map((subItem) => (
-                        <a
+                        <Link
                           key={subItem.name}
                           href={subItem.href}
                           className="block px-3 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-md transition-colors"
                         >
                           {subItem.name}
-                        </a>
+                        </Link>
                       ))}
                     </motion.div>
                   )}
@@ -260,23 +262,25 @@ export default function Navbar() {
 
               {/* Auth Buttons */}
               <div className="flex items-center space-x-2">
-                <motion.a
-                  href="/login"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-colors"
-                >
-                  <LogIn className="h-4 w-4" />
-                  <span>Login</span>
-                </motion.a>
-                <motion.a
-                  href="/register"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-4 py-2 bg-gradient-to-r from-primary to-secondary rounded-lg text-sm font-medium text-white shadow-lg shadow-primary/20"
-                >
-                  Get Started
-                </motion.a>
+                <Link href="/login" passHref legacyBehavior>
+                  <motion.a
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-colors"
+                  >
+                    <LogIn className="h-4 w-4" />
+                    <span>Login</span>
+                  </motion.a>
+                </Link>
+                <Link href="/register" passHref legacyBehavior>
+                  <motion.a
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="px-4 py-2 bg-gradient-to-r from-primary to-secondary rounded-lg text-sm font-medium text-white shadow-lg shadow-primary/20"
+                  >
+                    Get Started
+                  </motion.a>
+                </Link>
               </div>
             </div>
 
@@ -348,7 +352,7 @@ export default function Navbar() {
                 <nav className="space-y-2">
                   {navigationItems.map((item) => (
                     <div key={item.label}>
-                      <a
+                      <Link
                         href={item.href}
                         className="flex items-center justify-between px-4 py-3 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-colors"
                         onClick={() => setIsMobileMenuOpen(false)}
@@ -360,29 +364,31 @@ export default function Navbar() {
                         {(item.megaMenu || item.dropdown) && (
                           <ChevronDown className="h-4 w-4" />
                         )}
-                      </a>
+                      </Link>
                     </div>
                   ))}
                 </nav>
 
                 {/* Mobile Auth Buttons */}
                 <div className="mt-8 pt-6 border-t border-white/10 space-y-3">
-                  <motion.a
-                    href="/login"
-                    whileTap={{ scale: 0.95 }}
-                    className="block w-full px-4 py-3 text-center rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-colors border border-white/10"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Login
-                  </motion.a>
-                  <motion.a
-                    href="/register"
-                    whileTap={{ scale: 0.95 }}
-                    className="block w-full px-4 py-3 text-center bg-gradient-to-r from-primary to-secondary rounded-lg text-sm font-medium text-white shadow-lg shadow-primary/20"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Get Started Free
-                  </motion.a>
+                  <Link href="/login" passHref legacyBehavior>
+                    <motion.a
+                      whileTap={{ scale: 0.95 }}
+                      className="block w-full px-4 py-3 text-center rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-colors border border-white/10"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      Login
+                    </motion.a>
+                  </Link>
+                  <Link href="/register" passHref legacyBehavior>
+                    <motion.a
+                      whileTap={{ scale: 0.95 }}
+                      className="block w-full px-4 py-3 text-center bg-gradient-to-r from-primary to-secondary rounded-lg text-sm font-medium text-white shadow-lg shadow-primary/20"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      Get Started Free
+                    </motion.a>
+                  </Link>
                 </div>
               </div>
             </div>
