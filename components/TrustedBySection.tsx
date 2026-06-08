@@ -66,7 +66,7 @@ export default function TrustedBySection() {
                   key={`${company.name}-${index}`}
                   whileHover={{ scale: 1.08, y: -6 }}
                   className={cn(
-                    "flex-shrink-0 w-48 h-32 mx-4 glass rounded-2xl",
+                    "flex-shrink-0 w-48 h-32 mx-4 bg-white/5 md:glass rounded-2xl",
                     "border border-white/10 hover:border-primary/40",
                     "flex flex-col items-center justify-center gap-3",
                     "transition-all duration-300 group cursor-pointer"

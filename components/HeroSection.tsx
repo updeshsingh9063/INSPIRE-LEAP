@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform, Variants } from "framer-motion"
 import { ArrowRight, Play, CheckCircle, Users, Award, Briefcase, Sparkles } from "lucide-react"
 import { cn } from "@/lib/utils"
 import HeroScene from "./HeroScene"
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import Image from "next/image"
 
 const stats = [
@@ -61,6 +61,14 @@ export default function HeroSection() {
   const [playingVideo, setPlayingVideo] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
+  const [isMobile, setIsMobile] = useState(true); // Default to true to prevent hydration mismatch and save initial load
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile(); // Run once on mount
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -87,7 +95,9 @@ export default function HeroSection() {
     <section ref={sectionRef} className="relative min-h-[100svh] flex items-center justify-center overflow-hidden py-16 md:py-20">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900 to-black" />
-      <HeroScene />
+      
+      {/* Heavy 3D Scene - Only load on larger screens */}
+      {!isMobile && <HeroScene />}
 
       {/* Animated gradient orbs */}
       <motion.div
