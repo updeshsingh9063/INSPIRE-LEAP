@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform, Variants } from "framer-motion"
 import { ArrowRight, Play, CheckCircle, Users, Award, Briefcase, Sparkles } from "lucide-react"
 import { cn } from "@/lib/utils"
 import HeroScene from "./HeroScene"
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef } from "react"
 import Image from "next/image"
 
 const stats = [
@@ -61,14 +61,6 @@ export default function HeroSection() {
   const [playingVideo, setPlayingVideo] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
-  const [isMobile, setIsMobile] = useState(true); // Default to true to prevent hydration mismatch and save initial load
-
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile(); // Run once on mount
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -96,48 +88,8 @@ export default function HeroSection() {
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900 to-black" />
       
-      {/* Heavy 3D Scene - Only load on larger screens */}
-      {!isMobile && <HeroScene />}
-
-      {/* Animated gradient orbs */}
-      <motion.div
-        animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl"
-      />
-      <motion.div
-        animate={{ scale: [1, 1.3, 1], opacity: [0.1, 0.15, 0.1] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"
-      />
-      <motion.div
-        animate={{ scale: [1.1, 1, 1.1], opacity: [0.05, 0.12, 0.05] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 4 }}
-        className="absolute top-1/2 right-1/3 w-64 h-64 bg-accent/10 rounded-full blur-3xl"
-      />
-
-      {/* Floating particles */}
-      {[...Array(6)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-1 h-1 rounded-full bg-primary/40"
-          style={{
-            left: `${15 + i * 15}%`,
-            top: `${20 + (i % 3) * 25}%`,
-          }}
-          animate={{
-            y: [0, -30, 0],
-            opacity: [0.2, 0.8, 0.2],
-            scale: [1, 1.5, 1],
-          }}
-          transition={{
-            duration: 3 + i * 0.5,
-            repeat: Infinity,
-            delay: i * 0.4,
-            ease: "easeInOut",
-          }}
-        />
-      ))}
+      {/* 3D Scene */}
+      <HeroScene />
 
       <motion.div
         style={{ y, opacity }}
