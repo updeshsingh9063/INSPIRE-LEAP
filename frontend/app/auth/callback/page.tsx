@@ -5,7 +5,9 @@ import { useRouter, useSearchParams } from "next/navigation"
 import { motion } from "framer-motion"
 import { CheckCircle, XCircle, Loader2 } from "lucide-react"
 
-export default function AuthCallbackPage() {
+import { Suspense } from "react"
+
+function AuthCallbackContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [status, setStatus] = useState<"loading" | "success" | "error">("loading")
@@ -109,5 +111,13 @@ export default function AuthCallbackPage() {
         )}
       </motion.div>
     </div>
+  )
+}
+
+export default function AuthCallbackPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-gradient-to-b from-gray-950 to-black flex items-center justify-center"><Loader2 className="h-16 w-16 text-primary animate-spin" /></div>}>
+      <AuthCallbackContent />
+    </Suspense>
   )
 }
