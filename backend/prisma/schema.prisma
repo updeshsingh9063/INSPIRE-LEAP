@@ -1,0 +1,323 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+// ─── Enums ────────────────────────────────────────────────────────────────────
+
+enum Role {
+  STUDENT
+  MENTOR
+  ADMIN
+}
+
+enum CourseLevel {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+}
+
+enum ApplicationStatus {
+  PENDING
+  REVIEWED
+  ACCEPTED
+  REJECTED
+}
+
+enum SessionStatus {
+  SCHEDULED
+  COMPLETED
+  CANCELLED
+}
+
+enum EducationLevel {
+  HIGH_SCHOOL
+  UNDERGRADUATE
+  GRADUATE
+  POST_GRADUATE
+  WORKING_PROFESSIONAL
+}
+
+// ─── Models ───────────────────────────────────────────────────────────────────
+
+model User {
+  id               String         @id @default(uuid()) @map("_id")
+  firstName        String
+  lastName         String
+  email            String         @unique
+  phone            String?
+  passwordHash     String?
+  authProvider     String         @default("local")
+  providerId       String?        @unique
+  role             Role           @default(STUDENT)
+  educationLevel   EducationLevel?
+  avatar           String?
+  bio              String?
+  isEmailVerified  Boolean        @default(false)
+  emailVerifyToken String?
+  resetToken       String?
+  resetTokenExpiry DateTime?
+  isActive         Boolean        @default(true)
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+
+  // Relations
+  refreshTokens    RefreshToken[]
+  enrollments      Enrollment[]
+  reviews          Review[]
+  mentor           Mentor?
+  mentorSessions   MentorSession[]  @relation("StudentSessions")
+  certifications   UserCertification[]
+  applications     Application[]
+  contactMessages  Contact[]
+}
+
+model RefreshToken {
+  id        String   @id @default(uuid()) @map("_id")
+  token     String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
+
+model Course {
+  id              String      @id @default(uuid()) @map("_id")
+  title           String
+  slug            String      @unique
+  description     String
+  shortDesc       String?
+  category        String
+  level           CourseLevel @default(BEGINNER)
+  price           Float       @default(0)
+  discountPrice   Float?
+  duration        String
+  thumbnail       String?
+  previewVideo    String?
+  instructorId    String?
+  instructor      Mentor?     @relation(fields: [instructorId], references: [id])
+  rating          Float       @default(0)
+  ratingCount     Int         @default(0)
+  enrollmentCount Int         @default(0)
+  curriculum      Json        @default("[]")
+  requirements    Json        @default("[]")
+  outcomes        Json        @default("[]")
+  tags            Json        @default("[]")
+  isPublished     Boolean     @default(false)
+  isFeatured      Boolean     @default(false)
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  // Relations
+  enrollments     Enrollment[]
+  reviews         Review[]
+}
+
+model Enrollment {
+  id          String    @id @default(uuid()) @map("_id")
+  userId      String
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  courseId    String
+  course      Course    @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  progress    Float     @default(0)
+  completedAt DateTime?
+  lastAccessedAt DateTime?
+  enrolledAt  DateTime  @default(now())
+
+  @@unique([userId, courseId])
+  @@index([userId])
+  @@index([courseId])
+}
+
+model Review {
+  id        String   @id @default(uuid()) @map("_id")
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  courseId  String
+  course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  rating    Int
+  comment   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, courseId])
+  @@index([courseId])
+}
+
+model Mentor {
+  id           String   @id @default(uuid()) @map("_id")
+  userId       String   @unique
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  company      String
+  role         String
+  experience   String
+  expertise    Json     @default("[]")
+  achievements Json     @default("[]")
+  rating       Float    @default(0)
+  totalStudents Int     @default(0)
+  color        String   @default("from-blue-500 to-cyan-500")
+  linkedinUrl  String?
+  twitterUrl   String?
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // Relations
+  sessions     MentorSession[]
+  courses      Course[]
+}
+
+model MentorSession {
+  id          String        @id @default(uuid()) @map("_id")
+  mentorId    String
+  mentor      Mentor        @relation(fields: [mentorId], references: [id], onDelete: Cascade)
+  studentId   String
+  student     User          @relation("StudentSessions", fields: [studentId], references: [id], onDelete: Cascade)
+  scheduledAt DateTime
+  duration    Int           @default(60)
+  status      SessionStatus @default(SCHEDULED)
+  notes       String?
+  meetingUrl  String?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@index([mentorId])
+  @@index([studentId])
+}
+
+model Certification {
+  id          String   @id @default(uuid()) @map("_id")
+  title       String
+  issuer      String
+  level       String
+  duration    String
+  value       String?
+  color       String   @default("from-blue-500 to-cyan-500")
+  skills      Json     @default("[]")
+  benefits    Json     @default("[]")
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  userCerts   UserCertification[]
+}
+
+model UserCertification {
+  id              String        @id @default(uuid()) @map("_id")
+  userId          String
+  user            User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  certificationId String
+  certification   Certification @relation(fields: [certificationId], references: [id], onDelete: Cascade)
+  earnedAt        DateTime      @default(now())
+  certificateUrl  String?
+  credentialId    String        @unique @default(uuid())
+
+  @@unique([userId, certificationId])
+  @@index([userId])
+}
+
+model Internship {
+  id           String    @id @default(uuid()) @map("_id")
+  title        String
+  company      String
+  companyLogo  String?
+  location     String
+  type         String    @default("Remote")
+  duration     String
+  stipend      String?
+  description  String
+  requirements Json      @default("[]")
+  skills       Json      @default("[]")
+  openings     Int       @default(1)
+  deadline     DateTime?
+  isActive     Boolean   @default(true)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  // Relations
+  applications Application[]
+}
+
+model Application {
+  id           String            @id @default(uuid()) @map("_id")
+  userId       String
+  user         User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  internshipId String
+  internship   Internship        @relation(fields: [internshipId], references: [id], onDelete: Cascade)
+  resumeUrl    String?
+  coverLetter  String?
+  status       ApplicationStatus @default(PENDING)
+  appliedAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+
+  @@unique([userId, internshipId])
+  @@index([userId])
+  @@index([internshipId])
+}
+
+model FAQ {
+  id          String   @id @default(uuid()) @map("_id")
+  question    String
+  answer      String
+  category    String
+  iconName    String   @default("HelpCircle")
+  isPublished Boolean  @default(true)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Contact {
+  id         String   @id @default(uuid()) @map("_id")
+  userId     String?
+  user       User?    @relation(fields: [userId], references: [id])
+  name       String
+  email      String
+  subject    String
+  message    String
+  isResolved Boolean  @default(false)
+  createdAt  DateTime @default(now())
+}
+
+model Newsletter {
+  id           String   @id @default(uuid()) @map("_id")
+  email        String   @unique
+  isActive     Boolean  @default(true)
+  subscribedAt DateTime @default(now())
+}
+
+model PlacementStat {
+  id            String   @id @default(uuid()) @map("_id")
+  placementRate Float    @default(95)
+  avgSalary     String   @default("12 LPA")
+  maxSalary     String   @default("42 LPA")
+  totalPlaced   Int      @default(0)
+  year          Int
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model SuccessStory {
+  id             String   @id @default(uuid()) @map("_id")
+  name           String
+  company        String
+  companyLogo    String?
+  role           String
+  previousRole   String?
+  salaryIncrease String?
+  story          String
+  avatar         String?
+  rating         Int      @default(5)
+  isPublished    Boolean  @default(true)
+  createdAt      DateTime @default(now())
+}
