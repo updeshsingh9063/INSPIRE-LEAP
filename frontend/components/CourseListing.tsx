@@ -287,9 +287,7 @@ export default function CourseListing() {
           </p>
           <button
             onClick={() => {
-              setSelectedCategory("all")
-              setSelectedLevel("all")
-              setSelectedPrice("all")
+              router.push('/courses')
             }}
             className="mt-6 px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-medium hover:opacity-90 transition-opacity"
           >
