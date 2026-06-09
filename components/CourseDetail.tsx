@@ -15,6 +15,7 @@ import {
   Target
 } from "lucide-react"
 import { cn, formatCurrency } from "@/lib/utils"
+import { initiatePayment } from "@/lib/payment"
 
 interface CourseDetailProps {
   course: {
@@ -46,6 +47,10 @@ interface CourseDetailProps {
 
 export default function CourseDetail({ course }: CourseDetailProps) {
   const discountPercentage = Math.round(((course.price - course.discountedPrice) / course.price) * 100)
+
+  const handleEnroll = () => {
+    initiatePayment(course.title, course.discountedPrice)
+  }
 
   return (
     <div className="space-y-8">
@@ -253,7 +258,10 @@ export default function CourseDetail({ course }: CourseDetailProps) {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <button className="px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-xl font-bold hover:opacity-90 transition-opacity">
+            <button 
+              onClick={handleEnroll}
+              className="px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-xl font-bold hover:opacity-90 transition-opacity"
+            >
               Enroll Now
             </button>
             <button className="px-8 py-4 glass text-white rounded-xl font-medium hover:bg-white/10 transition-colors">

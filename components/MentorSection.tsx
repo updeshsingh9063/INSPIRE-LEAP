@@ -412,7 +412,10 @@ export default function MentorSection() {
                     >
                       <Share2 className="w-5 h-5 text-cyan-400" />
                     </a>
-                    <button className="ml-auto px-4 py-2 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 font-semibold text-white hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300">
+                    <button
+                      onClick={() => window.location.href = 'https://rzp.io/rzp/9tayaBb'}
+                      className="ml-auto px-4 py-2 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 font-semibold text-white hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300"
+                    >
                       Book Session
                     </button>
                   </div>
@@ -518,10 +521,16 @@ export default function MentorSection() {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 font-semibold text-white hover:shadow-lg hover:shadow-pink-500/30 transition-all duration-300">
+              <button
+                onClick={() => window.location.href = '/mentors'}
+                className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 font-semibold text-white hover:shadow-lg hover:shadow-pink-500/30 transition-all duration-300"
+              >
                 Find Your Mentor
               </button>
-              <button className="px-6 py-3 rounded-xl bg-white border border-gray-200 font-semibold text-gray-900 shadow-sm hover:bg-gray-50 transition-all duration-300">
+              <button
+                onClick={() => window.location.href = '/mentors'}
+                className="px-6 py-3 rounded-xl bg-white border border-gray-200 font-semibold text-gray-900 shadow-sm hover:bg-gray-50 transition-all duration-300"
+              >
                 View All Mentors
               </button>
             </div>

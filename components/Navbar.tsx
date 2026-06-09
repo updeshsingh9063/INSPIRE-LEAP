@@ -14,7 +14,8 @@ import {
   Award,
   Users,
   Home,
-  LogIn
+  LogIn,
+  LogOut
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -100,6 +101,8 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null)
   const [searchQuery, setSearchQuery] = useState("")
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [userName, setUserName] = useState("")
 
   useEffect(() => {
     const handleScroll = () => {
@@ -109,11 +112,28 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  useEffect(() => {
+    // Check if user is logged in from localStorage
+    const user = localStorage.getItem("user")
+    if (user) {
+      const userData = JSON.parse(user)
+      setIsLoggedIn(true)
+      setUserName(userData.name || userData.email?.split("@")[0] || "User")
+    }
+  }, [])
+
+  const handleSignOut = () => {
+    localStorage.removeItem("user")
+    localStorage.removeItem("token")
+    setIsLoggedIn(false)
+    setUserName("")
+    window.location.href = "/"
+  }
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
     if (searchQuery.trim()) {
-      console.log("Searching for:", searchQuery)
-      // Implement search functionality
+      window.location.href = `/courses?search=${encodeURIComponent(searchQuery)}`
     }
   }
 
@@ -139,8 +159,12 @@ export default function Navbar() {
             >
               <div className="relative">
                 <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-lg blur opacity-30 animate-pulse-glow" />
-                <div className="relative bg-gradient-to-br from-primary to-secondary p-2 rounded-lg">
-                  <BookOpen className="h-6 w-6 text-white" />
+                <div className="relative bg-white rounded-lg p-1">
+                  <img 
+                    src="/logo.jpeg" 
+                    alt="Inspire Leap Logo" 
+                    className="h-8 w-8 object-contain"
+                  />
                 </div>
               </div>
               <div className="flex flex-col">
@@ -215,6 +239,7 @@ export default function Navbar() {
                           <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
+                            onClick={() => window.open('https://rzp.io/rzp/9tayaBb', '_blank')}
                             className="px-4 py-2 bg-gradient-to-r from-primary to-secondary rounded-lg text-sm font-medium text-white"
                           >
                             Book Consultation
@@ -263,23 +288,48 @@ export default function Navbar() {
 
               {/* Auth Buttons */}
               <div className="flex items-center space-x-2">
-                <MotionLink
-                  href="/login"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-colors"
-                >
-                  <LogIn className="h-4 w-4" />
-                  <span>Login</span>
-                </MotionLink>
-                <MotionLink
-                  href="/register"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-4 py-2 bg-gradient-to-r from-primary to-secondary rounded-lg text-sm font-medium text-white shadow-lg shadow-primary/20"
-                >
-                  Get Started
-                </MotionLink>
+                {isLoggedIn ? (
+                  <>
+                    {/* User Avatar */}
+                    <div className="flex items-center space-x-3">
+                      <div className="flex items-center space-x-2 px-3 py-2 rounded-lg bg-white/5 border border-white/10">
+                        <div className="w-8 h-8 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center text-white font-semibold">
+                          {userName.charAt(0).toUpperCase()}
+                        </div>
+                        <span className="text-sm font-medium text-white">{userName}</span>
+                      </div>
+                      <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={handleSignOut}
+                        className="flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-colors"
+                      >
+                        <LogOut className="h-4 w-4" />
+                        <span>Sign Out</span>
+                      </motion.button>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <MotionLink
+                      href="/login"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-colors"
+                    >
+                      <LogIn className="h-4 w-4" />
+                      <span>Login</span>
+                    </MotionLink>
+                    <MotionLink
+                      href="/register"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="px-4 py-2 bg-gradient-to-r from-primary to-secondary rounded-lg text-sm font-medium text-white shadow-lg shadow-primary/20"
+                    >
+                      Get Started
+                    </MotionLink>
+                  </>
+                )}
               </div>
             </div>
 
@@ -313,8 +363,12 @@ export default function Navbar() {
               <div className="p-6">
                 <div className="flex items-center justify-between mb-8">
                   <div className="flex items-center space-x-2">
-                    <div className="bg-gradient-to-br from-primary to-secondary p-2 rounded-lg">
-                      <BookOpen className="h-6 w-6 text-white" />
+                    <div className="bg-white rounded-lg p-1">
+                      <img 
+                        src="/logo.jpeg" 
+                        alt="Inspire Leap Logo" 
+                        className="h-8 w-8 object-contain"
+                      />
                     </div>
                     <div className="flex flex-col">
                       <span className="text-lg font-bold gradient-text">
@@ -370,22 +424,47 @@ export default function Navbar() {
 
                 {/* Mobile Auth Buttons */}
                 <div className="mt-8 pt-6 border-t border-white/10 space-y-3">
-                  <MotionLink
-                    href="/login"
-                    whileTap={{ scale: 0.95 }}
-                    className="block w-full px-4 py-3 text-center rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-colors border border-white/10"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Login
-                  </MotionLink>
-                  <MotionLink
-                    href="/register"
-                    whileTap={{ scale: 0.95 }}
-                    className="block w-full px-4 py-3 text-center bg-gradient-to-r from-primary to-secondary rounded-lg text-sm font-medium text-white shadow-lg shadow-primary/20"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Get Started Free
-                  </MotionLink>
+                  {isLoggedIn ? (
+                    <>
+                      {/* User Avatar */}
+                      <div className="flex items-center space-x-3 px-4 py-3 rounded-lg bg-white/5 border border-white/10">
+                        <div className="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center text-white font-semibold">
+                          {userName.charAt(0).toUpperCase()}
+                        </div>
+                        <div className="flex-1">
+                          <div className="text-sm font-medium text-white">{userName}</div>
+                          <div className="text-xs text-gray-400">Logged in</div>
+                        </div>
+                      </div>
+                      <motion.button
+                        whileTap={{ scale: 0.95 }}
+                        onClick={handleSignOut}
+                        className="block w-full px-4 py-3 text-center rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-colors border border-white/10 flex items-center justify-center space-x-2"
+                      >
+                        <LogOut className="h-4 w-4" />
+                        <span>Sign Out</span>
+                      </motion.button>
+                    </>
+                  ) : (
+                    <>
+                      <MotionLink
+                        href="/login"
+                        whileTap={{ scale: 0.95 }}
+                        className="block w-full px-4 py-3 text-center rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-colors border border-white/10"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        Login
+                      </MotionLink>
+                      <MotionLink
+                        href="/register"
+                        whileTap={{ scale: 0.95 }}
+                        className="block w-full px-4 py-3 text-center bg-gradient-to-r from-primary to-secondary rounded-lg text-sm font-medium text-white shadow-lg shadow-primary/20"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        Get Started Free
+                      </MotionLink>
+                    </>
+                  )}
                 </div>
               </div>
             </div>

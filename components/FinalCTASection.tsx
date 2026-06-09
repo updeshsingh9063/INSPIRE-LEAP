@@ -156,15 +156,21 @@ export default function FinalCTASection() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <button className="group relative px-8 py-4 rounded-2xl bg-gradient-to-r from-primary to-secondary font-bold text-lg hover:shadow-2xl hover:shadow-primary/30 transition-all duration-300 overflow-hidden">
+            <button
+              onClick={() => window.location.href = '/courses'}
+              className="group relative px-8 py-4 rounded-2xl bg-gradient-to-r from-primary to-secondary font-bold text-lg hover:shadow-2xl hover:shadow-primary/30 transition-all duration-300 overflow-hidden"
+            >
               <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <span className="relative flex items-center gap-2">
                 Enroll Now
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
               </span>
             </button>
-            
-            <button className="px-8 py-4 rounded-2xl bg-gradient-to-br from-gray-900/50 to-black/50 backdrop-blur-sm border border-white/10 font-bold text-lg hover:border-primary/30 transition-all duration-300">
+
+            <button
+              onClick={() => window.location.href = 'https://rzp.io/rzp/9tayaBb'}
+              className="px-8 py-4 rounded-2xl bg-gradient-to-br from-gray-900/50 to-black/50 backdrop-blur-sm border border-white/10 font-bold text-lg hover:border-primary/30 transition-all duration-300"
+            >
               Book Free Consultation
             </button>
           </div>
@@ -385,15 +391,21 @@ export default function FinalCTASection() {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="group relative px-8 py-3 rounded-xl bg-gradient-to-r from-accent to-primary font-bold hover:shadow-2xl hover:shadow-accent/30 transition-all duration-300 overflow-hidden">
+              <button
+                onClick={() => window.location.href = 'https://rzp.io/rzp/9tayaBb'}
+                className="group relative px-8 py-3 rounded-xl bg-gradient-to-r from-accent to-primary font-bold hover:shadow-2xl hover:shadow-accent/30 transition-all duration-300 overflow-hidden"
+              >
                 <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <span className="relative flex items-center gap-2">
                   Claim Scholarship
                   <Zap className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
                 </span>
               </button>
-              
-              <button className="px-6 py-3 rounded-xl bg-gradient-to-br from-gray-900/50 to-black/50 backdrop-blur-sm border border-white/10 font-bold hover:border-accent/30 transition-all duration-300">
+
+              <button
+                onClick={() => window.location.href = 'https://rzp.io/rzp/9tayaBb'}
+                className="px-6 py-3 rounded-xl bg-gradient-to-br from-gray-900/50 to-black/50 backdrop-blur-sm border border-white/10 font-bold hover:border-accent/30 transition-all duration-300"
+              >
                 Talk to Advisor
               </button>
             </div>

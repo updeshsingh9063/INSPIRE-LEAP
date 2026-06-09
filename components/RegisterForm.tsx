@@ -158,8 +158,8 @@ export default function RegisterForm() {
           <div className="flex items-center space-x-3">
             <CheckCircle className="h-5 w-5 text-green-500" />
             <div>
-              <div className="font-medium text-white">Registration successful!</div>
-              <div className="text-sm text-gray-400">
+              <div className="font-medium text-gray-900">Registration successful!</div>
+              <div className="text-sm text-gray-600">
                 Welcome to Inspire Leap. Check your email for verification.
               </div>
             </div>
@@ -167,11 +167,11 @@ export default function RegisterForm() {
         </motion.div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6" suppressHydrationWarning>
         {/* Name Fields */}
         <div className="grid md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-400 mb-2">
+            <label className="block text-sm font-medium text-gray-600 mb-2">
               First Name
             </label>
             <div className="relative">
@@ -183,7 +183,7 @@ export default function RegisterForm() {
                 onChange={handleChange}
                 placeholder="Enter your first name"
                 className={cn(
-                  "w-full pl-12 pr-4 py-3 glass rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary transition-all",
+                  "w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary transition-all",
                   errors.firstName ? "border-red-500/50" : "border-transparent"
                 )}
                 disabled={isSubmitting}
@@ -202,7 +202,7 @@ export default function RegisterForm() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-400 mb-2">
+            <label className="block text-sm font-medium text-gray-600 mb-2">
               Last Name
             </label>
             <div className="relative">
@@ -214,7 +214,7 @@ export default function RegisterForm() {
                 onChange={handleChange}
                 placeholder="Enter your last name"
                 className={cn(
-                  "w-full pl-12 pr-4 py-3 glass rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary transition-all",
+                  "w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary transition-all",
                   errors.lastName ? "border-red-500/50" : "border-transparent"
                 )}
                 disabled={isSubmitting}
@@ -235,7 +235,7 @@ export default function RegisterForm() {
 
         {/* Email Field */}
         <div>
-          <label className="block text-sm font-medium text-gray-400 mb-2">
+          <label className="block text-sm font-medium text-gray-600 mb-2">
             Email Address
           </label>
           <div className="relative">
@@ -247,7 +247,7 @@ export default function RegisterForm() {
               onChange={handleChange}
               placeholder="Enter your email"
               className={cn(
-                "w-full pl-12 pr-4 py-3 glass rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary transition-all",
+                "w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary transition-all",
                 errors.email ? "border-red-500/50" : "border-transparent"
               )}
               disabled={isSubmitting}
@@ -267,7 +267,7 @@ export default function RegisterForm() {
 
         {/* Phone Field */}
         <div>
-          <label className="block text-sm font-medium text-gray-400 mb-2">
+          <label className="block text-sm font-medium text-gray-600 mb-2">
             Phone Number
           </label>
           <div className="relative">
@@ -280,7 +280,7 @@ export default function RegisterForm() {
               placeholder="Enter your 10-digit phone number"
               maxLength={10}
               className={cn(
-                "w-full pl-12 pr-4 py-3 glass rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary transition-all",
+                "w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary transition-all",
                 errors.phone ? "border-red-500/50" : "border-transparent"
               )}
               disabled={isSubmitting}
@@ -300,7 +300,7 @@ export default function RegisterForm() {
 
         {/* Education Level */}
         <div>
-          <label className="block text-sm font-medium text-gray-400 mb-2">
+          <label className="block text-sm font-medium text-gray-600 mb-2">
             Education Level
           </label>
           <div className="relative">
@@ -310,7 +310,7 @@ export default function RegisterForm() {
               value={formData.educationLevel}
               onChange={handleChange}
               className={cn(
-                "w-full pl-12 pr-4 py-3 glass rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary transition-all appearance-none",
+                "w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary transition-all appearance-none",
                 errors.educationLevel ? "border-red-500/50" : "border-transparent"
               )}
               disabled={isSubmitting}
@@ -337,7 +337,7 @@ export default function RegisterForm() {
 
         {/* Password Field */}
         <div>
-          <label className="block text-sm font-medium text-gray-400 mb-2">
+          <label className="block text-sm font-medium text-gray-600 mb-2">
             Password
           </label>
           <div className="relative">
@@ -349,7 +349,7 @@ export default function RegisterForm() {
               onChange={handleChange}
               placeholder="Create a strong password"
               className={cn(
-                "w-full pl-12 pr-12 py-3 glass rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary transition-all",
+                "w-full pl-12 pr-12 py-3 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary transition-all",
                 errors.password ? "border-red-500/50" : "border-transparent"
               )}
               disabled={isSubmitting}
@@ -357,7 +357,7 @@ export default function RegisterForm() {
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-white"
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-900"
               disabled={isSubmitting}
             >
               {showPassword ? (
@@ -384,7 +384,7 @@ export default function RegisterForm() {
 
         {/* Confirm Password Field */}
         <div>
-          <label className="block text-sm font-medium text-gray-400 mb-2">
+          <label className="block text-sm font-medium text-gray-600 mb-2">
             Confirm Password
           </label>
           <div className="relative">
@@ -396,7 +396,7 @@ export default function RegisterForm() {
               onChange={handleChange}
               placeholder="Confirm your password"
               className={cn(
-                "w-full pl-12 pr-12 py-3 glass rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary transition-all",
+                "w-full pl-12 pr-12 py-3 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary transition-all",
                 errors.confirmPassword ? "border-red-500/50" : "border-transparent"
               )}
               disabled={isSubmitting}
@@ -404,7 +404,7 @@ export default function RegisterForm() {
             <button
               type="button"
               onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-white"
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-900"
               disabled={isSubmitting}
             >
               {showConfirmPassword ? (
@@ -445,11 +445,11 @@ export default function RegisterForm() {
                   : "glass border-gray-600"
               )}>
                 {formData.agreeToTerms && (
-                  <CheckCircle className="h-4 w-4 text-white absolute top-0.5 left-0.5" />
+                  <CheckCircle className="h-4 w-4 text-gray-900 absolute top-0.5 left-0.5" />
                 )}
               </div>
             </div>
-            <div className="text-sm text-gray-400">
+            <div className="text-sm text-gray-600">
               I agree to the{" "}
               <Link href="/terms" className="text-primary hover:text-secondary">
                 Terms of Service
@@ -481,8 +481,8 @@ export default function RegisterForm() {
           className={cn(
             "w-full px-6 py-4 rounded-xl font-bold transition-all",
             isSubmitting
-              ? "bg-gray-700 text-gray-400 cursor-not-allowed"
-              : "bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90"
+              ? "bg-gray-700 text-gray-600 cursor-not-allowed"
+              : "bg-gradient-to-r from-primary to-secondary text-gray-900 hover:opacity-90"
           )}
         >
           {isSubmitting ? (
@@ -498,7 +498,7 @@ export default function RegisterForm() {
 
       {/* Already have account */}
       <div className="text-center pt-4 border-t border-white/10">
-        <p className="text-gray-400">
+        <p className="text-gray-600">
           Already have an account?{" "}
           <Link href="/login" className="text-primary hover:text-secondary font-medium">
             Sign in here

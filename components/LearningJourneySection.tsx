@@ -454,10 +454,16 @@ export default function LearningJourneySection() {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 font-semibold hover:shadow-lg hover:shadow-teal-500/30 transition-all duration-300">
+              <button
+                onClick={() => window.location.href = '/courses'}
+                className="px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 font-semibold hover:shadow-lg hover:shadow-teal-500/30 transition-all duration-300"
+              >
                 Enroll Now
               </button>
-              <button className="px-6 py-3 rounded-xl bg-gradient-to-br from-gray-900/50 to-black/50 backdrop-blur-sm border border-white/10 font-semibold hover:border-teal-500/30 transition-all duration-300">
+              <button
+                onClick={() => window.location.href = '/courses'}
+                className="px-6 py-3 rounded-xl bg-gradient-to-br from-gray-900/50 to-black/50 backdrop-blur-sm border border-white/10 font-semibold hover:border-teal-500/30 transition-all duration-300"
+              >
                 View Curriculum
               </button>
             </div>

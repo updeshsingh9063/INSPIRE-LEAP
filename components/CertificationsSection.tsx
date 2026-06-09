@@ -412,7 +412,10 @@ export default function CertificationsSection() {
                     </div>
                   </div>
                   
-                  <button className="w-full px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 font-semibold text-white hover:shadow-lg hover:shadow-amber-500/30 transition-all duration-300">
+                  <button 
+                    onClick={() => window.open('https://rzp.io/rzp/9tayaBb', '_blank')}
+                    className="w-full px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 font-semibold text-white hover:shadow-lg hover:shadow-amber-500/30 transition-all duration-300"
+                  >
                     Enroll Now
                   </button>
                 </div>
@@ -528,10 +531,16 @@ export default function CertificationsSection() {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 font-semibold text-white hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300">
+              <button
+                onClick={() => window.location.href = '/certifications'}
+                className="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 font-semibold text-white hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300"
+              >
                 View All Certifications
               </button>
-              <button className="px-6 py-3 rounded-xl bg-white border border-amber-200 text-gray-900 font-semibold shadow-sm hover:bg-amber-50 transition-all duration-300">
+              <button
+                onClick={() => window.open('https://rzp.io/rzp/9tayaBb', '_blank')}
+                className="px-6 py-3 rounded-xl bg-white border border-amber-200 text-gray-900 font-semibold shadow-sm hover:bg-amber-50 transition-all duration-300"
+              >
                 Talk to Advisor
               </button>
             </div>

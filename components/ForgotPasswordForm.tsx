@@ -187,7 +187,7 @@ export default function ForgotPasswordForm() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email address"
                 className={cn(
-                  "w-full pl-12 pr-4 py-3 glass rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary transition-all",
+                  "w-full pl-12 pr-4 py-3 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary transition-all",
                   error ? "border-red-500/50" : "border-transparent"
                 )}
                 disabled={isSubmitting}
@@ -256,7 +256,7 @@ export default function ForgotPasswordForm() {
                 placeholder="Enter 6-digit code from email"
                 maxLength={6}
                 className={cn(
-                  "w-full pl-12 pr-4 py-3 glass rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary transition-all",
+                  "w-full pl-12 pr-4 py-3 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary transition-all",
                   error ? "border-red-500/50" : "border-transparent"
                 )}
                 disabled={isSubmitting}
@@ -276,7 +276,7 @@ export default function ForgotPasswordForm() {
               onChange={handleResetChange}
               placeholder="Enter new password"
               className={cn(
-                "w-full px-4 py-3 glass rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary transition-all",
+                "w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary transition-all",
                 error ? "border-red-500/50" : "border-transparent"
               )}
               disabled={isSubmitting}
@@ -295,7 +295,7 @@ export default function ForgotPasswordForm() {
               onChange={handleResetChange}
               placeholder="Confirm new password"
               className={cn(
-                "w-full px-4 py-3 glass rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary transition-all",
+                "w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary transition-all",
                 error ? "border-red-500/50" : "border-transparent"
               )}
               disabled={isSubmitting}

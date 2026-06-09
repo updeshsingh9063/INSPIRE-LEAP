@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useRouter, useSearchParams } from "next/navigation"
 import { motion } from "framer-motion"
 import { 
   Filter,
@@ -81,35 +81,50 @@ export default function CourseFilters({
   onCertificationChange,
   onFeatureToggle,
 }: CourseFiltersProps) {
-  const [selectedCategory, setSelectedCategory] = useState("all")
-  const [selectedLevel, setSelectedLevel] = useState("all")
-  const [selectedPrice, setSelectedPrice] = useState("all")
-  const [selectedDuration, setSelectedDuration] = useState("all")
-  const [selectedCertification, setSelectedCertification] = useState("all")
-  const [selectedFeatures, setSelectedFeatures] = useState<string[]>([])
+  const router = useRouter()
+  const searchParams = useSearchParams()
+
+  const selectedCategory = searchParams.get("category") || "all"
+  const selectedLevel = searchParams.get("level") || "all"
+  const selectedPrice = searchParams.get("price") || "all"
+  const selectedDuration = searchParams.get("duration") || "all"
+  const selectedCertification = searchParams.get("certification") || "all"
+  
+  const featuresParam = searchParams.get("features")
+  const selectedFeatures = featuresParam ? featuresParam.split(",") : []
+
+  const updateParam = (key: string, value: string) => {
+    const params = new URLSearchParams(searchParams.toString())
+    if (value === "all" || value === "") {
+      params.delete(key)
+    } else {
+      params.set(key, value)
+    }
+    router.push(`/courses?${params.toString()}`, { scroll: false })
+  }
 
   const handleCategoryChange = (categoryId: string) => {
-    setSelectedCategory(categoryId)
+    updateParam("category", categoryId)
     onCategoryChange?.(categoryId)
   }
 
   const handleLevelChange = (levelId: string) => {
-    setSelectedLevel(levelId)
+    updateParam("level", levelId)
     onLevelChange?.(levelId)
   }
 
   const handlePriceChange = (priceId: string) => {
-    setSelectedPrice(priceId)
+    updateParam("price", priceId)
     onPriceChange?.(priceId)
   }
 
   const handleDurationChange = (durationId: string) => {
-    setSelectedDuration(durationId)
+    updateParam("duration", durationId)
     onDurationChange?.(durationId)
   }
 
   const handleCertificationChange = (certificationId: string) => {
-    setSelectedCertification(certificationId)
+    updateParam("certification", certificationId)
     onCertificationChange?.(certificationId)
   }
 
@@ -118,17 +133,19 @@ export default function CourseFilters({
       ? selectedFeatures.filter(id => id !== featureId)
       : [...selectedFeatures, featureId]
     
-    setSelectedFeatures(newFeatures)
+    updateParam("features", newFeatures.join(","))
     onFeatureToggle?.(featureId)
   }
 
   const clearAllFilters = () => {
-    setSelectedCategory("all")
-    setSelectedLevel("all")
-    setSelectedPrice("all")
-    setSelectedDuration("all")
-    setSelectedCertification("all")
-    setSelectedFeatures([])
+    const params = new URLSearchParams(searchParams.toString())
+    params.delete("category")
+    params.delete("level")
+    params.delete("price")
+    params.delete("duration")
+    params.delete("certification")
+    params.delete("features")
+    router.push(`/courses?${params.toString()}`, { scroll: false })
     
     onCategoryChange?.("all")
     onLevelChange?.("all")

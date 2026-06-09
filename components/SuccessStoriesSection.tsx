@@ -13,7 +13,7 @@ const successStories = [
     company: "Google",
     package: "₹42 LPA",
     image: "/api/placeholder/400/400",
-    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+    videoUrl: "/compressed-video.mp4",
     story: "From a non-tech background to landing a dream job at Google. The mentorship and hands-on projects at Inspire Leap transformed my career completely.",
     achievements: [
       { icon: Star, label: "Google L4 Offer", value: "Top 1%" },
@@ -39,7 +39,7 @@ const successStories = [
     company: "Microsoft",
     package: "₹38 LPA",
     image: "/api/placeholder/400/400",
-    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+    videoUrl: "/compressed-video.mp4",
     story: "The data science curriculum with real-world projects helped me build a strong portfolio. Got placed at Microsoft within 3 months of completing the course.",
     achievements: [
       { icon: Star, label: "Microsoft Offer", value: "Direct Hire" },
@@ -65,7 +65,7 @@ const successStories = [
     company: "Amazon",
     package: "₹45 LPA",
     image: "/api/placeholder/400/400",
-    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+    videoUrl: "/compressed-video.mp4",
     story: "The product management bootcamp gave me the strategic thinking and technical depth needed to excel at Amazon. The mentorship was invaluable.",
     achievements: [
       { icon: Star, label: "Amazon L6 Offer", value: "Leadership Role" },
@@ -91,7 +91,7 @@ const successStories = [
     company: "Adobe",
     package: "₹35 LPA",
     image: "/api/placeholder/400/400",
-    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+    videoUrl: "/compressed-video.mp4",
     story: "The design thinking approach and portfolio building workshops helped me create a standout portfolio. Got multiple offers including Adobe.",
     achievements: [
       { icon: Star, label: "Adobe Design Award", value: "Winner 2024" },
@@ -495,7 +495,10 @@ export default function SuccessStoriesSection() {
                 Join thousands of students who transformed their careers with Inspire Leap.
               </p>
             </div>
-            <button className="px-8 py-3 rounded-xl bg-gradient-to-r from-primary to-secondary font-semibold hover:shadow-lg hover:shadow-primary/30 transition-all duration-300">
+            <button
+              onClick={() => window.location.href = '/courses'}
+              className="px-8 py-3 rounded-xl bg-gradient-to-r from-primary to-secondary font-semibold hover:shadow-lg hover:shadow-primary/30 transition-all duration-300"
+            >
               Start Your Journey
             </button>
           </div>

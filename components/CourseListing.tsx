@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useSearchParams, useRouter } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import { 
   BookOpen, 
@@ -20,197 +21,7 @@ import {
 import { cn, formatCurrency } from "@/lib/utils"
 import CourseCard from "./CourseCard"
 
-const allCourses = [
-  {
-    id: 1,
-    title: "Full Stack Web Development",
-    category: "tech",
-    description: "Master MERN stack with modern frameworks and deployment",
-    duration: "6 months",
-    students: "5.2K",
-    rating: 4.8,
-    price: 29999,
-    discountedPrice: 19999,
-    instructor: "Rajesh Kumar",
-    instructorRole: "Senior SDE @ Amazon",
-    features: ["Live Sessions", "10+ Projects", "Placement Assistance", "Wipro Certification"],
-    trending: true,
-    popular: true,
-    level: "Beginner to Advanced",
-    language: "English",
-    certificate: "Wipro Certified",
-    placementRate: "95%",
-    slug: "full-stack-web-development",
-  },
-  {
-    id: 2,
-    title: "Data Science & Machine Learning",
-    category: "data",
-    description: "Complete AI/ML pipeline with real-world projects",
-    duration: "8 months",
-    students: "3.8K",
-    rating: 4.9,
-    price: 39999,
-    discountedPrice: 29999,
-    instructor: "Priya Sharma",
-    instructorRole: "Lead Data Scientist @ Google",
-    features: ["Python & R", "TensorFlow", "Kaggle Projects", "Industry Mentors"],
-    trending: true,
-    popular: true,
-    level: "Intermediate to Advanced",
-    language: "English",
-    certificate: "Google AI Certified",
-    placementRate: "92%",
-    slug: "data-science-machine-learning",
-  },
-  {
-    id: 3,
-    title: "Cloud Computing & AWS",
-    category: "cloud",
-    description: "Become AWS certified with hands-on cloud projects",
-    duration: "4 months",
-    students: "2.5K",
-    rating: 4.7,
-    price: 24999,
-    discountedPrice: 17999,
-    instructor: "Amit Patel",
-    instructorRole: "Cloud Architect @ Microsoft",
-    features: ["AWS Certified", "Real Deployments", "Cost Optimization", "Security"],
-    trending: false,
-    popular: true,
-    level: "Beginner to Intermediate",
-    language: "English",
-    certificate: "AWS Certified",
-    placementRate: "90%",
-    slug: "cloud-computing-aws",
-  },
-  {
-    id: 4,
-    title: "UI/UX Design Masterclass",
-    category: "design",
-    description: "Design thinking to prototyping with Figma",
-    duration: "3 months",
-    students: "1.8K",
-    rating: 4.6,
-    price: 19999,
-    discountedPrice: 14999,
-    instructor: "Neha Singh",
-    instructorRole: "Product Designer @ Adobe",
-    features: ["Figma Pro", "Design Systems", "User Research", "Portfolio"],
-    trending: true,
-    popular: false,
-    level: "Beginner to Advanced",
-    language: "English",
-    certificate: "Adobe Certified",
-    placementRate: "88%",
-    slug: "ui-ux-design-masterclass",
-  },
-  {
-    id: 5,
-    title: "Digital Marketing Strategy",
-    category: "business",
-    description: "Complete digital marketing funnel optimization",
-    duration: "3 months",
-    students: "2.1K",
-    rating: 4.5,
-    price: 17999,
-    discountedPrice: 12999,
-    instructor: "Vikram Mehta",
-    instructorRole: "Marketing Director @ Flipkart",
-    features: ["SEO/SEM", "Social Media", "Analytics", "Campaigns"],
-    trending: false,
-    popular: true,
-    level: "Beginner to Intermediate",
-    language: "English",
-    certificate: "Google Analytics Certified",
-    placementRate: "85%",
-    slug: "digital-marketing-strategy",
-  },
-  {
-    id: 6,
-    title: "Cybersecurity Fundamentals",
-    category: "tech",
-    description: "Network security, ethical hacking, and compliance",
-    duration: "5 months",
-    students: "1.5K",
-    rating: 4.8,
-    price: 34999,
-    discountedPrice: 24999,
-    instructor: "Sanjay Verma",
-    instructorRole: "Security Lead @ Cisco",
-    features: ["Ethical Hacking", "Network Security", "Compliance", "Certifications"],
-    trending: true,
-    popular: false,
-    level: "Intermediate to Advanced",
-    language: "English",
-    certificate: "Cisco Certified",
-    placementRate: "91%",
-    slug: "cybersecurity-fundamentals",
-  },
-  {
-    id: 7,
-    title: "Mobile App Development",
-    category: "tech",
-    description: "Build iOS & Android apps with React Native",
-    duration: "5 months",
-    students: "2.8K",
-    rating: 4.7,
-    price: 27999,
-    discountedPrice: 18999,
-    instructor: "Arjun Reddy",
-    instructorRole: "Mobile Lead @ Uber",
-    features: ["React Native", "iOS/Android", "App Store Deployment", "Performance"],
-    trending: true,
-    popular: true,
-    level: "Beginner to Advanced",
-    language: "English",
-    certificate: "React Native Certified",
-    placementRate: "89%",
-    slug: "mobile-app-development",
-  },
-  {
-    id: 8,
-    title: "DevOps Engineering",
-    category: "cloud",
-    description: "Master CI/CD, Docker, Kubernetes, and cloud infrastructure",
-    duration: "6 months",
-    students: "2.3K",
-    rating: 4.8,
-    price: 32999,
-    discountedPrice: 22999,
-    instructor: "Rahul Mehta",
-    instructorRole: "DevOps Lead @ Netflix",
-    features: ["Docker & Kubernetes", "CI/CD Pipelines", "Monitoring", "Cloud Native"],
-    trending: true,
-    popular: true,
-    level: "Intermediate to Advanced",
-    language: "English",
-    certificate: "Kubernetes Certified",
-    placementRate: "93%",
-    slug: "devops-engineering",
-  },
-  {
-    id: 9,
-    title: "Product Management",
-    category: "business",
-    description: "From ideation to launch with agile methodologies",
-    duration: "4 months",
-    students: "1.9K",
-    rating: 4.6,
-    price: 21999,
-    discountedPrice: 15999,
-    instructor: "Sonia Kapoor",
-    instructorRole: "Product Director @ Spotify",
-    features: ["Product Strategy", "User Research", "Roadmapping", "Metrics"],
-    trending: false,
-    popular: true,
-    level: "Beginner to Intermediate",
-    language: "English",
-    certificate: "Product School Certified",
-    placementRate: "87%",
-    slug: "product-management",
-  },
-]
+import { coursesData as allCourses } from "@/lib/coursesData"
 
 const sortOptions = [
   { id: "popular", label: "Most Popular" },
@@ -221,18 +32,38 @@ const sortOptions = [
 ]
 
 export default function CourseListing() {
+  const searchParams = useSearchParams()
+  const router = useRouter()
+  const searchQuery = searchParams.get("search")?.toLowerCase() || ""
+  
+  const selectedCategory = searchParams.get("category") || "all"
+  const selectedLevel = searchParams.get("level") || "all"
+  const selectedPrice = searchParams.get("price") || "all"
+
   const [courses, setCourses] = useState(allCourses)
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid")
   const [sortBy, setSortBy] = useState("popular")
   const [currentPage, setCurrentPage] = useState(1)
-  const [selectedCategory, setSelectedCategory] = useState<string>("all")
-  const [selectedLevel, setSelectedLevel] = useState<string>("all")
-  const [selectedPrice, setSelectedPrice] = useState<string>("all")
   const coursesPerPage = 9
+
+  const removeFilter = (key: string) => {
+    const params = new URLSearchParams(searchParams.toString())
+    params.delete(key)
+    router.push(`/courses?${params.toString()}`, { scroll: false })
+  }
 
   // Filter and sort courses
   useEffect(() => {
     let filtered = [...allCourses]
+
+    // Apply search filter
+    if (searchQuery) {
+      filtered = filtered.filter(course => 
+        course.title.toLowerCase().includes(searchQuery) ||
+        course.description.toLowerCase().includes(searchQuery) ||
+        course.category.toLowerCase().includes(searchQuery)
+      )
+    }
 
     // Apply category filter
     if (selectedCategory !== "all") {
@@ -279,7 +110,7 @@ export default function CourseListing() {
 
     setCourses(filtered)
     setCurrentPage(1)
-  }, [selectedCategory, selectedLevel, selectedPrice, sortBy])
+  }, [selectedCategory, selectedLevel, selectedPrice, sortBy, searchQuery])
 
   // Calculate pagination
   const indexOfLastCourse = currentPage * coursesPerPage
@@ -353,7 +184,7 @@ export default function CourseListing() {
             <span className="text-gray-400">Category:</span>
             <span className="text-white">{selectedCategory}</span>
             <button 
-              onClick={() => setSelectedCategory("all")}
+              onClick={() => removeFilter("category")}
               className="text-gray-400 hover:text-white"
             >
               ×
@@ -365,7 +196,7 @@ export default function CourseListing() {
             <span className="text-gray-400">Level:</span>
             <span className="text-white">{selectedLevel}</span>
             <button 
-              onClick={() => setSelectedLevel("all")}
+              onClick={() => removeFilter("level")}
               className="text-gray-400 hover:text-white"
             >
               ×
@@ -377,7 +208,7 @@ export default function CourseListing() {
             <span className="text-gray-400">Price:</span>
             <span className="text-white">{selectedPrice}</span>
             <button 
-              onClick={() => setSelectedPrice("all")}
+              onClick={() => removeFilter("price")}
               className="text-gray-400 hover:text-white"
             >
               ×

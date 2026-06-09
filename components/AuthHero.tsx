@@ -173,26 +173,27 @@ export default function AuthHero({ title, subtitle, features }: AuthHeroProps) {
         className="pt-6 border-t border-white/10"
       >
         <h4 className="text-sm font-medium text-white mb-4">Trusted by students from</h4>
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap items-center gap-4">
           {[
-            { name: "Google", color: "from-red-500 to-yellow-500" },
-            { name: "Microsoft", color: "from-green-500 to-blue-500" },
-            { name: "Amazon", color: "from-orange-500 to-yellow-500" },
-            { name: "Wipro", color: "from-blue-500 to-cyan-500" },
-            { name: "TCS", color: "from-indigo-500 to-purple-500" },
-            { name: "Infosys", color: "from-blue-500 to-green-500" },
+            { name: "Google", src: "/logos/google.webp" },
+            { name: "Microsoft", src: "/logos/microsoft.webp" },
+            { name: "Amazon", src: "/logos/amazon.webp" },
+            { name: "Wipro", src: "/logos/wipro.webp" },
+            { name: "TCS", src: "/logos/tcs.png" },
+            { name: "Infosys", src: "/logos/infosys.webp" },
           ].map((company, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3, delay: 0.9 + index * 0.05 }}
-              className={cn(
-                "px-4 py-2 rounded-lg text-sm font-medium",
-                `bg-gradient-to-r ${company.color} text-white`
-              )}
+              className="bg-white px-4 py-2 rounded-lg flex items-center justify-center shadow-sm"
             >
-              {company.name}
+              <img 
+                src={company.src} 
+                alt={`${company.name} logo`} 
+                className="h-6 w-auto object-contain" 
+              />
             </motion.div>
           ))}
         </div>

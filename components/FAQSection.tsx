@@ -338,13 +338,22 @@ export default function FAQSection() {
                 </div>
                 
                 <div className="space-y-3">
-                  <button className="w-full px-4 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-500 font-semibold text-white hover:shadow-lg hover:shadow-indigo-500/30 transition-all duration-300">
+                  <button
+                    onClick={() => window.open('https://rzp.io/rzp/9tayaBb', '_blank')}
+                    className="w-full px-4 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-500 font-semibold text-white hover:shadow-lg hover:shadow-indigo-500/30 transition-all duration-300"
+                  >
                     Live Chat Support
                   </button>
-                  <button className="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 text-gray-900 font-semibold shadow-sm hover:bg-gray-50 transition-all duration-300">
+                  <button
+                    onClick={() => window.open('https://rzp.io/rzp/9tayaBb', '_blank')}
+                    className="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 text-gray-900 font-semibold shadow-sm hover:bg-gray-50 transition-all duration-300"
+                  >
                     Schedule Call
                   </button>
-                  <button className="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 text-gray-900 font-semibold shadow-sm hover:bg-gray-50 transition-all duration-300">
+                  <button
+                    onClick={() => window.location.href = 'mailto:support@inspireleap.com'}
+                    className="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 text-gray-900 font-semibold shadow-sm hover:bg-gray-50 transition-all duration-300"
+                  >
                     Email Support
                   </button>
                 </div>
@@ -466,10 +475,16 @@ export default function FAQSection() {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-500 font-semibold text-white hover:shadow-lg hover:shadow-violet-500/30 transition-all duration-300">
+              <button
+                onClick={() => window.open('https://rzp.io/rzp/9tayaBb', '_blank')}
+                className="px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-500 font-semibold text-white hover:shadow-lg hover:shadow-violet-500/30 transition-all duration-300"
+              >
                 Contact Support
               </button>
-              <button className="px-6 py-3 rounded-xl bg-white border border-gray-200 text-gray-900 font-semibold shadow-sm hover:bg-gray-50 transition-all duration-300">
+              <button
+                onClick={() => window.location.href = '/faq'}
+                className="px-6 py-3 rounded-xl bg-white border border-gray-200 text-gray-900 font-semibold shadow-sm hover:bg-gray-50 transition-all duration-300"
+              >
                 View All FAQ
               </button>
             </div>

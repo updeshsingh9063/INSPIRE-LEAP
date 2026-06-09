@@ -449,6 +449,7 @@ export default function PlacementSection() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={() => window.location.href = '/placements'}
                   className="px-8 py-4 bg-gradient-to-r from-primary to-secondary rounded-xl text-lg font-semibold text-white shadow-2xl shadow-primary/30 flex items-center space-x-2"
                 >
                   <span>Apply for Placements</span>
@@ -457,6 +458,7 @@ export default function PlacementSection() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={() => window.location.href = '/placements'}
                   className="px-8 py-4 bg-white border border-gray-200 rounded-xl text-lg font-semibold text-gray-900 shadow-sm hover:bg-gray-50"
                 >
                   View Placement Statistics

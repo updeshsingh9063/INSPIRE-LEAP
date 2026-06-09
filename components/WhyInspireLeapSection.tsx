@@ -319,12 +319,17 @@ export default function WhyInspireLeapSection() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="mt-8 text-center"
           >
-            <div className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-primary to-secondary rounded-lg">
+            <motion.button
+              onClick={() => window.location.href = '/courses'}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-primary to-secondary rounded-lg"
+            >
               <TrendingUp className="h-5 w-5" />
               <span className="font-semibold text-white">
                 Start Your Career Transformation Today
               </span>
-            </div>
+            </motion.button>
           </motion.div>
         </motion.div>
       </div>

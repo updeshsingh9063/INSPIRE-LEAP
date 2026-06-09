@@ -189,6 +189,7 @@ export default function HeroSection() {
                 <motion.button
                   whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(99,102,241,0.5)" }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={() => window.location.href = '/courses'}
                   className="px-8 py-4 bg-gradient-to-r from-primary to-secondary rounded-xl text-lg font-semibold text-white shadow-2xl shadow-primary/30 flex items-center space-x-2"
                 >
                   <span>Explore Programs</span>
@@ -316,7 +317,7 @@ export default function HeroSection() {
                   {playingVideo ? (
                     <video
                       ref={videoRef}
-                      src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"
+                      src="/compressed-video.mp4"
                       className="w-full h-full object-cover"
                       controls
                       onEnded={() => stopVideo()}

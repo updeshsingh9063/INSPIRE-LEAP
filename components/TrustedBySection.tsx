@@ -151,6 +151,7 @@ export default function TrustedBySection() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => window.location.href = '/placements'}
                 className="px-6 py-3 bg-gradient-to-r from-primary to-secondary rounded-lg text-white font-medium"
               >
                 View All Success Stories

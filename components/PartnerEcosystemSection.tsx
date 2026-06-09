@@ -375,10 +375,16 @@ export default function PartnerEcosystemSection() {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500 font-semibold text-white hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-300">
+              <button
+                onClick={() => window.location.href = '/register'}
+                className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500 font-semibold text-white hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-300"
+              >
                 For Students
               </button>
-              <button className="px-6 py-3 rounded-xl bg-white border border-gray-200 font-semibold text-gray-900 shadow-sm hover:bg-gray-50 transition-all duration-300">
+              <button
+                onClick={() => window.location.href = 'https://rzp.io/rzp/9tayaBb'}
+                className="px-6 py-3 rounded-xl bg-white border border-gray-200 font-semibold text-gray-900 shadow-sm hover:bg-gray-50 transition-all duration-300"
+              >
                 For Companies
               </button>
             </div>

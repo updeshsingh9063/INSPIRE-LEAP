@@ -48,8 +48,7 @@ export default function CourseSearch() {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
     if (searchQuery.trim()) {
-      console.log("Searching for:", searchQuery)
-      // Implement actual search logic here
+      window.location.href = `/courses?search=${encodeURIComponent(searchQuery)}`
     }
   }
 

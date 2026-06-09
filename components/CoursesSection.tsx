@@ -381,6 +381,7 @@ export default function CoursesSection() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => window.location.href = '/courses'}
                 className="px-8 py-4 bg-gradient-to-r from-primary to-secondary rounded-xl text-lg font-semibold text-white shadow-2xl shadow-primary/30"
               >
                 Browse All Courses
@@ -388,6 +389,7 @@ export default function CoursesSection() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => window.location.href = 'https://rzp.io/rzp/9tayaBb'}
                 className="px-8 py-4 bg-white shadow-lg border border-gray-100 rounded-xl text-lg font-semibold text-gray-900"
               >
                 Book Free Consultation
