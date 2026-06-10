@@ -133,7 +133,7 @@ router.post('/register', express.json(), async (req: any, res: any) => {
     const token = jwt.sign(
       { userId: user.id, role: user.role },
       process.env.JWT_ACCESS_SECRET || 'secret',
-      { expiresIn: process.env.JWT_ACCESS_EXPIRES_IN || '15m' }
+      { expiresIn: (process.env.JWT_ACCESS_EXPIRES_IN || '15m') as jwt.SignOptions['expiresIn'] }
     );
 
     return res.json({
@@ -182,7 +182,7 @@ router.post('/login', express.json(), async (req: any, res: any) => {
     const token = jwt.sign(
       { userId: user.id, role: user.role },
       process.env.JWT_ACCESS_SECRET || 'secret',
-      { expiresIn: process.env.JWT_ACCESS_EXPIRES_IN || '15m' }
+      { expiresIn: (process.env.JWT_ACCESS_EXPIRES_IN || '15m') as jwt.SignOptions['expiresIn'] }
     );
 
     return res.json({
