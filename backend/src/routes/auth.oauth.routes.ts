@@ -2,6 +2,7 @@ import express from 'express';
 import passport from '../config/passport';
 import jwt from 'jsonwebtoken';
 import { PrismaClient } from '@prisma/client';
+import bcrypt from 'bcryptjs';
 
 const prisma = new PrismaClient();
 
@@ -95,6 +96,107 @@ router.post('/admin/login', express.json(), async (req: any, res: any) => {
     return res.status(401).json({ success: false, message: "Invalid admin credentials" });
   } catch (error) {
     console.error(error);
+    return res.status(500).json({ success: false, message: "Internal server error" });
+  }
+});
+
+// Standard User Registration Route
+router.post('/register', express.json(), async (req: any, res: any) => {
+  try {
+    const { firstName, lastName, email, phone, password, educationLevel } = req.body;
+
+    // Check if user exists
+    const existingUser = await prisma.user.findUnique({ where: { email } });
+    if (existingUser) {
+      return res.status(400).json({ success: false, message: "Email already registered" });
+    }
+
+    // Hash password
+    const salt = await bcrypt.genSalt(10);
+    const passwordHash = await bcrypt.hash(password, salt);
+
+    // Create user
+    const user = await prisma.user.create({
+      data: {
+        firstName,
+        lastName,
+        email,
+        phone,
+        passwordHash,
+        educationLevel,
+        role: "STUDENT",
+        authProvider: "local",
+      }
+    });
+
+    // Generate token
+    const token = jwt.sign(
+      { userId: user.id, role: user.role },
+      process.env.JWT_ACCESS_SECRET || 'secret',
+      { expiresIn: process.env.JWT_ACCESS_EXPIRES_IN || '15m' }
+    );
+
+    return res.json({
+      success: true,
+      token,
+      user: {
+        id: user.id,
+        name: user.firstName + ' ' + user.lastName,
+        email: user.email,
+        role: user.role
+      }
+    });
+  } catch (error) {
+    console.error("Registration error:", error);
+    return res.status(500).json({ success: false, message: "Failed to register user" });
+  }
+});
+
+// Standard User Login Route
+router.post('/login', express.json(), async (req: any, res: any) => {
+  try {
+    const { email, password } = req.body;
+
+    const user = await prisma.user.findUnique({ where: { email } });
+    
+    if (!user) {
+      return res.status(401).json({ success: false, message: "Invalid email or password" });
+    }
+
+    // Allow admins to login here as well just in case
+    if (user.role === "ADMIN" && user.passwordHash) {
+      // Proceed to bcrypt check
+    } else if (!user.passwordHash) {
+      return res.status(401).json({ 
+        success: false, 
+        message: "Please use Google/GitHub sign-in for this account." 
+      });
+    }
+
+    // Verify password
+    const isMatch = await bcrypt.compare(password, user.passwordHash || "");
+    if (!isMatch) {
+      return res.status(401).json({ success: false, message: "Invalid email or password" });
+    }
+
+    const token = jwt.sign(
+      { userId: user.id, role: user.role },
+      process.env.JWT_ACCESS_SECRET || 'secret',
+      { expiresIn: process.env.JWT_ACCESS_EXPIRES_IN || '15m' }
+    );
+
+    return res.json({
+      success: true,
+      token,
+      user: {
+        id: user.id,
+        name: user.firstName + ' ' + user.lastName,
+        email: user.email,
+        role: user.role
+      }
+    });
+  } catch (error) {
+    console.error("Login error:", error);
     return res.status(500).json({ success: false, message: "Internal server error" });
   }
 });

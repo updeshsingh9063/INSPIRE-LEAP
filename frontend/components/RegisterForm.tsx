@@ -104,22 +104,39 @@ export default function RegisterForm() {
     setIsSubmitting(true)
     setErrors({})
 
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000))
+    const apiBase = process.env.NEXT_PUBLIC_API_URL || ""
 
-    // In a real app, this would be an actual API call
-    console.log("Registration attempt:", formData)
-    
-    // Mock successful registration
-    setSuccess(true)
-    setIsSubmitting(false)
+    try {
+      const res = await fetch(`${apiBase}/auth/register`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          password: formData.password,
+          educationLevel: formData.educationLevel
+        })
+      })
+      const data = await res.json()
 
-    // Reset form after success
-    setTimeout(() => {
-      setSuccess(false)
-      // In a real app, you would redirect to login or dashboard
-      // router.push("/login")
-    }, 3000)
+      if (data.success) {
+        setSuccess(true)
+        localStorage.setItem("auth_token", data.token)
+        localStorage.setItem("user", JSON.stringify(data.user))
+        
+        setTimeout(() => {
+          window.location.href = "/dashboard"
+        }, 1500)
+      } else {
+        setErrors({ email: data.message || "Failed to register account" })
+      }
+    } catch (err) {
+      setErrors({ email: "Cannot connect to server. Please try again." })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {

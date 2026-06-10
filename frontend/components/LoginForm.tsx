@@ -82,9 +82,9 @@ export default function LoginForm() {
         setIsSubmitting(false)
       }
     } else {
-      // Student login — redirect to Google OAuth
+      // Student login
       try {
-        const res = await fetch(`${apiBase}/auth/admin/login`, {
+        const res = await fetch(`${apiBase}/auth/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email: formData.email, password: formData.password })
@@ -99,11 +99,10 @@ export default function LoginForm() {
             router.push("/dashboard")
           }, 1500)
         } else {
-          // Fallback: redirect to Google OAuth for student accounts
-          setApiError("Email/password login is for admins only. Please use Google sign-in below.")
+          setApiError(data.message || "Invalid email or password.")
         }
       } catch (err) {
-        setApiError("Email/password login is for admins only. Please use Google sign-in below.")
+        setApiError("Cannot connect to server. Please check your connection.")
       } finally {
         setIsSubmitting(false)
       }
