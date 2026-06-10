@@ -340,7 +340,9 @@ export default function StatisticsSection() {
               </div>
             </div>
             
-            <button className="px-6 py-3 rounded-xl bg-gradient-to-r from-primary to-secondary font-semibold hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 whitespace-nowrap">
+            <button
+              onClick={() => window.location.href = '/register'}
+              className="px-6 py-3 rounded-xl bg-gradient-to-r from-primary to-secondary font-semibold hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 whitespace-nowrap">
               Join Now
             </button>
           </div>

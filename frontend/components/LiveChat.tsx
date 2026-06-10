@@ -43,6 +43,13 @@ export default function LiveChat() {
     scrollToBottom()
   }, [messages, isOpen])
 
+  // Listen for custom event to open chat from other components (e.g. FAQ section)
+  useEffect(() => {
+    const handleOpenChat = () => setIsOpen(true)
+    window.addEventListener('open-chat', handleOpenChat)
+    return () => window.removeEventListener('open-chat', handleOpenChat)
+  }, [])
+
   const generateResponse = async (userMessage: string): Promise<string> => {
     try {
       const response = await fetch('/api/chat', {
@@ -107,12 +114,14 @@ export default function LiveChat() {
     <>
       {/* Chat Button */}
       <motion.button
+        data-chat-button
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-50 p-4 bg-gradient-to-r from-primary to-secondary rounded-full shadow-2xl shadow-primary/30 text-white"
+        className="fixed bottom-6 right-6 z-[9999] p-4 bg-gradient-to-r from-primary to-secondary rounded-full shadow-2xl shadow-primary/30 text-white"
+        style={{ display: isOpen ? 'none' : 'flex' }}
       >
         <MessageSquare className="w-6 h-6" />
       </motion.button>
@@ -124,7 +133,7 @@ export default function LiveChat() {
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
-            className="fixed bottom-24 right-6 z-50 w-96 max-w-[calc(100vw-3rem)] h-[500px] max-h-[calc(100vh-8rem)] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden"
+            className="fixed bottom-6 right-6 z-[9999] w-96 max-w-[calc(100vw-1.5rem)] h-[500px] max-h-[calc(100dvh-5rem)] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden"
           >
             {/* Header */}
             <div className="bg-gradient-to-r from-primary to-secondary p-4 flex items-center justify-between">

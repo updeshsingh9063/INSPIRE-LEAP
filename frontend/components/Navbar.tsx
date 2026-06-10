@@ -336,12 +336,13 @@ export default function Navbar() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
+              className="lg:hidden p-2 rounded-lg text-white hover:bg-white/10 transition-colors flex items-center justify-center"
+              aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? (
-                <X className="h-6 w-6" />
+                <X className="h-7 w-7" />
               ) : (
-                <Menu className="h-6 w-6" />
+                <Menu className="h-7 w-7" />
               )}
             </button>
           </div>
@@ -356,7 +357,7 @@ export default function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed inset-0 z-40 lg:hidden"
+            className="fixed inset-0 z-[9998] lg:hidden"
           >
             <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
             <div className="absolute right-0 top-0 bottom-0 w-80 glass-dark border-l border-white/10">

@@ -125,7 +125,7 @@ export default function FAQSection() {
   const currentCategory = faqCategories.find(cat => cat.id === activeCategory) || faqCategories[0];
 
   return (
-    <section className="relative py-24 overflow-hidden bg-gradient-to-b from-black via-gray-950 to-black">
+    <section id="faq-section" className="relative py-24 overflow-hidden bg-gradient-to-b from-black via-gray-950 to-black">
       {/* Animated background */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-indigo-500 to-transparent animate-pulse" />
@@ -339,13 +339,18 @@ export default function FAQSection() {
                 
                 <div className="space-y-3">
                   <button
-                    onClick={() => window.open('https://rzp.io/rzp/9tayaBb', '_blank')}
+                    onClick={() => {
+                      // Open the Inspire Leap chat widget
+                      const chatBtn = document.querySelector('[data-chat-button]') as HTMLButtonElement;
+                      if (chatBtn) chatBtn.click();
+                      else window.dispatchEvent(new CustomEvent('open-chat'));
+                    }}
                     className="w-full px-4 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-500 font-semibold text-white hover:shadow-lg hover:shadow-indigo-500/30 transition-all duration-300"
                   >
                     Live Chat Support
                   </button>
                   <button
-                    onClick={() => window.open('https://rzp.io/rzp/9tayaBb', '_blank')}
+                    onClick={() => window.location.href = 'mailto:support@inspireleap.com'}
                     className="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 text-gray-900 font-semibold shadow-sm hover:bg-gray-50 transition-all duration-300"
                   >
                     Schedule Call
@@ -476,13 +481,22 @@ export default function FAQSection() {
             
             <div className="flex flex-col sm:flex-row gap-4">
               <button
-                onClick={() => window.open('https://rzp.io/rzp/9tayaBb', '_blank')}
+                onClick={() => {
+                  const chatBtn = document.querySelector('[data-chat-button]') as HTMLButtonElement;
+                  if (chatBtn) chatBtn.click();
+                  else window.dispatchEvent(new CustomEvent('open-chat'));
+                }}
                 className="px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-500 font-semibold text-white hover:shadow-lg hover:shadow-violet-500/30 transition-all duration-300"
               >
                 Contact Support
               </button>
               <button
-                onClick={() => window.location.href = '/faq'}
+                onClick={() => {
+                  // Scroll to FAQ section on the page instead of going to /faq (which doesn't exist)
+                  const faqSection = document.getElementById('faq-section');
+                  if (faqSection) faqSection.scrollIntoView({ behavior: 'smooth' });
+                  else window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
                 className="px-6 py-3 rounded-xl bg-white border border-gray-200 text-gray-900 font-semibold shadow-sm hover:bg-gray-50 transition-all duration-300"
               >
                 View All FAQ

@@ -55,9 +55,11 @@ export default function LoginForm() {
     setIsSubmitting(true)
     setErrors({})
 
+    const apiBase = process.env.NEXT_PUBLIC_API_URL || ""
+
     if (isAdminLogin) {
       try {
-        const res = await fetch("http://localhost:5000/api/auth/admin/login", {
+        const res = await fetch(`${apiBase}/auth/admin/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email: formData.email, password: formData.password })
@@ -75,16 +77,36 @@ export default function LoginForm() {
           setApiError(data.message || "Invalid admin credentials")
         }
       } catch (err) {
-        setApiError("Failed to connect to server")
+        setApiError("Cannot connect to server. Please check your connection and try again.")
       } finally {
         setIsSubmitting(false)
       }
     } else {
-      // Standard Student/User Login using OAuth
-      // Normally they click the Google/Github buttons above the form
-      // If they try to use this local form, we show a message (since local auth isn't fully built for regular users yet)
-      setApiError("Please use Google sign-in for standard user accounts.")
-      setIsSubmitting(false)
+      // Student login — redirect to Google OAuth
+      try {
+        const res = await fetch(`${apiBase}/auth/admin/login`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: formData.email, password: formData.password })
+        })
+        const data = await res.json()
+
+        if (data.success) {
+          localStorage.setItem("auth_token", data.token)
+          localStorage.setItem("user", JSON.stringify(data.user))
+          setSuccess(true)
+          setTimeout(() => {
+            router.push("/dashboard")
+          }, 1500)
+        } else {
+          // Fallback: redirect to Google OAuth for student accounts
+          setApiError("Email/password login is for admins only. Please use Google sign-in below.")
+        }
+      } catch (err) {
+        setApiError("Email/password login is for admins only. Please use Google sign-in below.")
+      } finally {
+        setIsSubmitting(false)
+      }
     }
   }
 
