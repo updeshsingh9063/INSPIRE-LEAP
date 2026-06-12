@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { motion } from "framer-motion"
 import { 
   User, 
@@ -17,6 +18,7 @@ import { cn } from "@/lib/utils"
 import Link from "next/link"
 
 export default function RegisterForm() {
+  const router = useRouter()
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
