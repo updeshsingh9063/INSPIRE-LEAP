@@ -166,7 +166,7 @@ export default function CourseDetail({ course }: CourseDetailProps) {
             <div className="text-gray-600 text-sm">Watch a sample lesson</div>
           </div>
         </div>
-        <div className="absolute bottom-6 left-6 right-6 flex justify-between items-center">
+        <div className="hidden sm:flex absolute bottom-6 left-6 right-6 justify-between items-center">
           <div className="flex items-center space-x-4">
             <button className="px-4 py-2 bg-white/80 backdrop-blur border border-gray-200 rounded-lg text-gray-900 hover:bg-white transition-colors flex items-center space-x-2 shadow-sm">
               <Download className="h-4 w-4" />
@@ -182,6 +182,23 @@ export default function CourseDetail({ course }: CourseDetailProps) {
           </div>
         </div>
       </motion.div>
+
+      {/* Mobile Video Actions */}
+      <div className="flex sm:hidden flex-col gap-3">
+        <div className="flex justify-center items-center text-sm font-medium text-gray-700 bg-white px-3 py-2.5 rounded-lg border border-gray-200 w-full shadow-sm">
+          {course.duration} • {course.language} • {course.certificate}
+        </div>
+        <div className="flex items-center gap-3 w-full">
+          <button className="flex-1 py-2.5 bg-white border border-gray-200 rounded-lg text-gray-900 font-bold hover:bg-gray-50 transition-colors flex justify-center items-center space-x-2 shadow-sm">
+            <Download className="h-4 w-4" />
+            <span className="text-sm">Syllabus</span>
+          </button>
+          <button className="flex-1 py-2.5 bg-white border border-gray-200 rounded-lg text-gray-900 font-bold hover:bg-gray-50 transition-colors flex justify-center items-center space-x-2 shadow-sm">
+            <Share2 className="h-4 w-4" />
+            <span className="text-sm">Share</span>
+          </button>
+        </div>
+      </div>
 
       {/* Detailed Description */}
       <motion.div

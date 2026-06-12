@@ -84,8 +84,8 @@ export default function CourseSearch() {
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search for courses, skills, or instructors..."
-            className="w-full pl-12 pr-24 py-4 glass rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary"
+            placeholder="Search courses, skills, instructors..."
+            className="w-full pl-10 sm:pl-12 pr-[120px] sm:pr-40 py-4 glass rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary truncate"
           />
           <div className="absolute right-2 top-1/2 transform -translate-y-1/2 flex items-center space-x-2">
             {hasActiveSearch && (
