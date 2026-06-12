@@ -44,11 +44,11 @@ export default function CourseCurriculum({ curriculum }: CourseCurriculumProps) 
   const totalTopics = curriculum.reduce((total, module) => total + module.topics.length, 0)
 
   return (
-    <div className="glass rounded-2xl p-8">
+    <div className="bg-white rounded-2xl p-8 border border-gray-100 shadow-lg">
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h2 className="text-2xl font-bold text-white mb-2">Course Curriculum</h2>
-          <div className="flex items-center space-x-6 text-gray-400">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">Course Curriculum</h2>
+          <div className="flex items-center space-x-6 text-gray-600">
             <div className="flex items-center">
               <BookOpen className="h-4 w-4 mr-2" />
               <span>{curriculum.length} Modules</span>
@@ -63,7 +63,7 @@ export default function CourseCurriculum({ curriculum }: CourseCurriculumProps) 
             </div>
           </div>
         </div>
-        <button className="px-4 py-2 glass rounded-lg text-white hover:bg-white/10 transition-colors text-sm">
+        <button className="px-4 py-2 bg-gray-100 border border-gray-200 rounded-lg text-gray-900 hover:bg-gray-200 transition-colors text-sm font-medium">
           Download Syllabus
         </button>
       </div>
@@ -77,8 +77,8 @@ export default function CourseCurriculum({ curriculum }: CourseCurriculumProps) 
             <div
               key={module.module}
               className={cn(
-                "rounded-xl overflow-hidden transition-all duration-300",
-                isExpanded ? "glass" : "bg-white/5"
+                "rounded-xl overflow-hidden transition-all duration-300 border border-gray-200",
+                isExpanded ? "bg-white shadow-md" : "bg-gray-50 hover:bg-gray-100"
               )}
             >
               {/* Module Header */}
@@ -106,10 +106,10 @@ export default function CourseCurriculum({ curriculum }: CourseCurriculumProps) 
                   </div>
 
                   <div>
-                    <h3 className="text-lg font-semibold text-white">
+                    <h3 className="text-lg font-bold text-gray-900">
                       Module {module.module}: {module.title}
                     </h3>
-                    <div className="flex items-center space-x-4 text-sm text-gray-400 mt-1">
+                    <div className="flex items-center space-x-4 text-sm text-gray-500 mt-1">
                       <div className="flex items-center">
                         <Clock className="h-3 w-3 mr-1" />
                         {module.duration}
@@ -129,9 +129,9 @@ export default function CourseCurriculum({ curriculum }: CourseCurriculumProps) 
                     </div>
                   )}
                   {isExpanded ? (
-                    <ChevronUp className="h-5 w-5 text-gray-400" />
+                    <ChevronUp className="h-5 w-5 text-gray-500" />
                   ) : (
-                    <ChevronDown className="h-5 w-5 text-gray-400" />
+                    <ChevronDown className="h-5 w-5 text-gray-500" />
                   )}
                 </div>
               </button>
@@ -146,8 +146,8 @@ export default function CourseCurriculum({ curriculum }: CourseCurriculumProps) 
                     transition={{ duration: 0.3 }}
                     className="px-6 pb-6"
                   >
-                    <div className="pt-6 border-t border-white/10">
-                      <h4 className="text-sm font-medium text-white mb-4">Topics Covered:</h4>
+                    <div className="pt-6 border-t border-gray-200">
+                      <h4 className="text-sm font-bold text-gray-900 mb-4">Topics Covered:</h4>
                       <div className="grid md:grid-cols-2 gap-3">
                         {module.topics.map((topic, index) => {
                           const isTopicCompleted = isCompleted && index < 3 // Mock: first 3 topics completed
@@ -155,10 +155,10 @@ export default function CourseCurriculum({ curriculum }: CourseCurriculumProps) 
                             <div
                               key={index}
                               className={cn(
-                                "flex items-center justify-between p-3 rounded-lg transition-colors",
+                                "flex items-center justify-between p-3 rounded-lg transition-colors border",
                                 isTopicCompleted
-                                  ? "bg-gradient-to-r from-green-500/10 to-emerald-500/10"
-                                  : "bg-white/5 hover:bg-white/10"
+                                  ? "bg-green-50 border-green-100"
+                                  : "bg-white border-gray-100 hover:bg-gray-50"
                               )}
                             >
                               <div className="flex items-center space-x-3">
@@ -168,8 +168,8 @@ export default function CourseCurriculum({ curriculum }: CourseCurriculumProps) 
                                   <PlayCircle className="h-4 w-4 text-gray-500" />
                                 )}
                                 <span className={cn(
-                                  "text-sm",
-                                  isTopicCompleted ? "text-green-400" : "text-gray-400"
+                                  "text-sm font-medium",
+                                  isTopicCompleted ? "text-green-700" : "text-gray-700"
                                 )}>
                                   {topic}
                                 </span>
@@ -189,18 +189,18 @@ export default function CourseCurriculum({ curriculum }: CourseCurriculumProps) 
                     </div>
 
                     {/* Module Resources */}
-                    <div className="mt-6 pt-6 border-t border-white/10">
-                      <h4 className="text-sm font-medium text-white mb-4">Resources:</h4>
+                    <div className="mt-6 pt-6 border-t border-gray-200">
+                      <h4 className="text-sm font-bold text-gray-900 mb-4">Resources:</h4>
                       <div className="flex flex-wrap gap-2">
-                        <button className="px-4 py-2 glass rounded-lg text-gray-400 hover:text-white transition-colors text-sm flex items-center space-x-2">
+                        <button className="px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors text-sm flex items-center space-x-2 font-medium">
                           <FileText className="h-4 w-4" />
                           <span>Lecture Notes</span>
                         </button>
-                        <button className="px-4 py-2 glass rounded-lg text-gray-400 hover:text-white transition-colors text-sm flex items-center space-x-2">
+                        <button className="px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors text-sm flex items-center space-x-2 font-medium">
                           <FileText className="h-4 w-4" />
                           <span>Code Examples</span>
                         </button>
-                        <button className="px-4 py-2 glass rounded-lg text-gray-400 hover:text-white transition-colors text-sm flex items-center space-x-2">
+                        <button className="px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors text-sm flex items-center space-x-2 font-medium">
                           <FileText className="h-4 w-4" />
                           <span>Assignment PDF</span>
                         </button>
@@ -215,12 +215,12 @@ export default function CourseCurriculum({ curriculum }: CourseCurriculumProps) 
       </div>
 
       {/* Progress Bar */}
-      <div className="mt-8 pt-8 border-t border-white/10">
+      <div className="mt-8 pt-8 border-t border-gray-200">
         <div className="flex items-center justify-between mb-3">
-          <div className="text-sm font-medium text-white">Your Progress</div>
-          <div className="text-sm text-gray-400">33% Complete</div>
+          <div className="text-sm font-bold text-gray-900">Your Progress</div>
+          <div className="text-sm font-medium text-gray-600">33% Complete</div>
         </div>
-        <div className="h-2 glass rounded-full overflow-hidden">
+        <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
           <motion.div
             initial={{ width: 0 }}
             animate={{ width: "33%" }}
@@ -235,8 +235,8 @@ export default function CourseCurriculum({ curriculum }: CourseCurriculumProps) 
       </div>
 
       {/* Learning Path */}
-      <div className="mt-8 pt-8 border-t border-white/10">
-        <h3 className="text-lg font-semibold text-white mb-4">Learning Path</h3>
+      <div className="mt-8 pt-8 border-t border-gray-200">
+        <h3 className="text-lg font-bold text-gray-900 mb-4">Learning Path</h3>
         <div className="relative">
           {/* Timeline */}
           <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-secondary to-transparent" />
@@ -255,20 +255,20 @@ export default function CourseCurriculum({ curriculum }: CourseCurriculumProps) 
                 )} />
 
                 <div className={cn(
-                  "p-4 rounded-xl",
+                  "p-4 rounded-xl border",
                   module.module <= 2
-                    ? "bg-gradient-to-r from-green-500/10 to-emerald-500/10"
+                    ? "bg-green-50 border-green-100"
                     : module.module === 3
-                    ? "glass"
-                    : "bg-white/5"
+                    ? "bg-white border-primary/20 shadow-sm"
+                    : "bg-gray-50 border-gray-200"
                 )}>
                   <div className="flex items-center justify-between mb-2">
-                    <h4 className="font-medium text-white">
+                    <h4 className="font-bold text-gray-900">
                       Week {index + 1}: {module.title}
                     </h4>
-                    <span className="text-xs text-gray-400">{module.duration}</span>
+                    <span className="text-xs font-medium text-gray-500">{module.duration}</span>
                   </div>
-                  <p className="text-sm text-gray-400">
+                  <p className="text-sm text-gray-600">
                     {module.topics.slice(0, 2).join(", ")}...
                   </p>
                   <div className="flex items-center space-x-2 mt-3">
@@ -280,12 +280,12 @@ export default function CourseCurriculum({ curriculum }: CourseCurriculumProps) 
                       <Lock className="h-4 w-4 text-gray-600" />
                     )}
                     <span className={cn(
-                      "text-xs",
+                      "text-xs font-bold",
                       module.module <= 2
-                        ? "text-green-400"
+                        ? "text-green-600"
                         : module.module === 3
                         ? "text-primary"
-                        : "text-gray-500"
+                        : "text-gray-600"
                     )}>
                       {module.module <= 2
                         ? "Completed"

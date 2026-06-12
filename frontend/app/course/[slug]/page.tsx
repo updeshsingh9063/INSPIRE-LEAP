@@ -29,7 +29,7 @@ export default async function CourseDetailPage({ params }: CourseDetailPageProps
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-950 to-black">
+    <div className="min-h-screen bg-gray-50">
       <Navbar />
       
       <main className="pt-24 pb-20">
@@ -59,31 +59,31 @@ export default async function CourseDetailPage({ params }: CourseDetailPageProps
 
             {/* Right Column - Course Card & Related */}
             <div className="space-y-8">
-              <div className="glass rounded-2xl p-6 lg:sticky lg:top-24">
+              <div className="bg-white rounded-2xl p-6 lg:sticky lg:top-24 border border-gray-100 shadow-xl">
                 <div className="text-center mb-6">
                   <div className="flex items-center justify-center space-x-2 mb-4">
-                    <span className="text-3xl font-bold text-white">
+                    <span className="text-3xl font-bold text-gray-900">
                       ₹{course.discountedPrice.toLocaleString()}
                     </span>
                     <span className="text-xl text-gray-400 line-through">
                       ₹{course.price.toLocaleString()}
                     </span>
-                    <span className="px-3 py-1 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-sm font-medium rounded-full">
+                    <span className="px-3 py-1 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-sm font-bold rounded-full shadow-sm">
                       {Math.round(((course.price - course.discountedPrice) / course.price) * 100)}% OFF
                     </span>
                   </div>
-                  <div className="text-sm text-gray-400 mb-6">
+                  <div className="text-sm font-medium text-gray-600 mb-6">
                     Limited time offer. Enrollment ends in 3 days.
                   </div>
                 </div>
 
                 <CourseActionButtons />
 
-                <div className="mt-8 pt-8 border-t border-white/10">
-                  <h4 className="text-sm font-medium text-white mb-4">This course includes:</h4>
+                <div className="mt-8 pt-8 border-t border-gray-200">
+                  <h4 className="text-sm font-bold text-gray-900 mb-4">This course includes:</h4>
                   <ul className="space-y-3">
                     {course.features.map((feature, index) => (
-                      <li key={index} className="flex items-center text-sm text-gray-400">
+                      <li key={index} className="flex items-center text-sm text-gray-700">
                         <div className="h-2 w-2 rounded-full bg-primary mr-3" />
                         {feature}
                       </li>

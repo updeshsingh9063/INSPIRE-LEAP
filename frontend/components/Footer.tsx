@@ -6,33 +6,17 @@ import { useState } from "react";
 import Link from "next/link";
 
 const footerLinks = {
-  company: [
-    { label: "About Us", href: "/about" },
-    { label: "Careers", href: "/careers" },
-    { label: "Press", href: "/press" },
-    { label: "Blog", href: "/blog" },
-    { label: "Contact", href: "/contact" },
-  ],
-  courses: [
+  explore: [
     { label: "All Courses", href: "/courses" },
-    { label: "Technology", href: "/courses/technology" },
-    { label: "Business", href: "/courses/business" },
-    { label: "Design", href: "/courses/design" },
-    { label: "Data Science", href: "/courses/data-science" },
-  ],
-  resources: [
-    { label: "Success Stories", href: "/success-stories" },
-    { label: "Certifications", href: "/certifications" },
+    { label: "Internships", href: "/internships" },
     { label: "Mentors", href: "/mentors" },
     { label: "Placements", href: "/placements" },
-    { label: "Scholarships", href: "/scholarships" },
+    { label: "Certifications", href: "/certifications" },
   ],
   legal: [
-    { label: "Privacy Policy", href: "/privacy" },
-    { label: "Terms of Service", href: "/terms" },
-    { label: "Cookie Policy", href: "/cookies" },
-    { label: "Refund Policy", href: "/refund" },
-    { label: "GDPR Compliance", href: "/gdpr" },
+    { label: "Privacy Policy", href: "#" },
+    { label: "Terms of Service", href: "#" },
+    { label: "Refund Policy", href: "#" },
   ],
 };
 
@@ -147,11 +131,11 @@ export default function Footer() {
           </div>
 
           {/* Links columns */}
-          <div className="col-span-1 lg:col-span-3 grid grid-cols-2 sm:grid-cols-3 gap-8">
+          <div className="col-span-1 lg:col-span-3 grid grid-cols-2 sm:grid-cols-2 gap-8">
             <div>
-              <h3 className="text-lg font-bold text-white mb-4">Company</h3>
+              <h3 className="text-lg font-bold text-white mb-4">Explore</h3>
               <ul className="space-y-3">
-              {footerLinks.company.map((link, index) => (
+              {footerLinks.explore.map((link, index) => (
                 <motion.li
                   key={index}
                   initial={{ opacity: 0, x: -10 }}
@@ -172,38 +156,15 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-lg font-bold text-white mb-4">Courses</h3>
+            <h3 className="text-lg font-bold text-white mb-4">Legal</h3>
             <ul className="space-y-3">
-              {footerLinks.courses.map((link, index) => (
+              {footerLinks.legal.map((link, index) => (
                 <motion.li
                   key={index}
                   initial={{ opacity: 0, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.05 + 0.1 }}
-                >
-                  <Link
-                    href={link.href}
-                    className="text-gray-400 hover:text-primary transition-colors flex items-center gap-2 group"
-                  >
-                    <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    {link.label}
-                  </Link>
-                </motion.li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-bold text-white mb-4">Resources</h3>
-            <ul className="space-y-3">
-              {footerLinks.resources.map((link, index) => (
-                <motion.li
-                  key={index}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.05 + 0.2 }}
                 >
                   <Link
                     href={link.href}
