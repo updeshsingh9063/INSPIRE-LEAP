@@ -39,6 +39,7 @@ interface CourseDetailProps {
     certificate: string
     placementRate: string
     slug: string
+    videoUrl?: string
     prerequisites: string[]
     learningOutcomes: string[]
     trending?: boolean
@@ -177,36 +178,45 @@ export default function CourseDetail({ course }: CourseDetailProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="relative aspect-video rounded-2xl overflow-hidden bg-gray-100 border border-gray-200"
+        className="relative rounded-2xl overflow-hidden bg-black border border-gray-200 shadow-xl"
       >
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center">
-            <div className="h-20 w-20 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center mx-auto mb-4 shadow-lg shadow-primary/30">
-              <PlayCircle className="h-10 w-10 text-white" />
+        {course.videoUrl ? (
+          <video
+            controls
+            className="w-full aspect-video"
+            poster=""
+            preload="metadata"
+          >
+            <source src={course.videoUrl} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        ) : (
+          <div className="aspect-video flex items-center justify-center bg-gray-100">
+            <div className="text-center">
+              <div className="h-20 w-20 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center mx-auto mb-4 shadow-lg shadow-primary/30">
+                <PlayCircle className="h-10 w-10 text-white" />
+              </div>
+              <div className="text-gray-900 text-lg font-bold">Course Preview</div>
+              <div className="text-gray-600 text-sm">Video coming soon</div>
             </div>
-            <div className="text-gray-900 text-lg font-bold">Course Preview</div>
-            <div className="text-gray-600 text-sm">Watch a sample lesson</div>
           </div>
-        </div>
-        <div className="hidden sm:flex absolute bottom-6 left-6 right-6 justify-between items-center">
-          <div className="flex items-center space-x-4">
+        )}
+        <div className="hidden sm:flex absolute bottom-4 left-4 right-4 justify-between items-center pointer-events-none">
+          <div className="flex items-center space-x-3 pointer-events-auto">
             <button 
               onClick={handleDownloadSyllabus}
-              className="px-4 py-2 bg-white/80 backdrop-blur border border-gray-200 rounded-lg text-gray-900 hover:bg-white transition-colors flex items-center space-x-2 shadow-sm"
+              className="px-3 py-1.5 bg-black/60 backdrop-blur border border-white/20 rounded-lg text-white hover:bg-black/80 transition-colors flex items-center space-x-2 shadow-sm"
             >
               <Download className="h-4 w-4" />
               <span className="text-sm font-medium">Syllabus</span>
             </button>
             <button 
               onClick={handleShare}
-              className="px-4 py-2 bg-white/80 backdrop-blur border border-gray-200 rounded-lg text-gray-900 hover:bg-white transition-colors flex items-center space-x-2 shadow-sm"
+              className="px-3 py-1.5 bg-black/60 backdrop-blur border border-white/20 rounded-lg text-white hover:bg-black/80 transition-colors flex items-center space-x-2 shadow-sm"
             >
               <Share2 className="h-4 w-4" />
               <span className="text-sm font-medium">Share</span>
             </button>
-          </div>
-          <div className="text-sm font-medium text-gray-700 bg-white/80 backdrop-blur px-3 py-1.5 rounded-lg border border-gray-200">
-            {course.duration} • {course.language} • {course.certificate}
           </div>
         </div>
       </motion.div>

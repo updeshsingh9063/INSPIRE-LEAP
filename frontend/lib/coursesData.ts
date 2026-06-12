@@ -29,6 +29,7 @@ export const coursesData = [
     "certificate": "Wipro Certified",
     "placementRate": "95%",
     "slug": "full-stack-web-development",
+    "videoUrl": "/videos/full-stack-development.mp4",
     "prerequisites": [
       "Basic programming knowledge",
       "Familiarity with HTML/CSS",
@@ -170,6 +171,7 @@ export const coursesData = [
     "certificate": "Google AI Certified",
     "placementRate": "92%",
     "slug": "data-science-machine-learning",
+    "videoUrl": "/videos/data-science-machine-learning.mp4",
     "prerequisites": [
       "Basic Python knowledge",
       "Understanding of statistics",
@@ -294,6 +296,7 @@ export const coursesData = [
     "certificate": "AWS Certified",
     "placementRate": "90%",
     "slug": "cloud-computing-aws",
+    "videoUrl": "/videos/cloud-computing-and-aws.mp4",
     "prerequisites": [
       "Basic Linux knowledge",
       "Understanding of networking",
@@ -369,6 +372,7 @@ export const coursesData = [
     "certificate": "Adobe Certified",
     "placementRate": "88%",
     "slug": "ui-ux-design-masterclass",
+    "videoUrl": "/videos/ui-ux-design.mp4",
     "prerequisites": [
       "No prior experience required",
       "Creativity and passion for design"
@@ -433,6 +437,7 @@ export const coursesData = [
     "certificate": "Google Analytics Certified",
     "placementRate": "85%",
     "slug": "digital-marketing-strategy",
+    "videoUrl": "/videos/digital-marketing-strategy.mp4",
     "prerequisites": [
       "Basic internet knowledge"
     ],
@@ -495,6 +500,7 @@ export const coursesData = [
     "certificate": "Cisco Certified",
     "placementRate": "91%",
     "slug": "cybersecurity-fundamentals",
+    "videoUrl": "/videos/cybersecurity-fundamentals.mp4",
     "prerequisites": [
       "Networking basics",
       "Linux fundamentals"
@@ -558,6 +564,7 @@ export const coursesData = [
     "certificate": "React Native Certified",
     "placementRate": "89%",
     "slug": "mobile-app-development",
+    "videoUrl": "/videos/mobile-app-development.mp4",
     "prerequisites": [
       "JavaScript knowledge",
       "React basics"
@@ -621,6 +628,7 @@ export const coursesData = [
     "certificate": "Kubernetes Certified",
     "placementRate": "93%",
     "slug": "devops-engineering",
+    "videoUrl": "/videos/devops-engineering.mp4",
     "prerequisites": [
       "Basic Linux knowledge",
       "Understanding of networking"
@@ -684,6 +692,7 @@ export const coursesData = [
     "certificate": "Product School Certified",
     "placementRate": "87%",
     "slug": "product-management",
+    "videoUrl": "/videos/product-management.mp4",
     "prerequisites": [
       "No prior experience required"
     ],
