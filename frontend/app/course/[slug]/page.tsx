@@ -7,6 +7,7 @@ import CourseInstructor from "@/components/CourseInstructor"
 import CourseCurriculum from "@/components/CourseCurriculum"
 import CourseReviews from "@/components/CourseReviews"
 import CourseActionButtons from "@/components/CourseActionButtons"
+import AuthGuard from "@/components/AuthGuard"
 
 import { coursesData as courses } from "@/lib/coursesData"
 
@@ -29,12 +30,13 @@ export default async function CourseDetailPage({ params }: CourseDetailPageProps
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Navbar />
-      
-      <main className="pt-24 pb-20">
-        <div className="container mx-auto px-4 md:px-6">
-          {/* Course Detail Section */}
+    <AuthGuard>
+      <div className="min-h-screen bg-gray-50">
+        <Navbar />
+        
+        <main className="pt-24 pb-20">
+          <div className="container mx-auto px-4 md:px-6">
+            {/* Course Detail Section */}
           <CourseDetail course={course} />
 
           <div className="grid lg:grid-cols-3 gap-8 mt-12">
@@ -96,10 +98,11 @@ export default async function CourseDetailPage({ params }: CourseDetailPageProps
             </div>
           </div>
         </div>
-      </main>
+        </main>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </AuthGuard>
   )
 }
 

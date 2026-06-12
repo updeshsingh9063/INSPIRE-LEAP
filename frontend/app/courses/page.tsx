@@ -5,6 +5,7 @@ import CourseListing from "@/components/CourseListing"
 import CourseFilters from "@/components/CourseFilters"
 import CourseSearch from "@/components/CourseSearch"
 import { Skeleton } from "@/components/ui/skeleton"
+import AuthGuard from "@/components/AuthGuard"
 
 export const metadata = {
   title: "Premium Courses | Inspire Leap - Wipro Partner Program",
@@ -13,10 +14,11 @@ export const metadata = {
 
 export default function CoursesPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-950 to-black">
-      <Navbar />
-      
-      <main className="pt-24 pb-20">
+    <AuthGuard>
+      <div className="min-h-screen bg-gradient-to-b from-gray-950 to-black">
+        <Navbar />
+        
+        <main className="pt-24 pb-20">
         <div className="container mx-auto px-4 md:px-6">
           {/* Page Header */}
           <div className="text-center mb-12">
@@ -54,8 +56,9 @@ export default function CoursesPage() {
         </div>
       </main>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </AuthGuard>
   )
 }
 
