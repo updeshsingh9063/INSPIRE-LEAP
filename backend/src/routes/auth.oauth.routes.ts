@@ -167,14 +167,24 @@ router.post('/login', express.json(), async (req: any, res: any) => {
     if (user.role === "ADMIN" && user.passwordHash) {
       // Proceed to bcrypt check
     } else if (!user.passwordHash) {
+      if (user.role === "ADMIN") {
+         return res.status(401).json({ 
+          success: false, 
+          message: "Please use the Admin Access tab to login." 
+        });
+      }
       return res.status(401).json({ 
         success: false, 
         message: "Please use Google/GitHub sign-in for this account." 
       });
     }
 
-    // Verify password
-    const isMatch = await bcrypt.compare(password, user.passwordHash || "");
+    // Verify password safely
+    let isMatch = false;
+    if (user.passwordHash) {
+      isMatch = await bcrypt.compare(password, user.passwordHash);
+    }
+    
     if (!isMatch) {
       return res.status(401).json({ success: false, message: "Invalid email or password" });
     }
