@@ -33,13 +33,13 @@ export default function CourseActionButtons() {
       </button>
       <button
         onClick={handleWishlist}
-        className="w-full px-6 py-4 glass text-white rounded-xl font-medium hover:bg-white/10 transition-colors"
+        className="w-full px-6 py-4 bg-gray-100 border border-gray-200 text-gray-900 rounded-xl font-bold hover:bg-gray-200 transition-colors shadow-sm"
       >
         Add to Wishlist
       </button>
       <button
         onClick={handlePreview}
-        className="w-full px-6 py-4 glass text-white rounded-xl font-medium hover:bg-white/10 transition-colors"
+        className="w-full px-6 py-4 bg-gray-100 border border-gray-200 text-gray-900 rounded-xl font-bold hover:bg-gray-200 transition-colors shadow-sm"
       >
         Try Free Preview
       </button>

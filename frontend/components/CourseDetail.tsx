@@ -57,10 +57,10 @@ export default function CourseDetail({ course }: CourseDetailProps) {
       {/* Course Header */}
       <div className="space-y-6">
         <div className="flex flex-wrap gap-2">
-          <span className="px-4 py-2 bg-gradient-to-r from-primary/20 to-secondary/20 text-primary text-sm font-medium rounded-full">
+          <span className="px-4 py-2 bg-primary/10 text-primary text-sm font-bold rounded-full">
             {course.category}
           </span>
-          <span className="px-4 py-2 glass text-gray-400 text-sm font-medium rounded-full">
+          <span className="px-4 py-2 bg-gray-100 text-gray-700 text-sm font-medium rounded-full border border-gray-200">
             {course.level}
           </span>
           {course.trending && (
@@ -79,7 +79,7 @@ export default function CourseDetail({ course }: CourseDetailProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-4xl md:text-5xl lg:text-6xl font-bold text-white"
+          className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900"
         >
           {course.title}
         </motion.h1>
@@ -88,7 +88,7 @@ export default function CourseDetail({ course }: CourseDetailProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-xl text-gray-400"
+          className="text-xl text-gray-600"
         >
           {course.description}
         </motion.p>

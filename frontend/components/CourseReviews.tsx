@@ -112,14 +112,14 @@ export default function CourseReviews({
   }
 
   return (
-    <div className="glass rounded-2xl p-8">
+    <div className="bg-white rounded-2xl p-8 border border-gray-100 shadow-lg">
       {/* Header */}
       <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 mb-8">
         <div>
-          <h2 className="text-2xl font-bold text-white mb-2">Student Reviews</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">Student Reviews</h2>
           <div className="flex items-center space-x-4">
             <div className="flex items-center">
-              <div className="text-3xl font-bold text-white mr-2">{averageRating}</div>
+              <div className="text-3xl font-bold text-gray-900 mr-2">{averageRating}</div>
               <div className="flex">
                 {[...Array(5)].map((_, i) => (
                   <Star
@@ -136,8 +136,8 @@ export default function CourseReviews({
                 ))}
               </div>
             </div>
-            <div className="text-gray-400">
-              Based on <span className="text-white font-medium">{totalReviews}</span> reviews
+            <div className="text-gray-600 font-medium">
+              Based on <span className="text-gray-900 font-bold">{totalReviews}</span> reviews
             </div>
           </div>
         </div>
@@ -147,7 +147,7 @@ export default function CourseReviews({
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="glass rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-primary appearance-none pr-10"
+              className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-2 text-sm text-gray-900 font-medium focus:outline-none focus:ring-2 focus:ring-primary appearance-none pr-10 shadow-sm"
             >
               {sortOptions.map((option) => (
                 <option key={option.id} value={option.id}>
@@ -155,14 +155,14 @@ export default function CourseReviews({
                 </option>
               ))}
             </select>
-            <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none" />
+            <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-500 pointer-events-none" />
           </div>
 
           <div className="relative">
             <select
               value={filterBy}
               onChange={(e) => setFilterBy(e.target.value)}
-              className="glass rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-primary appearance-none pr-10"
+              className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-2 text-sm text-gray-900 font-medium focus:outline-none focus:ring-2 focus:ring-primary appearance-none pr-10 shadow-sm"
             >
               {filterOptions.map((option) => (
                 <option key={option.id} value={option.id}>
@@ -170,23 +170,23 @@ export default function CourseReviews({
                 </option>
               ))}
             </select>
-            <Filter className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none" />
+            <Filter className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-500 pointer-events-none" />
           </div>
         </div>
       </div>
 
       {/* Rating Distribution */}
       <div className="mb-8">
-        <h3 className="text-lg font-semibold text-white mb-4">Rating Breakdown</h3>
+        <h3 className="text-lg font-bold text-gray-900 mb-4">Rating Breakdown</h3>
         <div className="space-y-3">
           {ratingDistribution.map((dist) => (
             <div key={dist.stars} className="flex items-center space-x-4">
               <div className="flex items-center space-x-1 w-16">
-                <span className="text-sm text-gray-400">{dist.stars}</span>
+                <span className="text-sm font-medium text-gray-600">{dist.stars}</span>
                 <Star className="h-4 w-4 text-yellow-500" />
               </div>
               <div className="flex-1">
-                <div className="h-2 glass rounded-full overflow-hidden">
+                <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: `${dist.percentage}%` }}
@@ -195,7 +195,7 @@ export default function CourseReviews({
                   />
                 </div>
               </div>
-              <div className="text-sm text-gray-400 w-16 text-right">
+              <div className="text-sm font-medium text-gray-600 w-16 text-right">
                 {dist.percentage}%
               </div>
             </div>
@@ -204,11 +204,11 @@ export default function CourseReviews({
       </div>
 
       {/* Write Review Form */}
-      <div className="glass rounded-xl p-6 mb-8">
-        <h3 className="text-lg font-semibold text-white mb-4">Write a Review</h3>
+      <div className="bg-gray-50 border border-gray-100 rounded-xl p-6 mb-8 shadow-sm">
+        <h3 className="text-lg font-bold text-gray-900 mb-4">Write a Review</h3>
         <form onSubmit={handleSubmitReview} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-400 mb-2">
+            <label className="block text-sm font-bold text-gray-700 mb-2">
               Your Rating
             </label>
             <div className="flex space-x-1">
@@ -233,21 +233,21 @@ export default function CourseReviews({
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-400 mb-2">
+            <label className="block text-sm font-bold text-gray-700 mb-2">
               Your Review
             </label>
             <textarea
               value={newReview.comment}
               onChange={(e) => setNewReview({ ...newReview, comment: e.target.value })}
               placeholder="Share your experience with this course..."
-              className="w-full glass rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary min-h-[120px]"
+              className="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary min-h-[120px] shadow-sm"
               required
             />
           </div>
 
           <div className="grid md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-400 mb-2">
+              <label className="block text-sm font-bold text-gray-700 mb-2">
                 Your Name
               </label>
               <input
@@ -255,13 +255,13 @@ export default function CourseReviews({
                 value={newReview.name}
                 onChange={(e) => setNewReview({ ...newReview, name: e.target.value })}
                 placeholder="Enter your name"
-                className="w-full glass rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary shadow-sm"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-400 mb-2">
+              <label className="block text-sm font-bold text-gray-700 mb-2">
                 Your Email
               </label>
               <input
@@ -269,7 +269,7 @@ export default function CourseReviews({
                 value={newReview.email}
                 onChange={(e) => setNewReview({ ...newReview, email: e.target.value })}
                 placeholder="Enter your email"
-                className="w-full glass rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary shadow-sm"
                 required
               />
             </div>
@@ -283,7 +283,7 @@ export default function CourseReviews({
             >
               {isSubmitting ? "Submitting..." : "Submit Review"}
             </button>
-            <div className="text-xs text-gray-400">
+            <div className="text-xs font-medium text-gray-500">
               Your review will be visible after moderation
             </div>
           </div>
@@ -292,14 +292,14 @@ export default function CourseReviews({
 
       {/* Reviews List */}
       <div className="space-y-6">
-        <h3 className="text-lg font-semibold text-white mb-4">
+        <h3 className="text-lg font-bold text-gray-900 mb-4">
           Recent Reviews ({sortedReviews.length})
         </h3>
 
         {sortedReviews.length === 0 ? (
-          <div className="text-center py-12 glass rounded-xl">
-            <MessageSquare className="h-12 w-12 text-gray-600 mx-auto mb-4" />
-            <div className="text-gray-400">No reviews found for the selected filter</div>
+          <div className="text-center py-12 bg-gray-50 border border-gray-100 rounded-xl">
+            <MessageSquare className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+            <div className="text-gray-500 font-medium">No reviews found for the selected filter</div>
           </div>
         ) : (
           <AnimatePresence>
@@ -310,17 +310,17 @@ export default function CourseReviews({
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
-                className="glass rounded-xl p-6"
+                className="bg-gray-50 border border-gray-100 rounded-xl p-6 shadow-sm"
               >
                 {/* Review Header */}
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
                   <div className="flex items-center space-x-3">
-                    <div className="h-10 w-10 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 flex items-center justify-center text-white font-bold">
+                    <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
                       {review.name.charAt(0)}
                     </div>
                     <div>
-                      <div className="font-medium text-white">{review.name}</div>
-                      <div className="flex items-center text-sm text-gray-400">
+                      <div className="font-bold text-gray-900">{review.name}</div>
+                      <div className="flex items-center text-sm font-medium text-gray-500">
                         <Calendar className="h-3 w-3 mr-1" />
                         {review.date}
                       </div>
@@ -341,7 +341,7 @@ export default function CourseReviews({
                         />
                       ))}
                     </div>
-                    <span className="text-sm font-medium text-white">
+                    <span className="text-sm font-bold text-gray-900">
                       {review.rating}.0
                     </span>
                   </div>
@@ -350,7 +350,7 @@ export default function CourseReviews({
                 {/* Review Content */}
                 <div className="mb-4">
                   <p className={cn(
-                    "text-gray-400",
+                    "text-gray-700 leading-relaxed",
                     expandedReview === review.id ? "" : "line-clamp-3"
                   )}>
                     {review.comment}
@@ -376,13 +376,13 @@ export default function CourseReviews({
                 </div>
 
                 {/* Review Actions */}
-                <div className="flex items-center justify-between pt-4 border-t border-white/10">
+                <div className="flex items-center justify-between pt-4 border-t border-gray-200">
                   <div className="flex items-center space-x-4">
-                    <button className="flex items-center space-x-2 text-sm text-gray-400 hover:text-white transition-colors">
+                    <button className="flex items-center space-x-2 text-sm font-medium text-gray-500 hover:text-primary transition-colors">
                       <ThumbsUp className="h-4 w-4" />
                       <span>Helpful ({review.helpful})</span>
                     </button>
-                    <button className="flex items-center space-x-2 text-sm text-gray-400 hover:text-white transition-colors">
+                    <button className="flex items-center space-x-2 text-sm font-medium text-gray-500 hover:text-primary transition-colors">
                       <MessageSquare className="h-4 w-4" />
                       <span>Reply</span>
                     </button>
@@ -398,10 +398,9 @@ export default function CourseReviews({
           </AnimatePresence>
         )}
 
-        {/* Load More Button */}
         {sortedReviews.length > 0 && (
           <div className="text-center pt-6">
-            <button className="px-6 py-3 glass text-white rounded-lg font-medium hover:bg-white/10 transition-colors">
+            <button className="px-6 py-3 bg-white border border-gray-200 text-gray-900 rounded-lg font-bold hover:bg-gray-50 transition-colors shadow-sm">
               Load More Reviews
             </button>
           </div>
