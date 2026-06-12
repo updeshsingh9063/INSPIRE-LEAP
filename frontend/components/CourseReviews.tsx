@@ -14,6 +14,7 @@ import {
   CheckCircle
 } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { useAuthAction } from "@/hooks/useAuthAction"
 
 interface Review {
   id: number
@@ -69,6 +70,7 @@ export default function CourseReviews({
     email: ""
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const withAuth = useAuthAction()
 
   const filteredReviews = reviews.filter(review => {
     if (filterBy === "all") return true
@@ -92,19 +94,21 @@ export default function CourseReviews({
 
   const handleSubmitReview = async (e: React.FormEvent) => {
     e.preventDefault()
-    setIsSubmitting(true)
-    
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    
-    console.log("Review submitted:", newReview)
-    setNewReview({
-      rating: 5,
-      comment: "",
-      name: "",
-      email: ""
+    withAuth(async () => {
+      setIsSubmitting(true)
+      
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000))
+      
+      console.log("Review submitted:", newReview)
+      setNewReview({
+        rating: 5,
+        comment: "",
+        name: "",
+        email: ""
+      })
+      setIsSubmitting(false)
     })
-    setIsSubmitting(false)
   }
 
   const toggleReviewExpansion = (reviewId: number) => {
@@ -378,11 +382,17 @@ export default function CourseReviews({
                 {/* Review Actions */}
                 <div className="flex items-center justify-between pt-4 border-t border-gray-200">
                   <div className="flex items-center space-x-4">
-                    <button className="flex items-center space-x-2 text-sm font-medium text-gray-500 hover:text-primary transition-colors">
+                    <button 
+                      onClick={() => withAuth(() => alert("Marked as helpful!"))}
+                      className="flex items-center space-x-2 text-sm font-medium text-gray-500 hover:text-primary transition-colors"
+                    >
                       <ThumbsUp className="h-4 w-4" />
                       <span>Helpful ({review.helpful})</span>
                     </button>
-                    <button className="flex items-center space-x-2 text-sm font-medium text-gray-500 hover:text-primary transition-colors">
+                    <button 
+                      onClick={() => withAuth(() => alert("Reply dialog opened."))}
+                      className="flex items-center space-x-2 text-sm font-medium text-gray-500 hover:text-primary transition-colors"
+                    >
                       <MessageSquare className="h-4 w-4" />
                       <span>Reply</span>
                     </button>

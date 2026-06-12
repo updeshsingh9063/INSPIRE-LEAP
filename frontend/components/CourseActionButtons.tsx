@@ -1,26 +1,28 @@
 "use client"
 
 import { useRouter } from "next/navigation"
+import { useAuthAction } from "@/hooks/useAuthAction"
 
 export default function CourseActionButtons() {
   const router = useRouter()
+  const withAuth = useAuthAction()
 
   const handleEnroll = () => {
-    const token = localStorage.getItem("auth_token")
-    if (!token) {
-      alert("Please login or create an account first to enroll in courses.")
-      router.push("/login")
-      return
-    }
-    window.open("https://rzp.io/rzp/9tayaBb", "_blank")
+    withAuth(() => {
+      window.open("https://rzp.io/rzp/9tayaBb", "_blank")
+    })
   }
 
   const handleWishlist = () => {
-    alert("Added to your wishlist!")
+    withAuth(() => {
+      alert("Added to your wishlist!")
+    })
   }
 
   const handlePreview = () => {
-    alert("Preview video will be uploaded shortly.")
+    withAuth(() => {
+      alert("Preview video will be uploaded shortly.")
+    })
   }
 
   return (

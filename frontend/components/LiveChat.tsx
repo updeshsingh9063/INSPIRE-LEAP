@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react"
 import { MessageSquare, X, Send, Bot, User } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
+import { useAuthAction } from "@/hooks/useAuthAction"
 
 interface Message {
   id: string
@@ -34,6 +35,7 @@ export default function LiveChat() {
   const [inputValue, setInputValue] = useState("")
   const [isTyping, setIsTyping] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
+  const withAuth = useAuthAction()
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
@@ -45,10 +47,12 @@ export default function LiveChat() {
 
   // Listen for custom event to open chat from other components (e.g. FAQ section)
   useEffect(() => {
-    const handleOpenChat = () => setIsOpen(true)
+    const handleOpenChat = () => {
+      withAuth(() => setIsOpen(true))
+    }
     window.addEventListener('open-chat', handleOpenChat)
     return () => window.removeEventListener('open-chat', handleOpenChat)
-  }, [])
+  }, [withAuth])
 
   const generateResponse = async (userMessage: string): Promise<string> => {
     try {
@@ -119,7 +123,7 @@ export default function LiveChat() {
         animate={{ scale: 1 }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        onClick={() => setIsOpen(true)}
+        onClick={() => withAuth(() => setIsOpen(true))}
         className="fixed bottom-6 right-6 z-[9999] p-4 bg-gradient-to-r from-primary to-secondary rounded-full shadow-2xl shadow-primary/30 text-white"
         style={{ display: isOpen ? 'none' : 'flex' }}
       >

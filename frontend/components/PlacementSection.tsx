@@ -17,6 +17,7 @@ import {
   Calendar
 } from "lucide-react"
 import { cn, formatCurrency } from "@/lib/utils"
+import { useAuthAction } from "@/hooks/useAuthAction"
 
 const placementStats = [
   { value: "95%", label: "Placement Rate", icon: TrendingUp, color: "from-primary to-secondary" },
@@ -105,6 +106,7 @@ const successStories = [
 
 export default function PlacementSection() {
   const [activeTab, setActiveTab] = useState("process")
+  const withAuth = useAuthAction()
 
   return (
     <section className="py-20">
@@ -449,7 +451,7 @@ export default function PlacementSection() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => window.location.href = '/placements'}
+                  onClick={() => withAuth(() => window.location.href = '/placements')}
                   className="px-8 py-4 bg-gradient-to-r from-primary to-secondary rounded-xl text-lg font-semibold text-white shadow-2xl shadow-primary/30 flex items-center space-x-2"
                 >
                   <span>Apply for Placements</span>

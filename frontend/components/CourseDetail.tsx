@@ -16,6 +16,7 @@ import {
 } from "lucide-react"
 import { cn, formatCurrency } from "@/lib/utils"
 import { initiatePayment } from "@/lib/payment"
+import { useAuthAction } from "@/hooks/useAuthAction"
 
 interface CourseDetailProps {
   course: {
@@ -47,9 +48,30 @@ interface CourseDetailProps {
 
 export default function CourseDetail({ course }: CourseDetailProps) {
   const discountPercentage = Math.round(((course.price - course.discountedPrice) / course.price) * 100)
+  const withAuth = useAuthAction()
 
   const handleEnroll = () => {
-    initiatePayment(course.title, course.discountedPrice)
+    withAuth(() => {
+      initiatePayment(course.title, course.discountedPrice)
+    })
+  }
+
+  const handleDownloadSyllabus = () => {
+    withAuth(() => {
+      alert("Syllabus downloading...")
+    })
+  }
+
+  const handleShare = () => {
+    withAuth(() => {
+      alert("Share link copied to clipboard!")
+    })
+  }
+
+  const handleFreePreview = () => {
+    withAuth(() => {
+      alert("Free preview will start shortly.")
+    })
   }
 
   return (
@@ -168,11 +190,17 @@ export default function CourseDetail({ course }: CourseDetailProps) {
         </div>
         <div className="hidden sm:flex absolute bottom-6 left-6 right-6 justify-between items-center">
           <div className="flex items-center space-x-4">
-            <button className="px-4 py-2 bg-white/80 backdrop-blur border border-gray-200 rounded-lg text-gray-900 hover:bg-white transition-colors flex items-center space-x-2 shadow-sm">
+            <button 
+              onClick={handleDownloadSyllabus}
+              className="px-4 py-2 bg-white/80 backdrop-blur border border-gray-200 rounded-lg text-gray-900 hover:bg-white transition-colors flex items-center space-x-2 shadow-sm"
+            >
               <Download className="h-4 w-4" />
               <span className="text-sm font-medium">Syllabus</span>
             </button>
-            <button className="px-4 py-2 bg-white/80 backdrop-blur border border-gray-200 rounded-lg text-gray-900 hover:bg-white transition-colors flex items-center space-x-2 shadow-sm">
+            <button 
+              onClick={handleShare}
+              className="px-4 py-2 bg-white/80 backdrop-blur border border-gray-200 rounded-lg text-gray-900 hover:bg-white transition-colors flex items-center space-x-2 shadow-sm"
+            >
               <Share2 className="h-4 w-4" />
               <span className="text-sm font-medium">Share</span>
             </button>
@@ -189,11 +217,17 @@ export default function CourseDetail({ course }: CourseDetailProps) {
           {course.duration} • {course.language} • {course.certificate}
         </div>
         <div className="flex items-center gap-3 w-full">
-          <button className="flex-1 py-2.5 bg-white border border-gray-200 rounded-lg text-gray-900 font-bold hover:bg-gray-50 transition-colors flex justify-center items-center space-x-2 shadow-sm">
+          <button 
+            onClick={handleDownloadSyllabus}
+            className="flex-1 py-2.5 bg-white border border-gray-200 rounded-lg text-gray-900 font-bold hover:bg-gray-50 transition-colors flex justify-center items-center space-x-2 shadow-sm"
+          >
             <Download className="h-4 w-4" />
             <span className="text-sm">Syllabus</span>
           </button>
-          <button className="flex-1 py-2.5 bg-white border border-gray-200 rounded-lg text-gray-900 font-bold hover:bg-gray-50 transition-colors flex justify-center items-center space-x-2 shadow-sm">
+          <button 
+            onClick={handleShare}
+            className="flex-1 py-2.5 bg-white border border-gray-200 rounded-lg text-gray-900 font-bold hover:bg-gray-50 transition-colors flex justify-center items-center space-x-2 shadow-sm"
+          >
             <Share2 className="h-4 w-4" />
             <span className="text-sm">Share</span>
           </button>
@@ -281,7 +315,10 @@ export default function CourseDetail({ course }: CourseDetailProps) {
             >
               Enroll Now
             </button>
-            <button className="px-8 py-4 bg-gray-100 text-gray-900 border border-gray-200 rounded-xl font-bold hover:bg-gray-200 transition-colors">
+            <button 
+              onClick={handleFreePreview}
+              className="px-8 py-4 bg-gray-100 text-gray-900 border border-gray-200 rounded-xl font-bold hover:bg-gray-200 transition-colors"
+            >
               Try Free Preview
             </button>
           </div>

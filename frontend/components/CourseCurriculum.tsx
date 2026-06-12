@@ -13,6 +13,7 @@ import {
   Lock
 } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { useAuthAction } from "@/hooks/useAuthAction"
 
 interface CurriculumItem {
   module: number
@@ -27,6 +28,7 @@ interface CourseCurriculumProps {
 
 export default function CourseCurriculum({ curriculum }: CourseCurriculumProps) {
   const [expandedModules, setExpandedModules] = useState<number[]>([1])
+  const withAuth = useAuthAction()
 
   const toggleModule = (moduleNumber: number) => {
     setExpandedModules(prev =>
@@ -63,7 +65,10 @@ export default function CourseCurriculum({ curriculum }: CourseCurriculumProps) 
             </div>
           </div>
         </div>
-        <button className="px-4 py-2 bg-gray-100 border border-gray-200 rounded-lg text-gray-900 hover:bg-gray-200 transition-colors text-sm font-medium">
+        <button 
+          onClick={() => withAuth(() => alert("Downloading syllabus..."))}
+          className="px-4 py-2 bg-gray-100 border border-gray-200 rounded-lg text-gray-900 hover:bg-gray-200 transition-colors text-sm font-medium"
+        >
           Download Syllabus
         </button>
       </div>
@@ -192,15 +197,24 @@ export default function CourseCurriculum({ curriculum }: CourseCurriculumProps) 
                     <div className="mt-6 pt-6 border-t border-gray-200">
                       <h4 className="text-sm font-bold text-gray-900 mb-4">Resources:</h4>
                       <div className="flex flex-wrap gap-2">
-                        <button className="px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors text-sm flex items-center space-x-2 font-medium">
+                        <button 
+                          onClick={() => withAuth(() => alert("Opening Lecture Notes..."))}
+                          className="px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors text-sm flex items-center space-x-2 font-medium"
+                        >
                           <FileText className="h-4 w-4" />
                           <span>Lecture Notes</span>
                         </button>
-                        <button className="px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors text-sm flex items-center space-x-2 font-medium">
+                        <button 
+                          onClick={() => withAuth(() => alert("Downloading Code Examples..."))}
+                          className="px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors text-sm flex items-center space-x-2 font-medium"
+                        >
                           <FileText className="h-4 w-4" />
                           <span>Code Examples</span>
                         </button>
-                        <button className="px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors text-sm flex items-center space-x-2 font-medium">
+                        <button 
+                          onClick={() => withAuth(() => alert("Downloading Assignment..."))}
+                          className="px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors text-sm flex items-center space-x-2 font-medium"
+                        >
                           <FileText className="h-4 w-4" />
                           <span>Assignment PDF</span>
                         </button>
