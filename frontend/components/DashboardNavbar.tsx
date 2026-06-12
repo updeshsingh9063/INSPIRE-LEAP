@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { 
   Search, 
@@ -25,6 +25,19 @@ export default function DashboardNavbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
+  const [userName, setUserName] = useState("User")
+  const [userEmail, setUserEmail] = useState("")
+
+  useEffect(() => {
+    const user = localStorage.getItem("user")
+    if (user) {
+      try {
+        const userData = JSON.parse(user)
+        setUserName(userData.name || userData.email?.split("@")[0] || "User")
+        setUserEmail(userData.email || "")
+      } catch {}
+    }
+  }, [])
 
   const notifications = [
     { id: 1, title: "New assignment", time: "10 min ago", read: false },
@@ -113,52 +126,6 @@ export default function DashboardNavbar() {
                   </div>
                 )}
               </button>
-
-              {/* Notifications Dropdown */}
-              <AnimatePresence>
-                {false && ( // Temporarily disabled
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    className="absolute right-0 mt-2 w-80 glass rounded-xl shadow-xl border border-white/10 overflow-hidden"
-                  >
-                    <div className="p-4 border-b border-white/10">
-                      <h3 className="font-semibold text-white">Notifications</h3>
-                    </div>
-                    <div className="max-h-96 overflow-y-auto">
-                      {notifications.map((notification) => (
-                        <div
-                          key={notification.id}
-                          className={cn(
-                            "p-4 border-b border-white/5 hover:bg-white/5 transition-colors",
-                            !notification.read && "bg-primary/5"
-                          )}
-                        >
-                          <div className="flex items-start space-x-3">
-                            <div className="h-8 w-8 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 flex items-center justify-center">
-                              <Bell className="h-4 w-4 text-primary" />
-                            </div>
-                            <div className="flex-1">
-                              <div className="font-medium text-white">
-                                {notification.title}
-                              </div>
-                              <div className="text-sm text-gray-400 mt-1">
-                                {notification.time}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="p-4 border-t border-white/10">
-                      <button className="w-full text-sm text-primary hover:text-secondary">
-                        Mark all as read
-                      </button>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
             </div>
 
             {/* Profile Menu */}
@@ -168,10 +135,12 @@ export default function DashboardNavbar() {
                 className="flex items-center space-x-3 p-2 glass rounded-xl hover:bg-white/5 transition-colors"
               >
                 <div className="h-10 w-10 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
-                  <User className="h-5 w-5 text-white" />
+                  <span className="text-white font-bold text-sm">
+                    {userName.charAt(0).toUpperCase()}
+                  </span>
                 </div>
                 <div className="hidden md:block text-left">
-                  <div className="font-medium text-white">Priya Sharma</div>
+                  <div className="font-medium text-white">{userName}</div>
                   <div className="text-xs text-gray-500">Student</div>
                 </div>
                 <ChevronDown className={cn(
@@ -190,8 +159,8 @@ export default function DashboardNavbar() {
                     className="absolute right-0 mt-2 w-64 glass rounded-xl shadow-xl border border-white/10 overflow-hidden"
                   >
                     <div className="p-4 border-b border-white/10">
-                      <div className="font-semibold text-white">Priya Sharma</div>
-                      <div className="text-sm text-gray-500">priya@inspireleap.com</div>
+                      <div className="font-semibold text-white">{userName}</div>
+                      <div className="text-sm text-gray-500">{userEmail}</div>
                     </div>
                     <div className="py-2">
                       {profileMenuItems.map((item) => {

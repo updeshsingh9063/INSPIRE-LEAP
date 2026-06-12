@@ -106,15 +106,11 @@ export default function RegisterForm() {
 
     // Mock successful registration to bypass backend
     setTimeout(() => {
+      const userName = `${formData.firstName} ${formData.lastName}` || formData.email.split('@')[0] || "User";
+      localStorage.setItem("auth_token", "mock-student-token");
+      localStorage.setItem("user", JSON.stringify({ email: formData.email, name: userName, role: "student" }));
       setSuccess(true);
-      localStorage.setItem("auth_token", "mock-token");
-      localStorage.setItem("user", JSON.stringify({
-        name: `${formData.firstName} ${formData.lastName}`,
-        email: formData.email
-      }));
-      setTimeout(() => {
-        window.location.href = "/dashboard";
-      }, 1500);
+      setTimeout(() => router.push("/"), 1500);
       setIsSubmitting(false);
     }, 1000);
   }

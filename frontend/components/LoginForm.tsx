@@ -57,16 +57,17 @@ export default function LoginForm() {
 
     // Mock successful login to bypass backend
     setTimeout(() => {
+      const userName = formData.email.split('@')[0] || "User";
       if (isAdminLogin) {
         localStorage.setItem("auth_token", "mock-admin-token");
-        localStorage.setItem("user", JSON.stringify({ email: formData.email, name: "Admin User", role: "admin" }));
+        localStorage.setItem("user", JSON.stringify({ email: formData.email, name: userName, role: "admin" }));
         setSuccess(true);
-        setTimeout(() => router.push("/admin"), 1500);
+        setTimeout(() => router.push("/"), 1500);
       } else {
         localStorage.setItem("auth_token", "mock-student-token");
-        localStorage.setItem("user", JSON.stringify({ email: formData.email, name: "Student User", role: "student" }));
+        localStorage.setItem("user", JSON.stringify({ email: formData.email, name: userName, role: "student" }));
         setSuccess(true);
-        setTimeout(() => router.push("/dashboard"), 1500);
+        setTimeout(() => router.push("/"), 1500);
       }
       setIsSubmitting(false);
     }, 1000);
@@ -123,7 +124,7 @@ export default function LoginForm() {
               <CheckCircle className="h-5 w-5 text-emerald-600" />
               <div>
                 <div className="font-medium text-emerald-900">Login successful!</div>
-                <div className="text-sm text-emerald-700">Redirecting to {isAdminLogin ? "Admin Dashboard" : "Dashboard"}...</div>
+                <div className="text-sm text-emerald-700">Redirecting to Home...</div>
               </div>
             </div>
           </motion.div>
