@@ -55,22 +55,28 @@ export default function LoginForm() {
     setIsSubmitting(true)
     setErrors({})
 
-    // Mock successful login to bypass backend
-    setTimeout(() => {
-      const userName = formData.email.split('@')[0] || "User";
-      if (isAdminLogin) {
-        localStorage.setItem("auth_token", "mock-admin-token");
-        localStorage.setItem("user", JSON.stringify({ email: formData.email, name: userName, role: "admin" }));
+    try {
+      const endpoint = isAdminLogin ? "/auth/admin/login" : "/auth/login";
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api"}${endpoint}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: formData.email, password: formData.password })
+      });
+      const data = await response.json();
+      
+      if (data.success) {
+        localStorage.setItem("auth_token", data.token);
+        localStorage.setItem("user", JSON.stringify(data.user));
         setSuccess(true);
-        setTimeout(() => router.push("/"), 1500);
+        setTimeout(() => router.push(isAdminLogin ? "/admin" : "/"), 1500);
       } else {
-        localStorage.setItem("auth_token", "mock-student-token");
-        localStorage.setItem("user", JSON.stringify({ email: formData.email, name: userName, role: "student" }));
-        setSuccess(true);
-        setTimeout(() => router.push("/"), 1500);
+        setApiError(data.message || "Login failed");
       }
+    } catch (error) {
+      setApiError("Network error. Please try again later.");
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

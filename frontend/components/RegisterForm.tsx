@@ -106,15 +106,42 @@ export default function RegisterForm() {
     setIsSubmitting(true)
     setErrors({})
 
-    // Mock successful registration to bypass backend
-    setTimeout(() => {
-      const userName = `${formData.firstName} ${formData.lastName}` || formData.email.split('@')[0] || "User";
-      localStorage.setItem("auth_token", "mock-student-token");
-      localStorage.setItem("user", JSON.stringify({ email: formData.email, name: userName, role: "student" }));
-      setSuccess(true);
-      setTimeout(() => router.push("/"), 1500);
+    try {
+      // Map frontend values to backend expected values if needed
+      // EducationLevel enum in backend is uppercase with underscores
+      let eduLevel = "UNDERGRADUATE";
+      if (formData.educationLevel === "High School") eduLevel = "HIGH_SCHOOL";
+      else if (formData.educationLevel === "Graduate") eduLevel = "GRADUATE";
+      else if (formData.educationLevel === "Post Graduate") eduLevel = "POST_GRADUATE";
+      else if (formData.educationLevel === "Working Professional") eduLevel = "WORKING_PROFESSIONAL";
+
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api"}/auth/register`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          password: formData.password,
+          educationLevel: eduLevel
+        })
+      });
+      const data = await response.json();
+
+      if (data.success) {
+        localStorage.setItem("auth_token", data.token);
+        localStorage.setItem("user", JSON.stringify(data.user));
+        setSuccess(true);
+        setTimeout(() => router.push("/"), 1500);
+      } else {
+        setErrors(prev => ({ ...prev, submit: data.message || "Registration failed" }));
+      }
+    } catch (error) {
+      setErrors(prev => ({ ...prev, submit: "Network error. Please try again later." }));
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -468,27 +495,30 @@ export default function RegisterForm() {
         </div>
 
         {/* Submit Button */}
-        <motion.button
+        <button
           type="submit"
           disabled={isSubmitting}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
           className={cn(
-            "w-full px-6 py-4 rounded-xl font-bold transition-all",
-            isSubmitting
-              ? "bg-gray-700 text-gray-600 cursor-not-allowed"
-              : "bg-gradient-to-r from-primary to-secondary text-gray-900 hover:opacity-90"
+            "w-full flex items-center justify-center space-x-2 py-3 px-4 bg-gradient-to-r from-primary to-secondary text-white font-medium rounded-xl hover:opacity-90 transition-opacity focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:opacity-70 disabled:cursor-not-allowed",
+            isSubmitting && "animate-pulse"
           )}
         >
           {isSubmitting ? (
-            <div className="flex items-center justify-center space-x-2">
-              <div className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+            <div className="flex items-center space-x-2">
+              <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
               <span>Creating account...</span>
             </div>
           ) : (
-            "Create Account"
+            <span>Create Account</span>
           )}
-        </motion.button>
+        </button>
+
+        {errors.submit && (
+          <div className="p-3 bg-red-50 text-red-600 text-sm rounded-lg text-center font-medium flex items-center justify-center space-x-2">
+            <AlertCircle className="h-4 w-4" />
+            <span>{errors.submit}</span>
+          </div>
+        )}
       </form>
 
       {/* Already have account */}

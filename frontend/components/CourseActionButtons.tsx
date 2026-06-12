@@ -1,7 +1,17 @@
 "use client"
 
+import { useRouter } from "next/navigation"
+
 export default function CourseActionButtons() {
+  const router = useRouter()
+
   const handleEnroll = () => {
+    const token = localStorage.getItem("auth_token")
+    if (!token) {
+      alert("Please login or create an account first to enroll in courses.")
+      router.push("/login")
+      return
+    }
     window.open("https://rzp.io/rzp/9tayaBb", "_blank")
   }
 
