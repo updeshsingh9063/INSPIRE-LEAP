@@ -6,6 +6,7 @@ import RelatedCourses from "@/components/RelatedCourses"
 import CourseInstructor from "@/components/CourseInstructor"
 import CourseCurriculum from "@/components/CourseCurriculum"
 import CourseReviews from "@/components/CourseReviews"
+import CourseActionButtons from "@/components/CourseActionButtons"
 
 import { coursesData as courses } from "@/lib/coursesData"
 
@@ -76,29 +77,7 @@ export default async function CourseDetailPage({ params }: CourseDetailPageProps
                   </div>
                 </div>
 
-                <div className="space-y-4">
-                  <button 
-                    onClick={() => {
-                      alert("Successfully enrolled!");
-                      window.location.href = "/dashboard";
-                    }}
-                    className="w-full px-6 py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-xl font-bold hover:opacity-90 transition-opacity"
-                  >
-                    Enroll Now
-                  </button>
-                  <button 
-                    onClick={() => alert("Added to your wishlist!")}
-                    className="w-full px-6 py-4 glass text-white rounded-xl font-medium hover:bg-white/10 transition-colors"
-                  >
-                    Add to Wishlist
-                  </button>
-                  <button 
-                    onClick={() => alert("Preview video will be uploaded shortly.")}
-                    className="w-full px-6 py-4 glass text-white rounded-xl font-medium hover:bg-white/10 transition-colors"
-                  >
-                    Try Free Preview
-                  </button>
-                </div>
+                <CourseActionButtons />
 
                 <div className="mt-8 pt-8 border-t border-white/10">
                   <h4 className="text-sm font-medium text-white mb-4">This course includes:</h4>
