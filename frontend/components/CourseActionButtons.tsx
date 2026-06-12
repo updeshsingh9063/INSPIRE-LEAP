@@ -1,1 +1,29 @@
-"use client"\n\nexport default function CourseActionButtons() {\n  return (\n    <div className="space-y-4">\n      <button \n        onClick={() => {\n          alert("Successfully enrolled!");\n          window.location.href = "/dashboard";\n        }}\n        className="w-full px-6 py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-xl font-bold hover:opacity-90 transition-opacity"\n      >\n        Enroll Now\n      </button>\n      <button \n        onClick={() => alert("Added to your wishlist!")}\n        className="w-full px-6 py-4 glass text-white rounded-xl font-medium hover:bg-white/10 transition-colors"\n      >\n        Add to Wishlist\n      </button>\n      <button \n        onClick={() => alert("Preview video will be uploaded shortly.")}\n        className="w-full px-6 py-4 glass text-white rounded-xl font-medium hover:bg-white/10 transition-colors"\n      >\n        Try Free Preview\n      </button>\n    </div>\n  )\n}\n
+"use client"
+
+export default function CourseActionButtons() {
+  return (
+    <div className="space-y-4">
+      <button 
+        onClick={() => {
+          alert("Successfully enrolled!");
+          window.location.href = "/dashboard";
+        }}
+        className="w-full px-6 py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-xl font-bold hover:opacity-90 transition-opacity"
+      >
+        Enroll Now
+      </button>
+      <button 
+        onClick={() => alert("Added to your wishlist!")}
+        className="w-full px-6 py-4 glass text-white rounded-xl font-medium hover:bg-white/10 transition-colors"
+      >
+        Add to Wishlist
+      </button>
+      <button 
+        onClick={() => alert("Preview video will be uploaded shortly.")}
+        className="w-full px-6 py-4 glass text-white rounded-xl font-medium hover:bg-white/10 transition-colors"
+      >
+        Try Free Preview
+      </button>
+    </div>
+  )
+}
