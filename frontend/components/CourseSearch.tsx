@@ -84,10 +84,10 @@ export default function CourseSearch() {
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search courses, skills, instructors..."
-            className="w-full pl-10 sm:pl-12 pr-[120px] sm:pr-40 py-4 glass rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary truncate"
+            placeholder="Search courses..."
+            className="w-full pl-10 sm:pl-12 pr-[100px] sm:pr-40 py-4 glass rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary truncate"
           />
-          <div className="absolute right-2 top-1/2 transform -translate-y-1/2 flex items-center space-x-2">
+          <div className="absolute right-2 top-1/2 transform -translate-y-1/2 flex items-center space-x-1 sm:space-x-2">
             {hasActiveSearch && (
               <button
                 type="button"
@@ -111,9 +111,10 @@ export default function CourseSearch() {
             </button>
             <button
               type="submit"
-              className="px-6 py-2 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-medium hover:opacity-90 transition-opacity"
+              className="px-3 sm:px-6 py-2 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-medium hover:opacity-90 transition-opacity flex items-center justify-center"
             >
-              Search
+              <span className="hidden sm:inline">Search</span>
+              <Search className="h-5 w-5 sm:hidden" />
             </button>
           </div>
         </div>
