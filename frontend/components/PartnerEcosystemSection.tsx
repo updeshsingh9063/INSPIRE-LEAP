@@ -128,8 +128,8 @@ export default function PartnerEcosystemSection() {
                 <div className="relative">
                   <div className="w-48 h-48 rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-500/30 flex items-center justify-center p-8">
                     <div className="text-center">
-                      <div className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-2">
-                        Wipro
+                      <div className="mb-2">
+                        <Image src="/logos/wipro.webp" alt="Wipro Logo" width={120} height={40} className="object-contain mx-auto" />
                       </div>
                       <div className="text-sm text-gray-400">Official Partner Program</div>
                     </div>

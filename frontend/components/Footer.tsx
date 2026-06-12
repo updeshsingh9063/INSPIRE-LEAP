@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Share2, Camera, Play, Mail, Phone, MapPin, ArrowRight, Heart, Shield, Award, Users, Globe } from "lucide-react";
+import { Share2, Camera, Play, Mail, Phone, MapPin, ArrowRight, Heart, Shield, Award, Users, Globe, Facebook, Twitter, Linkedin, Instagram, Youtube } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
 
@@ -37,11 +37,11 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { icon: Share2, label: "Share", href: "https://facebook.com", color: "from-blue-600 to-blue-700" },
-  { icon: Share2, label: "Share", href: "https://twitter.com", color: "from-cyan-500 to-cyan-600" },
-  { icon: Share2, label: "LinkedIn", href: "https://linkedin.com", color: "from-blue-700 to-blue-800" },
-  { icon: Camera, label: "Camera", href: "https://instagram.com", color: "from-pink-500 to-rose-600" },
-  { icon: Play, label: "Play", href: "https://youtube.com", color: "from-red-600 to-red-700" },
+  { icon: Facebook, label: "Facebook", href: "https://facebook.com", color: "from-blue-600 to-blue-700" },
+  { icon: Twitter, label: "Twitter", href: "https://twitter.com", color: "from-cyan-500 to-cyan-600" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com", color: "from-blue-700 to-blue-800" },
+  { icon: Instagram, label: "Instagram", href: "https://instagram.com", color: "from-pink-500 to-rose-600" },
+  { icon: Youtube, label: "Youtube", href: "https://youtube.com", color: "from-red-600 to-red-700" },
 ];
 
 const contactInfo = [

@@ -159,7 +159,7 @@ export default function Navbar() {
             >
               <div className="relative">
                 <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-lg blur opacity-30 animate-pulse-glow" />
-                <div className="relative bg-white rounded-lg p-1">
+                <div className="relative z-10 bg-white rounded-lg p-1">
                   <img 
                     src="/logo.jpeg" 
                     alt="Inspire Leap Logo" 
@@ -203,7 +203,7 @@ export default function Navbar() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
-                      className="absolute left-0 top-full mt-2 w-[800px] glass-dark rounded-xl border border-white/10 p-6 shadow-2xl"
+                      className="absolute left-0 top-full mt-2 w-[800px] max-w-[85vw] glass-dark rounded-xl border border-white/10 p-6 shadow-2xl"
                     >
                       <div className="grid grid-cols-3 gap-6">
                         {item.megaMenu.map((category) => (

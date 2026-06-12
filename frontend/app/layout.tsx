@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Inter, Outfit } from "next/font/google"
 import "./globals.css"
+import LiveChat from "@/components/LiveChat"
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -89,6 +90,7 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
         />
+        <LiveChat />
       </body>
     </html>
   )

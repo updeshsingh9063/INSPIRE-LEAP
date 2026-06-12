@@ -5,7 +5,6 @@ import WhyInspireLeapSection from "@/components/WhyInspireLeapSection"
 import StatisticsSection from "@/components/StatisticsSection"
 import FinalCTASection from "@/components/FinalCTASection"
 import Footer from "@/components/Footer"
-import LiveChat from "@/components/LiveChat"
 
 export default function Home() {
   return (
@@ -17,7 +16,6 @@ export default function Home() {
       <StatisticsSection />
       <FinalCTASection />
       <Footer />
-      <LiveChat />
     </div>
   )
 }

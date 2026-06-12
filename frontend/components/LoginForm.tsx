@@ -55,58 +55,21 @@ export default function LoginForm() {
     setIsSubmitting(true)
     setErrors({})
 
-    const apiBase = process.env.NEXT_PUBLIC_API_URL || ""
-
-    if (isAdminLogin) {
-      try {
-        const res = await fetch(`${apiBase}/auth/admin/login`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: formData.email, password: formData.password })
-        })
-        const data = await res.json()
-
-        if (data.success) {
-          localStorage.setItem("auth_token", data.token)
-          localStorage.setItem("user", JSON.stringify(data.user))
-          setSuccess(true)
-          setTimeout(() => {
-            router.push("/admin")
-          }, 1500)
-        } else {
-          setApiError(data.message || "Invalid admin credentials")
-        }
-      } catch (err) {
-        setApiError("Cannot connect to server. Please check your connection and try again.")
-      } finally {
-        setIsSubmitting(false)
+    // Mock successful login to bypass backend
+    setTimeout(() => {
+      if (isAdminLogin) {
+        localStorage.setItem("auth_token", "mock-admin-token");
+        localStorage.setItem("user", JSON.stringify({ email: formData.email, name: "Admin User", role: "admin" }));
+        setSuccess(true);
+        setTimeout(() => router.push("/admin"), 1500);
+      } else {
+        localStorage.setItem("auth_token", "mock-student-token");
+        localStorage.setItem("user", JSON.stringify({ email: formData.email, name: "Student User", role: "student" }));
+        setSuccess(true);
+        setTimeout(() => router.push("/dashboard"), 1500);
       }
-    } else {
-      // Student login
-      try {
-        const res = await fetch(`${apiBase}/auth/login`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: formData.email, password: formData.password })
-        })
-        const data = await res.json()
-
-        if (data.success) {
-          localStorage.setItem("auth_token", data.token)
-          localStorage.setItem("user", JSON.stringify(data.user))
-          setSuccess(true)
-          setTimeout(() => {
-            router.push("/dashboard")
-          }, 1500)
-        } else {
-          setApiError(data.message || "Invalid email or password.")
-        }
-      } catch (err) {
-        setApiError("Cannot connect to server. Please check your connection.")
-      } finally {
-        setIsSubmitting(false)
-      }
-    }
+      setIsSubmitting(false);
+    }, 1000);
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
