@@ -84,7 +84,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section ref={sectionRef} className="relative min-h-[100svh] flex items-center justify-center overflow-hidden py-16 md:py-20">
+    <section ref={sectionRef} className="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-28 pb-16 md:pt-32 md:pb-20">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900 to-black" />
       
