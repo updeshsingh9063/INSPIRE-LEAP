@@ -272,6 +272,14 @@ export default function AdminDashboard() {
                                   <Mail className="h-3 w-3" />
                                   <span>{user.email}</span>
                                 </div>
+                                <div className="text-xs text-gray-500 flex items-center space-x-1 mt-1 md:hidden">
+                                  <Phone className="h-3 w-3" />
+                                  <span>{user.phone || "—"}</span>
+                                </div>
+                                <div className="text-xs text-gray-500 flex items-center space-x-1 mt-0.5 lg:hidden">
+                                  <Calendar className="h-3 w-3" />
+                                  <span>{new Date(user.createdAt).toLocaleDateString("en-IN")}</span>
+                                </div>
                               </div>
                             </div>
                           </td>
@@ -343,7 +351,12 @@ export default function AdminDashboard() {
                               <div className={cn("h-10 w-10 rounded-xl bg-gradient-to-br flex items-center justify-center flex-shrink-0 shadow-sm", gradients[i % gradients.length])}>
                                 <BookOpen className="h-5 w-5 text-white" />
                               </div>
-                              <div className="text-sm font-semibold text-gray-900">{course.title}</div>
+                              <div>
+                                <div className="text-sm font-semibold text-gray-900">{course.title}</div>
+                                <div className="text-xs text-gray-500 mt-0.5 md:hidden">
+                                  {course.category}
+                                </div>
+                              </div>
                             </div>
                           </td>
                           <td className="px-6 py-4 hidden md:table-cell">
@@ -402,6 +415,12 @@ export default function AdminDashboard() {
                             <div className="text-xs text-gray-500 flex items-center space-x-1">
                               <Mail className="h-3 w-3" />
                               <span>{e.user.email}</span>
+                            </div>
+                            <div className="text-xs font-medium text-violet-600 mt-1.5 lg:hidden">
+                              {e.course.title}
+                            </div>
+                            <div className="text-xs text-gray-500 mt-0.5 md:hidden">
+                              ₹{e.course.price} • {new Date(e.enrolledAt).toLocaleDateString("en-IN")}
                             </div>
                           </div>
                         </td>
