@@ -168,7 +168,7 @@ export default function FinalCTASection() {
             </button>
 
             <button
-              onClick={() => window.location.href = 'https://rzp.io/rzp/9tayaBb'}
+              onClick={() => window.location.href = 'tel:+918019866332'}
               className="px-8 py-4 rounded-2xl bg-gradient-to-br from-gray-900/50 to-black/50 backdrop-blur-sm border border-white/10 font-bold text-lg hover:border-primary/30 transition-all duration-300"
             >
               Book Free Consultation
