@@ -115,7 +115,8 @@ export default function RegisterForm() {
       else if (formData.educationLevel === "Post Graduate") eduLevel = "POST_GRADUATE";
       else if (formData.educationLevel === "Working Professional") eduLevel = "WORKING_PROFESSIONAL";
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api"}/auth/register`, {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+      const response = await fetch(`${apiUrl}/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -127,6 +128,18 @@ export default function RegisterForm() {
           educationLevel: eduLevel
         })
       });
+      
+      if (!response.ok) {
+        const text = await response.text();
+        try {
+          const data = JSON.parse(text);
+          setErrors(prev => ({ ...prev, submit: data.message || `HTTP ${response.status} Error` }));
+        } catch (e) {
+          setErrors(prev => ({ ...prev, submit: `HTTP ${response.status}: Failed to reach backend API. URL used: ${apiUrl}` }));
+        }
+        return;
+      }
+      
       const data = await response.json();
 
       if (data.success) {
@@ -138,7 +151,8 @@ export default function RegisterForm() {
         setErrors(prev => ({ ...prev, submit: data.message || "Registration failed" }));
       }
     } catch (error) {
-      setErrors(prev => ({ ...prev, submit: "Network error. Please try again later." }));
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+      setErrors(prev => ({ ...prev, submit: `Network error: ${error instanceof Error ? error.message : String(error)} (API URL: ${apiUrl})` }));
     } finally {
       setIsSubmitting(false);
     }
