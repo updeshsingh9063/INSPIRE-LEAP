@@ -538,7 +538,7 @@ export default function CertificationsSection() {
                 View All Certifications
               </button>
               <button
-                onClick={() => window.open('https://rzp.io/rzp/9tayaBb', '_blank')}
+                onClick={() => window.location.href = 'tel:+918019866332'}
                 className="px-6 py-3 rounded-xl bg-white border border-amber-200 text-gray-900 font-semibold shadow-sm hover:bg-amber-50 transition-all duration-300"
               >
                 Talk to Advisor
