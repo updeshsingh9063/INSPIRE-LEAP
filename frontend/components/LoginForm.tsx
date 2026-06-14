@@ -57,11 +57,25 @@ export default function LoginForm() {
 
     try {
       const endpoint = isAdminLogin ? "/auth/admin/login" : "/auth/login";
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api"}${endpoint}`, {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+      
+      const response = await fetch(`${apiUrl}${endpoint}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: formData.email, password: formData.password })
       });
+      
+      if (!response.ok) {
+        const text = await response.text();
+        try {
+          const data = JSON.parse(text);
+          setApiError(data.message || `HTTP ${response.status} Error`);
+        } catch (e) {
+          setApiError(`HTTP ${response.status}: Failed to reach backend API. URL used: ${apiUrl}`);
+        }
+        return;
+      }
+      
       const data = await response.json();
       
       if (data.success) {
@@ -73,7 +87,8 @@ export default function LoginForm() {
         setApiError(data.message || "Login failed");
       }
     } catch (error) {
-      setApiError("Network error. Please try again later.");
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+      setApiError(`Network error: ${error instanceof Error ? error.message : String(error)} (API URL: ${apiUrl})`);
     } finally {
       setIsSubmitting(false);
     }
