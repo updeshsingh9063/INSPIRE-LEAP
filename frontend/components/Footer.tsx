@@ -58,8 +58,8 @@ const YoutubeIcon = (props: any) => (
 const socialLinks = [
   { icon: FacebookIcon, label: "Facebook", href: "https://facebook.com", color: "from-blue-600 to-blue-700" },
   { icon: TwitterIcon, label: "Twitter", href: "https://twitter.com", color: "from-cyan-500 to-cyan-600" },
-  { icon: LinkedinIcon, label: "LinkedIn", href: "https://linkedin.com", color: "from-blue-700 to-blue-800" },
-  { icon: InstagramIcon, label: "Instagram", href: "https://instagram.com", color: "from-pink-500 to-rose-600" },
+  { icon: LinkedinIcon, label: "LinkedIn", href: "https://www.linkedin.com/company/inspireleap/", color: "from-blue-700 to-blue-800" },
+  { icon: InstagramIcon, label: "Instagram", href: "https://www.instagram.com/inspireleapin?igsh=ZTYxMzhseDRtcGhs", color: "from-pink-500 to-rose-600" },
   { icon: YoutubeIcon, label: "Youtube", href: "https://youtube.com", color: "from-red-600 to-red-700" },
 ];
 
