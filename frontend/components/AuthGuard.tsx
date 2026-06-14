@@ -1,21 +1,39 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { useRouter } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
+
+const PUBLIC_ROUTES = [
+  "/", 
+  "/login", 
+  "/register", 
+  "/forgot-password", 
+  "/auth/callback"
+];
 
 export default function AuthGuard({ children }: { children: React.ReactNode }) {
   const router = useRouter()
+  const pathname = usePathname()
   const [isAuthorized, setIsAuthorized] = useState(false)
 
   useEffect(() => {
+    // Check if the current route is public
+    const isPublic = PUBLIC_ROUTES.includes(pathname) || pathname.startsWith("/api/");
+
+    if (isPublic) {
+      setIsAuthorized(true);
+      return;
+    }
+
+    // For all other features and courses, require sign in
     const token = localStorage.getItem("auth_token")
     if (!token) {
-      alert("Please login or create an account to access courses.")
+      alert("Please sign in or create an account first to access this feature.")
       router.push("/login")
     } else {
       setIsAuthorized(true)
     }
-  }, [router])
+  }, [pathname, router])
 
   if (!isAuthorized) {
     return (

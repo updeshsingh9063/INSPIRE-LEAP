@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Inter, Outfit } from "next/font/google"
 import "./globals.css"
 import LiveChat from "@/components/LiveChat"
+import AuthGuard from "@/components/AuthGuard"
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -79,7 +80,9 @@ export default function RootLayout({
         <meta name="color-scheme" content="dark" />
       </head>
       <body className="min-h-full bg-black text-white overflow-x-hidden">
-        {children}
+        <AuthGuard>
+          {children}
+        </AuthGuard>
         
         {/* Google Fonts */}
         <link
