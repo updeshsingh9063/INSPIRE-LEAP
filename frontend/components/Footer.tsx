@@ -64,9 +64,9 @@ const socialLinks = [
 ];
 
 const contactInfo = [
-  { icon: Phone, label: "+91 98765 43210", href: "tel:+919876543210" },
-  { icon: Mail, label: "hello@inspireleap.com", href: "mailto:hello@inspireleap.com" },
-  { icon: MapPin, label: "Bangalore, India", href: "https://maps.google.com" },
+  { icon: Phone, label: "+91 80198 66332", href: "tel:+918019866332" },
+  { icon: Mail, label: "info@inspireleap.com", href: "mailto:info@inspireleap.com" },
+  { icon: MapPin, label: "Sandhya Techno One, 10B, 6th Floor, Head Office, C9CM+MRR, X Road, Radhe Nagar, Khajaguda, Rai Durg, Hyderabad, Telangana 500104", href: "https://maps.google.com/?q=Sandhya+Techno+One,+Hyderabad" },
 ];
 
 export default function Footer() {
