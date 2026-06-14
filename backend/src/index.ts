@@ -17,25 +17,9 @@ const app = express();
 // Security middleware
 app.use(helmet());
 
-// CORS - support multiple allowed origins (comma-separated FRONTEND_URL)
-const allowedOrigins = (process.env.FRONTEND_URL || 'http://localhost:3000')
-  .split(',')
-  .map(url => url.trim());
-
+// CORS - allow all origins dynamically for Vercel/Render deployments
 app.use(cors({
-  origin: (origin, callback) => {
-    // Allow requests with no origin (curl, Postman, server-side)
-    if (!origin) return callback(null, true);
-    // Allow if origin matches any configured URL exactly
-    if (allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    }
-    // Allow Vercel preview deployments
-    if (origin.endsWith('.vercel.app')) {
-      return callback(null, true);
-    }
-    return callback(new Error(`CORS: origin ${origin} not allowed`));
-  },
+  origin: true,
   credentials: true,
 }));
 
