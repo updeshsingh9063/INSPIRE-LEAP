@@ -239,7 +239,7 @@ export default function Navbar() {
                           <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            onClick={() => window.open('https://rzp.io/rzp/9tayaBb', '_blank')}
+                            onClick={() => window.location.href = 'tel:+918019866332'}
                             className="px-4 py-2 bg-gradient-to-r from-primary to-secondary rounded-lg text-sm font-medium text-white"
                           >
                             Book Consultation

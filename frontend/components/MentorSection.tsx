@@ -413,7 +413,7 @@ export default function MentorSection() {
                       <Share2 className="w-5 h-5 text-cyan-400" />
                     </a>
                     <button
-                      onClick={() => window.location.href = 'https://rzp.io/rzp/9tayaBb'}
+                      onClick={() => window.location.href = 'tel:+918019866332'}
                       className="ml-auto px-4 py-2 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 font-semibold text-white hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300"
                     >
                       Book Session

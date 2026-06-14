@@ -389,7 +389,7 @@ export default function CoursesSection() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => window.location.href = 'https://rzp.io/rzp/9tayaBb'}
+                onClick={() => window.location.href = 'tel:+918019866332'}
                 className="px-8 py-4 bg-white shadow-lg border border-gray-100 rounded-xl text-lg font-semibold text-gray-900"
               >
                 Book Free Consultation

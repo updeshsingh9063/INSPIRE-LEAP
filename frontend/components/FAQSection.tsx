@@ -356,7 +356,7 @@ export default function FAQSection() {
                     Schedule Call
                   </button>
                   <button
-                    onClick={() => window.location.href = 'mailto:support@inspireleap.com'}
+                    onClick={() => window.location.href = 'mailto:info@inspireleap.com'}
                     className="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 text-gray-900 font-semibold shadow-sm hover:bg-gray-50 transition-all duration-300"
                   >
                     Email Support

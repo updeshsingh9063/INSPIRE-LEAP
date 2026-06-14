@@ -106,8 +106,8 @@ export default function CourseInstructor({
             </div>
 
             {/* Contact Button */}
-            <button 
-              onClick={() => window.location.href = `mailto:instructor@inspireleap.com?subject=Inquiry about the course`}
+            <button
+              onClick={() => window.open('https://wa.me/918019866332', '_blank')}
               className="w-full px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-xl font-medium hover:opacity-90 transition-opacity flex items-center justify-center space-x-2"
             >
               <MessageSquare className="h-5 w-5" />
