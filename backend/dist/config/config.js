@@ -6,18 +6,32 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.config = void 0;
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
+const isDev = process.env.NODE_ENV !== 'production';
+function getEnv(key, fallback) {
+    const value = process.env[key];
+    if (!value) {
+        if (!isDev && fallback === undefined) {
+            throw new Error(`Missing critical environment variable in production: ${key}`);
+        }
+        return fallback || '';
+    }
+    return value;
+}
 exports.config = {
     port: parseInt(process.env.PORT || '5000', 10),
     nodeEnv: process.env.NODE_ENV || 'development',
-    isDev: process.env.NODE_ENV === 'development',
+    isDev,
     db: {
-        url: process.env.DATABASE_URL || '',
+        url: getEnv('DATABASE_URL'),
     },
     jwt: {
-        accessSecret: process.env.JWT_ACCESS_SECRET || 'fallback_access_secret',
-        refreshSecret: process.env.JWT_REFRESH_SECRET || 'fallback_refresh_secret',
+        accessSecret: getEnv('JWT_ACCESS_SECRET', isDev ? 'fallback_access_secret' : undefined),
+        refreshSecret: getEnv('JWT_REFRESH_SECRET', isDev ? 'fallback_refresh_secret' : undefined),
         accessExpiresIn: process.env.JWT_ACCESS_EXPIRES_IN || '15m',
         refreshExpiresIn: process.env.JWT_REFRESH_EXPIRES_IN || '7d',
+    },
+    session: {
+        secret: getEnv('SESSION_SECRET', isDev ? 'fallback_session_secret' : undefined),
     },
     email: {
         host: process.env.SMTP_HOST || 'smtp.gmail.com',

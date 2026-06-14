@@ -44,8 +44,8 @@ export const config = {
   },
 
   razorpay: {
-    keyId: getEnv('RAZORPAY_KEY_ID', isDev ? 'dummy_key_id' : undefined),
-    keySecret: getEnv('RAZORPAY_KEY_SECRET', isDev ? 'dummy_key_secret' : undefined),
+    keyId: process.env.RAZORPAY_KEY_ID || '',
+    keySecret: process.env.RAZORPAY_KEY_SECRET || '',
   },
 
   frontend: {

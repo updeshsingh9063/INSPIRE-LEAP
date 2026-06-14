@@ -25,7 +25,7 @@ app.use((0, cors_1.default)({
     origin: (origin, callback) => {
         if (!origin)
             return callback(null, true);
-        if (allowedOrigins.includes(origin) || origin.endsWith('.vercel.app')) {
+        if (allowedOrigins.includes(origin)) {
             return callback(null, true);
         }
         return callback(new Error(`CORS: origin ${origin} not allowed`));
@@ -34,10 +34,19 @@ app.use((0, cors_1.default)({
 }));
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
+if (!config_1.config.isDev) {
+    app.set('trust proxy', 1);
+}
 app.use((0, express_session_1.default)({
-    secret: process.env.SESSION_SECRET || 'secret',
+    secret: config_1.config.session.secret,
     resave: false,
     saveUninitialized: false,
+    cookie: {
+        secure: !config_1.config.isDev,
+        httpOnly: true,
+        sameSite: 'strict',
+        maxAge: 24 * 60 * 60 * 1000
+    }
 }));
 app.use(passport_1.default.initialize());
 app.use(passport_1.default.session());

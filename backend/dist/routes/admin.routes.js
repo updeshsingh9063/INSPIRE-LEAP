@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const client_1 = require("@prisma/client");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+const config_1 = require("../config/config");
 const router = express_1.default.Router();
 const prisma = new client_1.PrismaClient();
 const requireAdmin = async (req, res, next) => {
@@ -15,7 +16,7 @@ const requireAdmin = async (req, res, next) => {
             return res.status(401).json({ error: 'No token provided' });
         }
         const token = authHeader.split(' ')[1];
-        const decoded = jsonwebtoken_1.default.verify(token, process.env.JWT_ACCESS_SECRET || 'secret');
+        const decoded = jsonwebtoken_1.default.verify(token, config_1.config.jwt.accessSecret);
         const user = await prisma.user.findUnique({ where: { id: decoded.userId } });
         if (!user || user.role !== 'ADMIN') {
             return res.status(403).json({ error: 'Admin access required' });

@@ -64,8 +64,8 @@ router.post('/admin/login', express_1.default.json(), async (req, res) => {
         return res.status(401).json({ success: false, message: "Invalid admin credentials" });
     }
     catch (error) {
-        console.error(error);
-        return res.status(500).json({ success: false, message: "Internal server error" });
+        console.error("Admin login error:", error);
+        res.status(500).json({ success: false, message: error instanceof Error ? error.message : "Internal server error" });
     }
 });
 router.post('/register', express_1.default.json(), async (req, res) => {
@@ -103,7 +103,7 @@ router.post('/register', express_1.default.json(), async (req, res) => {
     }
     catch (error) {
         console.error("Registration error:", error);
-        return res.status(500).json({ success: false, message: "Failed to register user" });
+        return res.status(500).json({ success: false, message: error instanceof Error ? error.message : "Internal server error" });
     }
 });
 router.post('/login', express_1.default.json(), async (req, res) => {
@@ -148,7 +148,7 @@ router.post('/login', express_1.default.json(), async (req, res) => {
     }
     catch (error) {
         console.error("Login error:", error);
-        return res.status(500).json({ success: false, message: "Internal server error" });
+        return res.status(500).json({ success: false, message: error instanceof Error ? error.message : "Internal server error" });
     }
 });
 exports.default = router;

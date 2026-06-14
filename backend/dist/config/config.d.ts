@@ -11,6 +11,9 @@ export declare const config: {
         accessExpiresIn: string;
         refreshExpiresIn: string;
     };
+    session: {
+        secret: string;
+    };
     email: {
         host: string;
         port: number;

@@ -204,7 +204,7 @@ export default function CourseInstructor({
               </p>
             </div>
             <button
-              onClick={() => window.location.href = 'https://rzp.io/rzp/9tayaBb'}
+              onClick={() => window.location.href = 'tel:+918019866332'}
               className="mt-4 sm:mt-0 px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-medium hover:opacity-90 transition-opacity flex items-center space-x-2"
             >
               <Calendar className="h-5 w-5" />
