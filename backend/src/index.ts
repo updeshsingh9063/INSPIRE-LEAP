@@ -26,8 +26,8 @@ app.use(cors({
   origin: (origin, callback) => {
     // Allow requests with no origin (curl, Postman, server-side)
     if (!origin) return callback(null, true);
-    // Allow if origin matches any configured URL or is a Vercel deployment
-    if (allowedOrigins.includes(origin) || origin.endsWith('.vercel.app')) {
+    // Allow if origin matches any configured URL exactly
+    if (allowedOrigins.includes(origin)) {
       return callback(null, true);
     }
     return callback(new Error(`CORS: origin ${origin} not allowed`));
@@ -39,11 +39,22 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Trust proxy if we are behind a reverse proxy (like Render/Vercel) to allow secure cookies
+if (!config.isDev) {
+  app.set('trust proxy', 1);
+}
+
 // Session for passport
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'secret',
+  secret: config.session.secret,
   resave: false,
   saveUninitialized: false,
+  cookie: {
+    secure: !config.isDev,
+    httpOnly: true,
+    sameSite: 'strict',
+    maxAge: 24 * 60 * 60 * 1000 // 1 day
+  }
 }));
 
 // Initialize Passport

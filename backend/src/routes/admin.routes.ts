@@ -1,6 +1,7 @@
 import express from 'express';
 import { PrismaClient } from '@prisma/client';
 import jwt from 'jsonwebtoken';
+import { config } from '../config/config';
 
 const router = express.Router();
 const prisma = new PrismaClient();
@@ -13,7 +14,7 @@ const requireAdmin = async (req: any, res: any, next: any) => {
       return res.status(401).json({ error: 'No token provided' });
     }
     const token = authHeader.split(' ')[1];
-    const decoded: any = jwt.verify(token, process.env.JWT_ACCESS_SECRET || 'secret');
+    const decoded: any = jwt.verify(token, config.jwt.accessSecret);
     
     const user = await prisma.user.findUnique({ where: { id: decoded.userId } });
     if (!user || user.role !== 'ADMIN') {
